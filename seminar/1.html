@@ -9,20 +9,20 @@
 	</head>
 
 	<body>
-    <?php $page=1; include "include/header.php" ?>
+    <?php $page=1; include("./include/header.php"); ?>
 		<div id="contents">
 			<h3>セルオートマトン (cellular automaton, CA)</h3>
 			<div id="main_text">
 
 			・有限個の状態を取るセルで構成される。
 			<div style="text-align: center"><p></p>
-			<img src="image/im1.bmp" alt="1次元2値セルオートマトン" width="80%">
+			<img src="./image/im1.bmp" alt="1次元2値セルオートマトン" width="80%">
 			</div>
 			<div style="text-align: center">ex. 1次元2値セルオートマトン</div>
 			<p></p>
 			・時間発展規則に従って変化する。<p></p>
 			<div style="text-align: center">
-				<img src="image/im2.bmp" alt="時間発展の例" width="110%">
+				<img src="./image/im2.bmp" alt="時間発展の例" width="110%">
 				</div>
 				<div style="text-align: center">ex. 時間発展の例</div>
 				<p></p>
@@ -65,7 +65,7 @@
 			<h3>ECAと交通量モデル</h3>
 			<div id="main_text">
 				<div style="text-align: center">
-					<img src="image/im4.bmp" alt="ルール184のECA" width="100%"><br>
+					<img src="./image/im4.bmp" alt="ルール184のECA" width="100%"><br>
 					ルール184のECA (\(n_F=184\))
 				</div>
 				<p>・前が空いているなら進む、空いていなければとどまる \(\rightarrow\) 交通流の単純なモデル</p>
@@ -152,7 +152,7 @@
 
 			</div>
 		</div>
-    <?php include "include/footer.php" ?>
+    <?php include("./include/footer.php"); ?>
 	</body>
 	<script src="details_close.js"></script>
 </html>
