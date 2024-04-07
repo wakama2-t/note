@@ -11,11 +11,118 @@
 	<body>
     <?php $page=2; include("./include/header.php"); ?>
 		<div id="contents">
-
-			a
+			<h3>KdV(Korteweg-de Vries)方程式</h3>
+			<div id ="main_text">
+			\[\frac{\partial{u(x,\,t)}}{\partial{t}}+6u(x,\,t)\frac{\partial{u(x,\,t)}}{\partial{x}}+\frac{\partial^3u(x,\,t)}{\partial{x^3}}=0\]
+			<p>・\(u(x,\,t)\) は \(x\) 軸の正方向に進む波の 時刻 \(t\), 位置 \(x\) における波の振幅</p>
+			<p>・振幅に比例する速度で伝わる孤立波の解 (1ソリトン解)</p>
+			\[u(x,\,t)=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt-\theta)\right]\;\;\;\left(\theta=-\frac{2c}{\sqrt{v}},\,c:任意定数\right)\]
+			\[\theta:\,\mbox{ソリトンの(初期)位相},\;t=0\,における振幅のピーク位置\]
+			<details id="white" >
+				<summary>導出</summary>
+				<div id="main_text">
+					速度 \(v\) で形を変えずに \(x\) 軸正方向に進む波: \[u(x,\,t)=f(x-vt)=f(\xi)\;\;\bigl(\xi:=x-vt\bigr)\]
+					これをKdV方程式に代入すると、\(u_x=f'\xi_x=f',\,u_t=f'\xi_t=-vf'\) より、
+					\begin{align*}
+						0&=-vf'(\xi)+6f(\xi)f'(\xi)+f'''(\xi)\\
+						 &=\Bigl(-vf(\xi)+3f(\xi)^2+f''(\xi)\Bigr)'
+					\end{align*}
+					\[\Rightarrow\;-vf(\xi)+3f(\xi)^2+f''(\xi)=\mathrm{const}\;\;\cdots(1)\]
+					孤立波の特性上 \(t\) を任意の有限の値に固定すると \(u,\,u_x,\,u_{xx}\rightarrow{0}\;(x\rightarrow\pm\infty)\) を満たすため、
+					\[f,\,f',\,f''\rightarrow0\;\;(\xi\rightarrow\pm\infty)\;\;\cdots(\ast)\]
+					となり、\((1)\) の右辺は 0 となる。また、
+					\begin{align*}
+						0=(1)*f'(\xi)&=-vf(\xi)f'(\xi)+3f(\xi)^2f'(\xi)+f'(\xi)f''(\xi)\\
+						&=\Bigl(-\frac{v}{2}f(\xi)^2+f(\xi)^3+\frac{1}{2}f'(\xi)^2\Bigr)'
+					\end{align*}
+					\[\Rightarrow\;-\frac{v}{2}f(\xi)^2+f(\xi)^3+\frac{1}{2}f'(\xi)^2=\mathrm{const}=0\;\because(\ast)\]
+					ここで、\(v\) 依存性をなくすため、各項が \(v^3\) になるよう、
+					\[f(\xi)=\frac{v}{2}y(\eta),\;\eta:=\frac{\sqrt{v}}{2}\xi\]
+					と変数変換をすると、
+					\begin{align*}
+						0&=-\frac{v}{2}\cdot\frac{v^2}{4}y(\eta)^2+\frac{v^3}{8}y(\eta)^3+\frac{1}{2}\cdot\frac{v^3}{16}y'(\eta)^2\\
+						 &=-y(\eta)^2+y(\eta)^3+\frac{1}{4}y'(\eta)^2
+					\end{align*}
+					そして \(\displaystyle\frac{1}{y(\eta)}=z(\eta)^2\) とおくと、
+					\begin{align*}
+						z'(\eta)&=\left(\pm\sqrt{\frac{1}{y(\eta)}}\right)'\\
+										&=\pm\left(-\frac{1}{2}y(\eta)^{-\frac{3}{2}}\cdot{y'(\eta)}\right)
+					\end{align*}
+					ここで、
+					\begin{gather*}
+						-y(\eta)^2+y(\eta)^3+\frac{1}{4}y'(\eta)^2=0\\
+						\Leftrightarrow\;y(\eta)^2\bigl(1-y(\eta)\bigr)=\frac{1}{4}y'(\eta)^2\\
+						\Leftrightarrow\;\frac{1-y(\eta)}{y(\eta)}=\frac{1}{4}y(\eta)^{-3}y'(\eta)^2\\
+					\end{gather*}
+					となることから、
+					\[z'(\eta)=\pm\sqrt{\frac{1-y(\eta)}{y(\eta)}}=\pm\sqrt{\frac{1}{y(\eta)}-1}=\pm\sqrt{z(\eta)^2-1}\]
+					これを解くと、
+					\begin{align*}
+						&\frac{dz(\eta)}{d\eta}=\pm\sqrt{z(\eta)^2-1}\\
+						&\pm\int\frac{1}{\sqrt{z^2-1}}dz=\int d\eta\\
+						&\pm\int\frac{\sinh{t}}{\sqrt{\cosh^2{t}-1}}dt=\eta+C_1\\
+						&\pm\int dt=\eta+C_1\\
+						&\pm(\cosh^{-1}{z}+C_2)=\eta+C_1
+					\end{align*}
+					\[\therefore z=\pm\cosh(\eta+c)\]
+					よって、
+					\begin{align*}
+						u(x,\,t)&=f(\xi)\\
+										&=\frac{v}{2}y(\eta)\\
+										&=\frac{v}{2}\cdot\frac{1}{\cosh^2(\eta+c)}\\
+										&=\frac{v}{2}\mathrm{sech}^2(\eta+c)\\
+										&=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}\xi+c\right]\\
+										&=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt)+c\right]\\
+										&=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt-\theta)\right]\;\;\left(\theta=-\frac{2c}{\sqrt{v}},\,c:任意定数\right)
+					\end{align*}
+				</div>
+				<div style="text-align: right"><button id="close0">[閉じる]</button></div>
+			</details>
+			<p>・2ソリトン解</p>
+			\[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\]
+			\[\begin{cases}
+				0&lt;p_1,\,p_2\\
+				p_1\neq{p_2}\\
+				\theta_1,\,\theta_2:任意の実定数\\
+				\eta_i:=p_ix-p_i^3t-\theta_i\;\;(i=1,\,2)\\
+				\displaystyle A_{12}=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
+				\tau(x,\,t)=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}
+			\end{cases}\]
+			<details open id="white">
+				<summary>導出</summary>
+				<div id="main_text">
+					\[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\;\;\cdots(1)\]
+                    をKdV方程式に代入すると、
+                    \begin{align*}
+                        u_t&=2\bigl(\log(\tau)\bigr)_{xxt}\\
+                           &=2\left(\frac{\tau_x}{\tau}\right)_{xt}\\
+                           &=2\left(\frac{\tau\tau_{xt}-\tau_x\tau_t}{\tau^2}\right)_x\\
+                        6uu_x&=(3u^2)_x\\
+                             &=3\left\{\left(2\frac{\tau\tau_{xx}-\tau_x^2}{\tau^2}\right)^2\right\}_x\\
+                             &=12\left(\frac{\tau^2\tau_{xx}^2-2\tau\tau_x^2\tau_{xx}+\tau_x^4}{\tau^4}\right)_x\\
+                        u_{xxx}&=\left(2\frac{\tau\tau_{xx}-\tau_x^2}{\tau^2}\right)_{xxx}\\
+                               &=2\left(\frac{\tau^3\tau_{xxxx}-3\tau^2\tau_{xx}^2-4\tau^2\tau_x\tau_{xxx}+12\tau\tau_x^2\tau_{xx}-6\tau_{x}^4}{\tau^4}\right)_x
+                    \end{align*}
+                    となるため、
+                    \begin{align*}
+                        0&=u_t+6uu_x+u_{xxx}\\
+                         &=\left(2\frac{\tau\tau_{xt}-\tau_x\tau_t}{\tau^2}+12\frac{\tau^2\tau_{xx}^2-2\tau\tau_x^2\tau_{xx}+\tau_x^4}{\tau^4}\right.\\&\;\;\;\;\;\;\;\;\left.+2\frac{\tau^3\tau_{xxxx}-3\tau^2\tau_{xx}^2-4\tau^2\tau_x\tau_{xxx}+12\tau\tau_x^2\tau_{xx}-6\tau_{x}^4}{\tau^4}\right)_x\\
+                         &=\left(2\frac{\tau\tau_{xt}-\tau_x\tau_t}{\tau^2}+2\frac{\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}}{\tau^2}\right)_x\\
+                         &=\left(\frac{2}{\tau^2}\left\{\tau\tau_{xt}-\tau_x\tau_t+3\tau_{xx}^2+\tau\tau_{xxxx}-4\tau_x\tau_{xxx}\right\}\right)_x
+                    \end{align*}
+                    これより、
+                    \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\]
+                    となるとき、(1)式がKdV方程式の解となることがわかる。
+				</div>
+			<div style="text-align: right"><button id="close1">[閉じる]</button></div>
+			</details>
+			
+		</div>
 		</div>
 
 
     <?php include("./include/footer.php"); ?>
 	</body>
+	<script src="details_close.js"></script>
+
 </html>
