@@ -15,7 +15,7 @@
 			<div id ="main_text">
 			\[\frac{\partial{u(x,\,t)}}{\partial{t}}+6u(x,\,t)\frac{\partial{u(x,\,t)}}{\partial{x}}+\frac{\partial^3u(x,\,t)}{\partial{x^3}}=0\]
 			<p>・\(u(x,\,t)\) は \(x\) 軸の正方向に進む波の 時刻 \(t\), 位置 \(x\) における波の振幅</p>
-			<p>・振幅に比例する速度で伝わる孤立波の解 (1ソリトン解)</p>
+			<p>・振幅に比例する速度で伝わる孤立波の解 (1-ソリトン解)</p>
 			\[u(x,\,t)=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt-\theta)\right]\;\;\;\left(\theta=-\frac{2c}{\sqrt{v}},\,c:任意定数\right)\]
 			\[\theta:\,\mbox{ソリトンの(初期)位相},\;t=0\,における振幅のピーク位置\]
 			<details id="white" >
@@ -78,17 +78,18 @@
 				</div>
 				<div style="text-align: right"><button id="close0">[閉じる]</button></div>
 			</details>
-			<p>・2ソリトン解</p>
+            <br>
+			<p>・2-ソリトン解</p>
 			\[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\]
+            \[\tau(x,\,t)=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}\]
 			\[\begin{cases}
 				0&lt;p_1,\,p_2\\
 				p_1\neq{p_2}\\
 				\theta_1,\,\theta_2:任意の実定数\\
-				\eta_i:=p_ix-p_i^3t-\theta_i\;\;(i=1,\,2)\\
-				\displaystyle A_{12}=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
-				\tau(x,\,t)=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}
+				\eta_i:=p_ix-p_i^3t-\theta_i\\
+				\displaystyle e^{A_{12}}=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
 			\end{cases}\]
-			<details open id="white">
+			<details id="white">
 				<summary>導出</summary>
 				<div id="main_text">
 					\[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\;\;\cdots(1)\]
@@ -111,16 +112,258 @@
                          &=\left(\frac{2}{\tau^2}\left\{\tau\tau_{xt}-\tau_x\tau_t+3\tau_{xx}^2+\tau\tau_{xxxx}-4\tau_x\tau_{xxx}\right\}\right)_x
                     \end{align*}
                     これより、
-                    \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\]
+                    \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\;\;\cdots(2)\]
                     となるとき、(1)式がKdV方程式の解となることがわかる。
+
+                    そして、
+                        \[\begin{cases}
+                        0&lt;p_1,\,p_2\\
+                        p_1\neq{p_2}\\
+                        \theta_1,\,\theta_2:任意の実定数\\
+                        \eta_i:=p_ix-p_i^3t-\theta_i\;\;(i=1,\,2)\\
+                        \tau(x,\,t)=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}
+                    \end{cases}\]
+                    とすると、
+                    \begin{align*}
+                        \tau_{t}&=-p_1^3e^{\eta_1}-p_2^3e^{\eta_2}-(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        \tau_{x}&=p_1e^{\eta_1}+p_2e^{\eta_2}+(p_1+p_2)e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        \tau_{xx}&=p_1^2e^{\eta_1}+p_2^2e^{\eta_2}+(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        \tau_{xxx}&=p_1^3e^{\eta_1}+p_2^3e^{\eta_2}+(p_1+p_2)^3e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        \tau_{xxxx}&=p_1^4e^{\eta_1}+p_2^4e^{\eta_2}+(p_1+p_2)^4e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        \tau_{xt}&=-p_1^4e^{\eta_1}-p_2^4e^{\eta_2}-(p_1+p_2)(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}
+                    \end{align*}
+                    より、
+                    <div id="long_mjx">
+                    \begin{align*}
+                        &\tau\tau_{xt}+\tau\tau_{xxxx}\\
+                        &\;=\tau\Bigl((p_1+p_2)^4-(p_1+p_2)(p_1^3+p_2^3)\Bigr)e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        &\;=(1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}})\cdot3p_1p_2(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                        &-\tau_x\tau_t-4\tau_x\tau_{xxx}\\
+                        &\;=-\tau_x\Bigl(3p_1^3e^{\eta_1}+3p_2^3e^{\eta_2}+\bigl\{4(p_1+p_2)^3-(p_1^3+p_2^3)\bigr\}e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)\\
+                        &\;=-3\tau_x\Bigl(p_1^3e^{\eta_1}+p_2^3e^{\eta_2}+\bigl\{p_1^3+4p_1^2p_2+4p_1p_2^2+p_2^3\big\}e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)\\
+                        &3\tau_{xx}^2\\
+                        &\;=3\Bigl(p_1^2e^{\eta_1}+p_2^2e^{\eta_2}+(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)^2
+                    \end{align*}
+                    </div>
+                    これより、
+                    <div id="long_mjx">
+                    \begin{align*}
+                        &\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}\\
+                        &=e^{\eta_1}e^{\eta_2}\Bigl(3p_1p_2(p_1+p_2)^2e^{\eta_1}e^{A_{12}}-3p_1p_2^3-3p_1^3p_2+6p_1^2p_2^2\Bigr)\\
+                        &\;\;\;+e^{2\eta_1}e^{\eta_2}e^{A_{12}}\underset{=\,0}{\Bigl(\underline{3p_1p_2(p_1+p_2)^2-3p_1\bigl\{p_1^3+4p_1^2p_2+4p_1p_2^2+p_2^3\big\}-3(p_1+p_2)p_1^3+6p_1^2(p_1+p_2)^2}\Bigr)}\\
+                        &\;\;\;+e^{\eta_1}e^{2\eta_2}e^{A_{12}}\underset{=\,0}{\Bigl(\underline{3p_1p_2(p_1+p_2)^2-3p_2\bigl\{p_1^3+4p_1^2p_2+4p_1p_2^2+p_2^3\big\}-3(p_1+p_2)p_2^3+6p_2^2(p_1+p_2)^2}\Bigr)}\\
+                        &\;\;\;+e^{2\eta_1}e^{2\eta_2}e^{2A_{12}}\underset{=\,0}{\Bigl(\underline{3p_1p_2(p_1+p_2)^2-3(p_1+p_2)\bigl\{p_1^3+4p_1^2p_2+4p_1p_2^2+p_2^3\big\}+3(p_1+p_2)^4}\Bigr)}\\
+                        &=e^{\eta_1}e^{\eta_2}\Bigl(3p_1p_2(p_1+p_2)^2e^{\eta_1}e^{A_{12}}-3p_1p_2^3-3p_1^3p_2+6p_1^2p_2^2\Bigr)\\
+                        &=3p_1p_2\Bigl((p_1+p_2)^2e^{A_{12}}-(p_1-p_2)^2\Bigr)e^{\eta_1}e^{\eta_2}
+                    \end{align*}
+                    </div>
+                    よって、
+                    \begin{align*}
+                        &\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\\
+                        &\Leftrightarrow\;(p_1+p_2)^2e^{A_{12}}-(p_1-p_2)^2=0\\
+                        &\Leftrightarrow\;e^{A_{12}}=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}
+                    \end{align*}
+										
 				</div>
 			<div style="text-align: right"><button id="close1">[閉じる]</button></div>
 			</details>
-			
-		</div>
-		</div>
+            <div style="line-height: 5pt;">&nbsp;</div>
+            <details id="white">
+                <summary>1ソリトン解について補足</summary>
+                <div id="main_text">
+                    \[\tau(x,\,t)=1+e^{\sqrt{v}(x-vt-\theta)}\]
+                    は
+                    \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\;\;\cdots(\ast)\]
+                    を満たし、\(\displaystyle u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\) で与えられる \(u(x,\,t)\) は上述の1ソリトン解となる。
+                    <h4>証明</h4>
+                    \begin{align*}
+                        \tau\tau_{xt}+\tau\tau_{xxxx}
+                        &=\tau\left(\left\{\sqrt{v}\cdot(-v\sqrt{v})+v^2\right\}e^{\sqrt{v}(x-vt-\theta)}\right)\\
+                        &=0\\
+                        -\tau_x\tau_t-4\tau_x\tau_{xxx}
+                        &=-\sqrt{v}\Bigl(-v\sqrt{v}+4v\sqrt{v}\Bigr)e^{2\sqrt{v}(x-vt-\theta)}\\
+                        &=-3v^2e^{2\sqrt{v}(x-vt-\theta)}\\
+                        3\tau_{xx}^2
+                        &=3\left(ve^{\sqrt{v}(x-vt-\theta)}\right)^2\\
+                        &=3v^2e^{2\sqrt{v}(x-vt-\theta)}
+                    \end{align*}
+                    より、\((\ast)\) を満たす。
+                    <br><div style="line-height: 30pt;">&nbsp;</div>
+                    そして、
+                    \begin{align*}
+                    2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}
+                    &=2\left(\frac{\sqrt{v}e^{\sqrt{v}(x-vt-\theta)}}{1+e^{\sqrt{v}(x-vt-\theta)}}\right)_x\\
+                    &=2\frac{(1+e^{\sqrt{v}(x-vt-\theta)})ve^{\sqrt{v}(x-vt-\theta)}-ve^{2\sqrt{v}(x-vt-\theta)}}{(1+e^{\sqrt{v}(x-vt-\theta)})^2}\\
+                    &=2v\frac{e^{\sqrt{v}(x-vt-\theta)}}{(1+e^{\sqrt{v}(x-vt-\theta)})^2}\\
+                    &=2v\left(\frac{e^{\frac{\sqrt{v}}{2}(x-vt-\theta)}}{1+e^{\sqrt{v}(x-vt-\theta)}}\right)^2\\
+                    &=\frac{v}{2}\left(\frac{2}{e^{-\frac{\sqrt{v}}{2}(x-vt-\theta)}+e^{\frac{\sqrt{v}}{2}(x-vt-\theta)}}\right)^2\\
+                    &=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt-\theta)\right]
+                    \end{align*}
+                    となる。<br>
+                    また2-ソリトン解と比較すると、
+                    \begin{align*}
+                        \mbox{1-ソリトン解: }&\tau_1(x,\,t)=1+e^{\sqrt{v}(x-vt-\theta)}\\                     
+                        \mbox{2-ソリトン解: }&\tau_2(x,\,t)=1+e^{p_1x-p_1^3t-\theta_1} +e^{p_2x-p_2^3t-\theta_2}\\
+                        &\hspace{45pt}+\frac{(p_1-p_2)^2}{(p_1+p_2)^2}e^{p_1x-p_1^3t-\theta_1}e^{p_2x-p_2^3t-\theta_2}                     
+                    \end{align*}
+                    となるため、\(p_i\) は \(\sqrt{v}\) に対応する。
+                </div>
+                <div style="text-align: right"><button id="close2">[閉じる]</button></div>
+            </details><p></p>
+            <br>
+            <p>・\(N\)-ソリトン解</p>
+			\[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\]
+            \[\tau(x,\,t)=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\exp\Bigl[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leqq{i}&lt;j\leqq{N}}\mu_i\mu_jA_{ij}\Bigr]\]
+			\[\begin{cases}
+				0&lt;p_1,\,p_2,\ldots,\,p_N\\
+				p_i\neq{p_j}\;\;(1\leqq{i}&lt;j\leqq{N})\\
+				\theta_1,\,\theta_2,\ldots,\,\theta_N:任意の実定数\\
+				\eta_i:=p_ix-p_i^3t-\theta_i\\
+				\displaystyle e^{A_{ij}}=\frac{(p_i-p_j)^2}{(p_i+p_j)^2}\\
+			\end{cases}\]
+            <details id="white">
+                <summary>導出</summary>
+                <div id="main_text">
+                    <div id="long_mjx">
+                    \begin{align*}
+                        \tau(x,\,t)&=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\exp\Bigl[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leqq{i}&lt;j\leqq{N}}\mu_i\mu_jA_{ij}\Bigr]\\
+                                   &=1+\sum_{i=1}^{N}e^{\eta_i}+\sum_{1\leqq{i}&lt;j\leqq{N}}e^{\eta_i}e^{\eta_j}e^{A_{ij}}\\
+                                   &\;\;\;\;+\sum_{1\leqq{i}&lt;j&lt;k\leqq{N}}e^{\eta_i}e^{\eta_j}e^{\eta_k}e^{A_{ij}}e^{A_{ik}}e^{A_{jk}}+\cdots+e^{\eta_1}\cdots{}e^{\eta_{N}}\prod_{1\leqq{i}&lt;j\leqq{N}}e^{A_{ij}}
+                    \end{align*}
+                    </div>
+                    \(N=3\) で考えると、
+                    \[1+e^{\sqrt{v}(x-vt-\theta)}=1+e^{px-p^3-\theta}\]
+                    \begin{align*}
+                        \tau&=\left(1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}\right)\left(1+e^{\eta_3}\right)\\
+                        &=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_3}+e^{\eta_1}e^{\eta_2}e^{A_{12}}+e^{\eta_1}e^{\eta_3}+e^{\eta_2}e^{\eta_3}+e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        u&=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\\
+                         &=2\frac{\tau\tau_{xx}-\tau_x^2}{\tau^2}\\
+                        \tau_{t}&=-p_1^3e^{\eta_1}-p_2^3e^{\eta_2}-p_3^3e^{\eta_3}-(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}-(p_1^3+p_3^3)e^{\eta_1}e^{\eta_3}-(p_2^3+p_3^3)e^{\eta_2}e^{\eta_3}-(p_1^3+p_2^3+p_3^3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{x}&=p_1e^{\eta_1}+p_2e^{\eta_2}+p_3e^{\eta_3}+(p_1+p_2)e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)e^{\eta_1}e^{\eta_3}+(p_2+p_3)e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xx}&=p_1^2e^{\eta_1}+p_2^2e^{\eta_2}+p_3^2e^{\eta_3}+(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^2e^{\eta_1}e^{\eta_3}+(p_2+p_3)^2e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^2e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xxx}&=p_1^3e^{\eta_1}+p_2^3e^{\eta_2}+p_3^3e^{\eta_3}+(p_1+p_2)^3e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^3e^{\eta_1}e^{\eta_3}+(p_2+p_3)^3e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^3e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xxxx}&=p_1^4e^{\eta_1}+p_2^4e^{\eta_2}+p_3^4e^{\eta_3}+(p_1+p_2)^4e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^4e^{\eta_1}e^{\eta_3}+(p_2+p_3)^4e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^4e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xt}&=-p_1^4e^{\eta_1}-p_2^4e^{\eta_2}-p_3^4e^{\eta_3}-(p_1+p_2)(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}-(p_1+p_3)(p_1^3+p_3^3)e^{\eta_1}e^{\eta_3}-(p_2+p_3)(p_2^3+p_3^3)e^{\eta_2}e^{\eta_3}-(p_1+p_2+p_3)(p_1^3+p_2^3+p_3^3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                    \end{align*}
+                    <br>
+                    \begin{align*}
+                        \tau&=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_3}+e^{\eta_1}e^{\eta_2}e^{A_{12}}+e^{\eta_1}e^{\eta_3}e^{A_{13}}+e^{\eta_2}e^{\eta_3}e^{A_{23}}+e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}e^{A_{13}}e^{A_{23}}\\
+                        \tau_{t}&=-p_1^3e^{\eta_1}-p_2^3e^{\eta_2}-p_3^3e^{\eta_3}-(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}-(p_1^3+p_3^3)e^{\eta_1}e^{\eta_3}-(p_2^3+p_3^3)e^{\eta_2}e^{\eta_3}-(p_1^3+p_2^3+p_3^3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{x}&=p_1e^{\eta_1}+p_2e^{\eta_2}+p_3e^{\eta_3}+(p_1+p_2)e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)e^{\eta_1}e^{\eta_3}+(p_2+p_3)e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xx}&=p_1^2e^{\eta_1}+p_2^2e^{\eta_2}+p_3^2e^{\eta_3}+(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^2e^{\eta_1}e^{\eta_3}+(p_2+p_3)^2e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^2e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xxx}&=p_1^3e^{\eta_1}+p_2^3e^{\eta_2}+p_3^3e^{\eta_3}+(p_1+p_2)^3e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^3e^{\eta_1}e^{\eta_3}+(p_2+p_3)^3e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^3e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xxxx}&=p_1^4e^{\eta_1}+p_2^4e^{\eta_2}+p_3^4e^{\eta_3}+(p_1+p_2)^4e^{\eta_1}e^{\eta_2}e^{A_{12}}+(p_1+p_3)^4e^{\eta_1}e^{\eta_3}+(p_2+p_3)^4e^{\eta_2}e^{\eta_3}+(p_1+p_2+p_3)^4e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                        \tau_{xt}&=-p_1^4e^{\eta_1}-p_2^4e^{\eta_2}-p_3^4e^{\eta_3}-(p_1+p_2)(p_1^3+p_2^3)e^{\eta_1}e^{\eta_2}e^{A_{12}}-(p_1+p_3)(p_1^3+p_3^3)e^{\eta_1}e^{\eta_3}-(p_2+p_3)(p_2^3+p_3^3)e^{\eta_2}e^{\eta_3}-(p_1+p_2+p_3)(p_1^3+p_2^3+p_3^3)e^{\eta_1}e^{\eta_2}e^{\eta_3}e^{A_{12}}\\
+                    \end{align*}
+                    \begin{align*}
+                    &\tau\tau_{xt}+\tau\tau_{xxxx}\\
+                    &\;=\tau\Bigl((p_1+p_2)^4-(p_1+p_2)(p_1^3+p_2^3)\Bigr)e^{\eta_1}e^{\eta_2}e^{A_{12}}\\
+                    &\;\;\;\;+\tau\Bigl((p_1+p_3)^4-(p_1+p_3)(p_1^3+p_3^3)\Bigr)e^{\eta_1}e^{\eta_3}e^{A_{13}}\\
+                    &\;\;\;\;+\tau\Bigl((p_2+p_3)^4-(p_2+p_3)(p_2^3+p_3^3)\Bigr)e^{\eta_2}e^{\eta_3}e^{A_{23}}\\
+                    &\;\;\;\;+3\tau(p_1+p_2+p_3)\Bigl(p_1p_2(p_1+p_2)+p_1p_3(p_1+p_3)+p_2p_3(p_2+p_3)+2p_1p_2p_3\Bigr)\\
+                    &\;=3\tau\cdot\Bigl(p_1p_2(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}+p_1p_3(p_1+p_3)^2e^{\eta_1}e^{\eta_3}e^{A_{13}}+p_2p_3(p_2+p_3)^2e^{\eta_2}e^{\eta_3}e^{A_{23}}\Bigr)\\
+                    &-\tau_x\tau_t-4\tau_x\tau_{xxx}\\
+                    &\;=-\tau_x\Bigl(3p_1^3e^{\eta_1}+3p_2^3e^{\eta_2}+\bigl\{4(p_1+p_2)^3-(p_1^3+p_2^3)\bigr\}e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)\\
+                    &\;=-3\tau_x\Bigl(p_1^3e^{\eta_1}+p_2^3e^{\eta_2}+\bigl\{p_1^3+4p_1^2p_2+4p_1p_2^2+p_2^3\big\}e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)\\
+                    &3\tau_{xx}^2\\
+                    &\;=3\Bigl(p_1^2e^{\eta_1}+p_2^2e^{\eta_2}+(p_1+p_2)^2e^{\eta_1}e^{\eta_2}e^{A_{12}}\Bigr)^2
+                \end{align*}
 
-
+                </div>
+                <div style="text-align: right"><button id="close3">[閉じる]</button></div>
+            </details>
+            <br>
+            <p>・3-ソリトン解のシミュレーション</p>
+            <div id="main_text">
+                <div style="text-align: center;">
+                    <video controls loop width="80%">
+                        <source src="image/v1.webm" type="video/webm">
+                    </video>
+                    <div class="parent">
+                        <img src="image/im6.bmp" width="50%">
+                        &nbsp;
+                        <img src="image/im5.bmp" width="50%">
+                    </div>
+                </div><div style="line-height: 5pt;">&nbsp;</div>
+            ・衝突の前後で位相が変化<br>
+            ->単純な重ね合わせの原理に従わない<br>
+            ->非線形波動
+            </div>
+            <br>
+            </div>
+            <h3>広田微分</h3>
+            <div id="main_text">
+            <p>・任意の関数 \(f(x,\,t),\,g(x,\,t)\) に対して、演算子 \(D_x^mD_t^n\;(n,\,m\in\mathbb{N}_0)\) を次のように定義する。</p>
+            \[D_x^mD_t^n f(x,\,t)\cdot{}g(x,\,t):=\lim_{x'\rightarrow0}\lim_{t\rightarrow0}\frac{\partial^m}{\partial{x'}^m}\frac{\partial^n}{\partial{t'}^n}f(x+x',\,t+t')\,g(x-x',\,t-t')\]
+            <p>・\(u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\) がKdV方程式を満たすための条件</p>
+            \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\]
+            &emsp;は
+            \[\mbox{広田の双線型形式: }(D_tD_x+D_x^4)\tau(x,\,t)\cdot\tau(x,\,t)=0\]
+            &emsp;と表せる。
+            <details id="white">
+                <summary>確認</summary>
+                <div id="main_text">
+                    <div style="color: red;display: inline;">赤字</div>は記号の濫用なので注意(一応)
+                    <div id="long_mjx">
+                    \begin{align*}
+                        &D_xD_t\\
+                        &=\lim_{x'\rightarrow0}\lim_{t\rightarrow0}\frac{\partial}{\partial{x'}}\frac{\partial}{\partial{t'}}f(x+x',\,t+t')\,g(x-x',\,t-t')\\
+                        &=\lim_{x'\rightarrow0}\lim_{t\rightarrow0}\frac{\partial}{\partial{x'}}\Bigl(f_{\color{red}{t}}(x+x',\,t+t')\,g(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{t}}(x-x',\,t-t')\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\lim_{t\rightarrow0}\Bigl(f_{\color{red}{xt}}(x+x',\,t+t')\,g(x-x',\,t-t')-f_{\color{red}{t}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{50pt}-\Bigl\{f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{t}}(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{xt}}(x-x',\,t-t')\Bigr\}\Bigr)\\
+                        &=f_{xt}(x,\,t)\,g(x,\,t)-f_{t}(x,\,t)\,g_{x}(x,\,t)-f_{x}(x,\,t)\,g_{t}(x,\,t)+f(x,\,t)\,g_{xt}(x,\,t)\\
+                        &=f_{xt}g-f_{t}g_{x}-f_{x}g_{t}+fg_{xt}\\
+                        &\\
+                        &D_x^4\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial^4}{\partial{x'}^4}f(x+x',\,t+t')\,g(x-x',\,t-t')\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial^3}{\partial{x'}^3}\Bigl(f_{\color{red}{x}}(x+x',\,t+t')\,g(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial^2}{\partial{x'}^2}\Bigl(f_{\color{red}{xx}}(x+x',\,t+t')\,g(x-x',\,t-t')-f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{55pt}-\Bigl\{f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')\Bigr\}\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial^2}{\partial{x'}^2}\Bigl(f_{\color{red}{xx}}(x+x',\,t+t')\,g(x-x',\,t-t')-2f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{55pt}+f(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial}{\partial{x'}}\Bigl(f_{\color{red}{xxx}}(x+x',\,t+t')\,g(x-x',\,t-t')-f_{\color{red}{xx}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{55pt}-2\Bigl\{f_{\color{red}{xx}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')-f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')\Bigr\}\\
+                        &\hspace{55pt}+f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{xxx}}(x-x',\,t-t')\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\frac{\partial}{\partial{x'}}\Bigl(f_{\color{red}{xxx}}(x+x',\,t+t')\,g(x-x',\,t-t')-3f_{\color{red}{xx}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{55pt}+3f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{xxx}}(x-x',\,t-t')\Bigr)\\
+                        &=\lim_{x'\rightarrow0}\Bigl(f_{\color{red}{xxxx}}(x+x',\,t+t')\,g(x-x',\,t-t')-f_{\color{red}{xxx}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')\\
+                        &\hspace{35pt}-3\Bigl\{f_{\color{red}{xxx}}(x+x',\,t+t')\,g_{\color{red}{x}}(x-x',\,t-t')-f_{\color{red}{xx}}(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')\Bigr\}\\
+                        &\hspace{35pt}+3\Bigl\{f_{\color{red}{xx}}(x+x',\,t+t')\,g_{\color{red}{xx}}(x-x',\,t-t')-f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{xxx}}(x-x',\,t-t')\Bigr\}\\
+                        &\hspace{35pt}-\Bigl\{f_{\color{red}{x}}(x+x',\,t+t')\,g_{\color{red}{xxx}}(x-x',\,t-t')-f(x+x',\,t+t')\,g_{\color{red}{xxxx}}(x-x',\,t-t')\Bigr\}\Bigr)\\
+                        &=f_{xxxx}(x,\,t)\,g(x,\,t)-4f_{xxx}(x,\,t)\,g_{x}(x,\,t)+6f_{xx}(x,\,t)\,g_{xx}(x,\,t)\\
+                        &\hspace{10pt}-4f_{x}(x,\,t)\,g_{xxx}(x,\,t)+f(x,\,t)\,g_{xxxx}(x,\,t)\\
+                        &=f_{xxxx}g-4f_{xxx}g_{x}+6f_{xx}g_{xx}-4f_{x}g_{xxx}+fg_{xxxx}
+                    \end{align*}
+                    </div>
+                    となるので、
+                    \begin{align*}
+                        D_tD_x\tau(x,\,t)\cdot\tau(x,\,t)
+                        &=\tau_{xt}\tau-\tau_t\tau_x-\tau_x\tau_t+\tau\tau_{xt}\\
+                        &=2\tau\tau_{xt}-2\tau_t\tau_x\\
+                        D_x^4\tau(x,\,t)\cdot\tau(x,\,t)
+                        &=\tau_{xxxx}\tau-4\tau_{xxx}\tau_{x}+6\tau_{xx}\tau_{xx}-4\tau_{x}\tau_{xxx}+\tau\tau_{xxxx}\\
+                        &=2\tau\tau_{xxxx}-8\tau_{x}\tau_{xxx}+6\tau_{xx}\tau_{xx}
+                    \end{align*}
+                    <div id="long_mjx">
+                    \[
+                        D_tD_x\tau(x,\,t)\cdot\tau(x,\,t)+D_x^3\tau(x,\,t)\cdot\tau(x,\,t)
+                        =2\bigl(\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}\bigr)
+                    \]
+                    </div>
+                    \begin{align*}
+                        \therefore\;&\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\\
+                        &\Leftrightarrow\;(D_tD_x\tau(x,\,t)+D_x^4)\tau(x,\,t)\cdot\tau(x,\,t)=0
+                    \end{align*}
+                </div>
+                <div style="text-align: right"><button id="close4">[閉じる]</button></div>
+            </details>
+            </div>
+		
+    
+    
+    
+    
+        </div>
     <?php include("./include/footer.php"); ?>
 	</body>
 	<script src="details_close.js"></script>
