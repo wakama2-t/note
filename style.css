@@ -1,4 +1,4 @@
-h1,h2{
+h1,h2,h4{
     margin: 0;
     padding : 0;
 }
@@ -92,4 +92,8 @@ div#long_mjx{
 span.MJXc-display{
 	overflow-x: auto;
 	overflow-y: hidden;
+}
+
+div#underline_math{
+    border-bottom: 1px normal black;
 }
