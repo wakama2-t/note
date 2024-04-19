@@ -17,7 +17,7 @@
                 \frac{\partial{u(x,\,t)}}{\partial{t}}+6u(x,\,t)\frac{\partial{u(x,\,t)}}{\partial{x}}+\frac{\partial^3u(x,\,t)}{\partial{x^3}}=0
             \]
             <p>・\(u(x,\,t)\) は \(x\) 軸の正方向に進む波の 時刻 \(t\), 位置 \(x\) における波の振幅</p>
-            <p>・振幅に比例する速度で伝わる孤立波の解 (1-ソリトン解)</p>
+            <p>・1-ソリトン解</p>
             \[u(x,\,t)=\frac{v}{2}\mathrm{sech}^2\left[\frac{\sqrt{v}}{2}(x-vt-\theta)\right]\;\;\;\left(\theta=-\frac{2c}{\sqrt{v}},\,c:任意定数\right)\]
 			\[\theta:\,\mbox{ソリトンの(初期)位相},\;t=0\,における振幅のピーク位置\]
             <details id="white" > <!-- 1-ソリトン解の導出 -->
@@ -229,7 +229,7 @@
                             &=D_x(D_t+D_x^3)(\tau_n\cdot1+1\cdot\tau_n)\\
                             &=2D_x(D_t+D_x^3)\,\tau_n\cdot1                        
                         \end{align*}
-                        より、\(\tau_n=0\) は \((\ast)_n\) を満たす。
+                        より、\(\tau_n=0\) は \((\ast_n)\) を満たす。
                     </div>
                     <div style="line-height: 10pt;">&nbsp;</div>
                     よって、
@@ -249,13 +249,206 @@
                         &=\frac{k_1^2}{2}\mathrm{sech}^2\left[\frac{k_1}{2}(x-k_1^2t+\theta_1)\right]
                     \end{align*}
                     そして、\(u(x,\,t)=u(x-k_1^2t)\) の形で書けるので、速度 \(v=k_1^2\) で進行することがわかる。
+                </div>
+				<div style="text-align: right"><button id="close1">[閉じる]</button></div>
+            </details>
+            <p>・2-ソリトン解</p>
+            \[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\]
+            \[\tau(x,\,t)=1+e^{\eta_1}+e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}\]
+			\[\begin{cases}
+				0&lt;p_1,\,p_2\\
+				p_1\neq{p_2}\\
+				\theta_1,\,\theta_2:任意の実定数\\
+				\eta_i:=p_ix-p_i^3t-\theta_i\\
+				\displaystyle \alpha=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
+			\end{cases}\]
+            <details id="white"> <!-- 2-ソリトン解の導出 (広田の直説法)-->
+                <summary>導出 (広田の直接法)</summary>
+                <div id="main_text">
+                    \[\mbox{広田の双線型形式: }D_x(D_t+D_x^3)\tau(x,\,t)\cdot\tau(x,\,t)=0\;\;\cdots(1)\]
+                    を用いる。(証明は1-ソリトン解に)<br>
+                    1-ソリトン解と同様に、\(\tau(x,\,t)\) の摂動展開は、
+                    \[\tau=1+\epsilon\tau_1+\epsilon^2\tau_2+\epsilon^3\tau+\cdots\]
+                    \(\tau=1\) は(1)を満たすから、\(\epsilon\)のべきで整理して、
+                    \begin{alignat*}{3}
+                        \epsilon\;&:\,D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)=0&\hspace{20pt}(\ast_1)\\
+                        \epsilon^2&:\,D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)=0&\hspace{20pt}(\ast_2)\\
+                        \epsilon^3&:\,D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)=0&\hspace{20pt}(\ast_3)\\
+                        \epsilon^4&:\,D_x(D_t+D_x^3)(\tau_4\cdot1+\tau_3\cdot\tau_1+\tau_2\cdot\tau_2+\tau_1\cdot\tau_3+1\cdot\tau_4)=0&\hspace{20pt}(\ast_4)\\
+                        \vdots
+                    \end{alignat*}
+                    を満たす \(\tau_1,\,\tau_2,\ldots\) からなる \(\tau\) は(1)を満たす。
+                    <br><div style="line-height: 10pt;">&nbsp;</div>
+                    ・\((\ast_1)\) を満たす \(\tau_1\) を考える。
+                    <div id="main_text">
+                        \begin{align*}
+                            D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)
+                            &=2D_x(D_t+D_x^3)\,\tau_1\cdot1\\
+                            &=2\partial_x(\partial_t+\partial_x^3)\,\tau_1
+                        \end{align*}
+                        ここで、1-ソリトン解では \(\tau_1=e^{k_1x-\omega_1t+\theta_1}\) としたが、\(\partial_x(\partial_t+\partial_x^3)\) の線形性より、
+                        \[\tau_1=e^{k_1x-k_1^3t+\theta_1}+e^{k_2x-k_2^3t+\theta_2}\]
+                        も \((\ast_1)\) を満たすため、これを \(\tau_1\) とする。
+                    </div>
+                    <div style="line-height: 10pt;">&nbsp;</div>
+                    ・\((\ast_2)\) を満たす \(\tau_2\) を考える。
+                    <div id="main_text">
+                        \begin{align*}
+                            &D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)\\
+                            &=D_x(D_t+D_x^3)(2\tau_2\cdot1+\tau_1\cdot\tau_1)=0\\
+                        \end{align*}
+                        \[\Leftrightarrow\;-2\partial_x(\partial_t+\partial_x^3)\tau_2=D_x(D_t+D_x^3)\,\tau_1\cdot\tau_1\]
+                        \(\eta_i:=k_ix-k_i^3t+\theta_i\) とおくと、
+                        \begin{align*}
+                            D_x(D_t+D_x^3)\,\tau_1\cdot\tau_1
+                            &=D_x(D_t+D_x^3)\,(e^{\eta_1}+e^{\eta_2})\cdot(e^{\eta_1}+e^{\eta_2})\\
+                            &=2D_x(D_t+D_x^3)\,e^{\eta_1} \cdot e^{\eta_2}\\
+                            &=2(p_1-p_2)\bigl(-p_1^3+p_2^3+(p_1-p_2)^3\bigr)e^{\eta_1+\eta_1}\\
+                            &=2(p_1-p_2)\bigl(-3p_1p_2(p_1-p_2)\bigr)e^{\eta_1+\eta_1}\\
+                            &=-6p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\\
+                        \end{align*}
+                        これより、
+                        \[-2\partial_x(\partial_t+\partial_x^3)\tau_2=-6p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\]
+                        \[\Leftrightarrow\;\partial_x(\partial_t+\partial_x^3)\tau_2=3p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\]
+                        を満たす \(\tau_2\) を考える。右辺の形から、
+                        \[\tau_2=\alpha e^{\eta_1+\eta_1}\;(\alpha\,は\,p_1,\,p_2\,の多項式)\]
+                        と推測し、
+                        \begin{align*}
+                            \partial_x(\partial_t+\partial_x^3)\bigl(\alpha e^{\eta_1+\eta_1}\bigr)
+                            &=\alpha(p_1+p_2)\bigl(-p_1^3-p_2^3+(p_1+p_2)^3\bigr)e^{\eta_1+\eta_1}\\
+                            &=\alpha(p_1+p_2)\bigl(3p_1p_2(p_1+p_2)\bigr)e^{\eta_1+\eta_1}\\
+                            &=3p_1p_2(p_1+p_2)^2e^{\eta_1+\eta_1}\alpha
+                        \end{align*}
+                        より、
+                        \[3p_1p_2(p_1+p_2)^2e^{\eta_1+\eta_1}\alpha=3p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\]
+                        よって、\(\alpha=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\) となり、
+                        \[\tau_2=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}e^{\eta_1+\eta_1}\]
+                        は \((\ast_2)\) を満たす。
+                    </div>
+                    <div style="line-height: 10pt;">&nbsp;</div>
+                    ・\((\ast_3)\) を満たす \(\tau_3\) を考える。
+                    <div id="main_text">
+                        \begin{align*}
+                            &D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)\\
+                            &=2D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_1\cdot\tau_2)=0\\
+                        \end{align*}
+                        \[\Leftrightarrow\;-\partial_x(\partial_t+\partial_x^3)\tau_3=D_x(D_t+D_x^3)\,\tau_1\cdot\tau_2\]
+                        \begin{align*}
+                            D_x(D_t+D_x^3)\,\tau_1\cdot\tau_2
+                            &=D_x(D_t+D_x^3)\,\bigl((e^{\eta_1}+e^{\eta_2})\cdot\alpha e^{\eta_1+\eta_2}\bigr)\\
+                            &=D_x(D_t+D_x^3)\,\bigl((e^{\eta_1}+e^{\eta_2})\cdot\alpha e^{\eta_1+\eta_2}\bigr)\\
+                            &=\alpha(p_1-(p_1+p_2))\bigl(-p_1^3+p_1^3+p_2^3+(p_1-(p_1+p_2))^3\bigr)e^{2\eta_1+\eta_2}\\
+                            &\;\;\;\,+\alpha(p_2-(p_1+p_2))\bigl(-p_2^3+p_1^3+p_2^3+(p_2-(p_1+p_2))^3\bigr)e^{\eta_1+2\eta_2}\\
+                            &=-\alpha p_2\bigl(p_2^3+(-p_2)^3\bigr)e^{2\eta_1+\eta_2}-\alpha p_1\bigl(p_1^3+(-p_1)^3\bigr)e^{\eta_1+2\eta_2}\\
+                            &=0
+                        \end{align*}
+                        より、
+                        \(\tau_3=0\) は \((\ast_3)\) を満たす。
+                    </div>
+                    <div style="line-height: 10pt;">&nbsp;</div>
+                    ・\((\ast_n)\;(n>3)\) を満たす \(\tau_n\) を考える。
+                    <div id="main_text">
+                        \(\tau_0=1\) とおくと、
+                        \[(\ast_n)\Leftrightarrow D_x(D_t+D_x^3)\sum_{i+j=n\\i,\,j\geqq{0}}\tau_i\cdot\tau_j=0\]
+                        \(\tau_2=\tau_3=\cdots=\tau_{n-1}=0\) とすると、
+                        \begin{align*}
+                            &D_x(D_t+D_x^3)\sum_{i+j=n\\i,\,j\geqq{0}}\tau_i\cdot\tau_j\\
+                            &=D_x(D_t+D_x^3)(\tau_n\cdot1+1\cdot\tau_n)\\
+                            &=2D_x(D_t+D_x^3)\,\tau_n\cdot1                        
+                        \end{align*}
+                        より、\(\tau_n=0\) は \((\ast_n)\) を満たす。
+                    </div>
+                    <div style="line-height: 10pt;">&nbsp;</div>
+                    よって、
+                    \[\tau=1+e^{\eta_1}+e^{\eta_2}+\frac{(p_1-p_2)^2}{(p_1+p_2)^2}e^{\eta_1+\eta_1}\]
+                </div>
+				<div style="text-align: right"><button id="close3">[閉じる]</button></div>
+            </details>
+            <div style="line-height: 5pt;">&nbsp;</div>
+            <p>・\(N\)-ソリトン解</p>
+            \[u(x,\,t)=2\frac{\partial^2\log(\tau(x,\,t))}{\partial{x}^2}\]
+            \[\tau(x,\,t)=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\exp\Bigl[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\Bigr]\]
+			\[\begin{cases}
+				0&lt;p_1,\,p_2,\ldots,\,p_N\\
+				p_i\neq{p_j}\;\;(1\leq{i}&lt;j\leq{N})\\
+				\theta_1,\,\theta_2,\ldots,\,\theta_N:任意の実定数\\
+				\eta_i:=p_ix-p_i^3t-\theta_i\\
+				\displaystyle e^{A_{ij}}=\frac{(p_i-p_j)^2}{(p_i+p_j)^2}\\
+			\end{cases}\]
+            <details open id="white"> <!-- N-ソリトン解の導出 -->
+                <summary>証明</summary>
+                <div id="main_text">
+                    \[\mbox{広田の双線型形式: }D_x(D_t+D_x^3)\tau(x,\,t)\cdot\tau(x,\,t)=0\]
+                    に \(\tau\) を代入すると、
+                    \[F(D_x,\,D_t):=D_x(D_t+D_x^3)\]
+                    を用いて、
+                    <div id="long_mjx">
+                    \[\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\sum_{\{\mu'_k\}_{k=1}^{N}\in\,\{0,1\}^N}F\left(\sum_{i=1}^N(\mu_i-\mu'_i)p_i,\,-\sum_{i=1}^N(\mu_i-\mu'_i)p_i^3\right)\exp\left[\sum_{i=1}^{N}(\mu_i+\mu'_i)\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}(\mu_i\mu_j+\mu'_i\mu'_j)A_{ij}\right]=0\]
+                    </div>
+                    となる。
+                    <details id="gray"> <!-- 計算確認 -->
+                        <summary>確認</summary>
+                        <div id="long_mjx">
+                        \begin{align*}
+                            &F(D_x,\,D_t)\tau(x,\,t)\cdot\tau(x,\,t)\\
+                            &=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\sum_{\{\mu'_k\}_{k=1}^{N}\in\,\{0,1\}^N}\left(\sum_{i=1}^N\mu_ip_i-\sum_{i=1}^N\mu'_{i}p_{i}\right)\left(\sum_{i=1}^N\mu_i(-p_i^3)-\sum_{i=1}^N\mu'_{i}(-p_{i}^3)+\left(\sum_{i=1}^N\mu_ip_i-\sum_{i=1}^N\mu'_{i}p_{i}\right)^3\right)\\
+                            &\hspace{20pt}\exp\left[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\right]\exp\left[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\right]\\
+                            &=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\sum_{\{\mu'_k\}_{k=1}^{N}\in\,\{0,1\}^N}\left(\sum_{i=1}^N(\mu_i-\mu'_i)p_i\right)\left(-\sum_{i=1}^N(\mu_i-\mu'_i)p_i^3+\left(\sum_{i=1}^N(\mu_i-\mu'_i)p_i\right)^3\right)\\
+                            &\hspace{20pt}\exp\left[\sum_{i=1}^{N}(\mu_i+\mu'_i)\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}(\mu_i\mu_j+\mu'_i\mu'_j)A_{ij}\right]\\
+                        \end{align*} 
+                        </div>
+                        <div style="text-align: right"><button id="close5">[閉じる]</button></div>
+                    </details>
+                    <div style="line-height: 5pt;">&nbsp;</div>
+                    ここで、\(0\leq{n}&lt;m\leq{N}\) とし、左辺における
+                    \[\exp\left(\sum_{i=1}^n\eta_i+2\sum_{j=n+1}^m\eta_j\right)\]
+                    の係数を考える。
+                    \begin{alignat*}{3}
+                        &i=1,\,2,\ldots,\,n:&\mu_i+\mu'_i=1\\
+                        &i=n+1,\,n+2,\ldots,\,m:&\mu_i=\mu'_i=1\\
+                        &i=m+1,\,m+2,\ldots,\,N:\;\;\;\;\;&\mu_i=\mu'_i=0\\
+                    \end{alignat*}
+                    となるから、\(\mu_i\neq\mu'_i\) となるのは \(1\leq{i}\leq{n}\) のときだけなので、
+                    \[F\left(\sum_{i=1}^n(\mu_i-\mu'_i)p_i,\,-\sum_{i=1}^n(\mu_i-\mu'_i)p_i^3\right)\]
+                    は係数の一部となることがわかる。次に指数関数部分を考える。
+                    \begin{align*}
+                        \mu_i\mu_j+\mu'_i\mu'_j=2\;\Rightarrow\;&n+1\leq{i}&lt;j\leq{m}\\
+                        \mu_i\mu_j+\mu'_i\mu'_j=1\;\Rightarrow\;&(1\leq{i}\leq{n},\;n+1\leq{j}\leq{m})\\
+                        &\mathrm{or}\;(1\leq{i}&lt;j\leq{n}\;\wedge\;\mu_i=\mu_j)
+                    \end{align*}
+                    ここで、\(\mu_i=\mu_j\) を判別するために、
+                    \[\sigma_i:=\mu_i-\mu'_i\]
+                    を定義すると、
+                    \[\frac{1}{2}(1+\sigma_i\sigma_j)=
+                    \begin{cases}
+                        1&\mu_i=\mu_j\\
+                        0&\mu_i\neq\mu_j
+                    \end{cases}\]
+                    といった関数が作れる。これより指数部分は、
+                    \[\exp\left[\sum_{1\leq{i}&lt;j\leq{n}}\frac{1}{2}(1+\sigma_i\sigma_j)A_{ij}+\sum_{i=1}^{n}\sum_{j=n+1}^{m}A_{ij}+2\sum_{n+1\leq{i}&lt;j\leq{m}}A_{ij}\right]\]
+                    となる。
 
 
 
                 </div>
-				<div style="text-align: right"><button id="close1">[閉じる]</button></div>
+				<div style="text-align: right"><button id="close4">[閉じる]</button></div>
             </details>
-            
+            <p>・3-ソリトン解のシミュレーション</p>
+            <div id="main_text">
+                <div style="text-align: center;">
+                    <video controls loop width="80%">
+                        <source src="image/v1.webm" type="video/webm">
+                    </video>
+                    <div class="parent">
+                        <img src="image/im6.bmp" width="50%">
+                        &nbsp;
+                        <img src="image/im5.bmp" width="50%">
+                    </div>
+                </div><div style="line-height: 5pt;">&nbsp;</div>
+            ・衝突の前後で位相が変化<br>
+            ->単純な重ね合わせの原理に従わない<br>
+            ->非線形波動
+            </div>
         </div>
 
 
