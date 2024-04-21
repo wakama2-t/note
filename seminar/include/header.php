@@ -10,6 +10,10 @@
             echo("<h2 id ="."subtitle".">".$table[$page]."</h2>");
             echo("<hr id="."header2".">");
         }
+        if($title){
+            echo("<h2 id ="."subtitle".">".$title."</h2>");
+            echo("<hr id="."header2".">");
+        }
     ?>
 
 </header>

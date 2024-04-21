@@ -109,7 +109,7 @@
                     \[\tau\tau_{xt}-\tau_x\tau_t+\tau\tau_{xxxx}+3\tau_{xx}^2-4\tau_x\tau_{xxx}=0\;\;\cdots(2)\]
                     を満たす \(\tau(x,\,t)\) 及び、(1)から生成される \(u(x,\,t)\) はKdV方程式の解となることがわかる。
                     <br><div style="line-height: 10pt;">&nbsp;</div>
-                    ここで、広田のD-operator
+                    ここで、<a href="D_operator.html" target="_blank" rel="noopener noreferrer">広田のD-operator</a>
                     \[D_x^mD_t^n f(x,\,t)\cdot{}g(x,\,t):=\frac{\partial^m}{\partial{y}^m}\frac{\partial^n}{\partial{s}^n}f(x+y,\,t+s)\,g(x-y,\,t-s)\Bigr|_{y=0,\,s=0}\]
                     \[f(x,\,t),\,g(x,\,t):\,任意の関数,\;\;n,\,m\in\mathbb{N}_0\]
                     を用いると(2)式は、
@@ -118,33 +118,33 @@
                     <details id="gray"> <!-- 広田の双線型形式の確認 -->
                         <summary>確認</summary>
                         <div id="main_text">
-                            <div style="color: red;display: inline;">赤字</div>は記号の濫用なので注意(一応)
+                            \(\partial_xf(x+y)=\partial_yf(x+y),\,\partial_xf(x-y)=-\partial_yf(x-y),\,\) より、
                             <div id="long_mjx">
                             \begin{align*}
                                 &D_xD_t\\
                                 &=\frac{\partial}{\partial{y}}\frac{\partial}{\partial{s}}f(x+y,\,t+s)\,g(x-y,\,t-s)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial}{\partial{y}}\Bigl(f_{\color{red}{t}}(x+y,\,t+s)\,g(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{t}}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\Bigl(f_{\color{red}{xt}}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{\color{red}{t}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{50pt}-\Bigl\{f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{t}}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{xt}}(x-y,\,t-s)\Bigr\}\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\frac{\partial}{\partial{y}}\Bigl(f_{t}(x+y,\,t+s)\,g(x-y,\,t-s)-f(x+y,\,t+s)\,g_{t}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\Bigl(f_{xt}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{t}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{50pt}-\Bigl\{f_{x}(x+y,\,t+s)\,g_{t}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{xt}(x-y,\,t-s)\Bigr\}\Bigr)\Bigr|_{y=0,\,s=0}\\
                                 &=f_{xt}(x,\,t)\,g(x,\,t)-f_{t}(x,\,t)\,g_{x}(x,\,t)-f_{x}(x,\,t)\,g_{t}(x,\,t)+f(x,\,t)\,g_{xt}(x,\,t)\\
                                 &=f_{xt}g-f_{t}g_{x}-f_{x}g_{t}+fg_{xt}\\
                                 &\\
                                 &D_x^4\\
                                 &=\frac{\partial^4}{\partial{y}^4}f(x+y,\,t+s)\,g(x-y,\,t-s)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial^3}{\partial{y}^3}\Bigl(f_{\color{red}{x}}(x+y,\,t+s)\,g(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial^2}{\partial{y}^2}\Bigl(f_{\color{red}{xx}}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{55pt}-\Bigl\{f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)\Bigr\}\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial^2}{\partial{y}^2}\Bigl(f_{\color{red}{xx}}(x+y,\,t+s)\,g(x-y,\,t-s)-2f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{55pt}+f(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial}{\partial{y}}\Bigl(f_{\color{red}{xxx}}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{\color{red}{xx}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{55pt}-2\Bigl\{f_{\color{red}{xx}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)-f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)\Bigr\}\\
-                                &\hspace{55pt}+f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{xxx}}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\frac{\partial}{\partial{y}}\Bigl(f_{\color{red}{xxx}}(x+y,\,t+s)\,g(x-y,\,t-s)-3f_{\color{red}{xx}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{55pt}+3f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{xxx}}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
-                                &=\Bigl(f_{\color{red}{xxxx}}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{\color{red}{xxx}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)\\
-                                &\hspace{35pt}-3\Bigl\{f_{\color{red}{xxx}}(x+y,\,t+s)\,g_{\color{red}{x}}(x-y,\,t-s)-f_{\color{red}{xx}}(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)\Bigr\}\\
-                                &\hspace{35pt}+3\Bigl\{f_{\color{red}{xx}}(x+y,\,t+s)\,g_{\color{red}{xx}}(x-y,\,t-s)-f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{xxx}}(x-y,\,t-s)\Bigr\}\\
-                                &\hspace{35pt}-\Bigl\{f_{\color{red}{x}}(x+y,\,t+s)\,g_{\color{red}{xxx}}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{\color{red}{xxxx}}(x-y,\,t-s)\Bigr\}\Bigr)\\
+                                &=\frac{\partial^3}{\partial{y}^3}\Bigl(f_{x}(x+y,\,t+s)\,g(x-y,\,t-s)-f(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\frac{\partial^2}{\partial{y}^2}\Bigl(f_{xx}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{x}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{55pt}-\Bigl\{f_{x}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)\Bigr\}\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\frac{\partial^2}{\partial{y}^2}\Bigl(f_{xx}(x+y,\,t+s)\,g(x-y,\,t-s)-2f_{x}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{55pt}+f(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\frac{\partial}{\partial{y}}\Bigl(f_{xxx}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{xx}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{55pt}-2\Bigl\{f_{xx}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)-f_{x}(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)\Bigr\}\\
+                                &\hspace{55pt}+f_{x}(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{xxx}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\frac{\partial}{\partial{y}}\Bigl(f_{xxx}(x+y,\,t+s)\,g(x-y,\,t-s)-3f_{xx}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{55pt}+3f_{x}(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{xxx}(x-y,\,t-s)\Bigr)\Bigr|_{y=0,\,s=0}\\
+                                &=\Bigl(f_{xxxx}(x+y,\,t+s)\,g(x-y,\,t-s)-f_{xxx}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)\\
+                                &\hspace{35pt}-3\Bigl\{f_{xxx}(x+y,\,t+s)\,g_{x}(x-y,\,t-s)-f_{xx}(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)\Bigr\}\\
+                                &\hspace{35pt}+3\Bigl\{f_{xx}(x+y,\,t+s)\,g_{xx}(x-y,\,t-s)-f_{x}(x+y,\,t+s)\,g_{xxx}(x-y,\,t-s)\Bigr\}\\
+                                &\hspace{35pt}-\Bigl\{f_x(x+y,\,t+s)\,g_{xxx}(x-y,\,t-s)-f(x+y,\,t+s)\,g_{xxxx}(x-y,\,t-s)\Bigr\}\Bigr)\\
                                 &=f_{xxxx}(x,\,t)\,g(x,\,t)-4f_{xxx}(x,\,t)\,g_{x}(x,\,t)+6f_{xx}(x,\,t)\,g_{xx}(x,\,t)\\
                                 &\hspace{10pt}-4f_{x}(x,\,t)\,g_{xxx}(x,\,t)+f(x,\,t)\,g_{xxxx}(x,\,t)\\
                                 &=f_{xxxx}g-4f_{xxx}g_{x}+6f_{xx}g_{xx}-4f_{x}g_{xxx}+fg_{xxxx}
@@ -433,14 +433,23 @@
                         <div id="main_text">
                             まず、
                             \[e^{A_{ij}}=-\frac{F(p_i-p_j,\,-p_i^3+p_j^3)}{F(p_i+p_j,\,-p_i^3-p_j^3)}=\frac{(p_i-p_j)^2}{(p_i+p_j)^2}\]
-                            を考える。
+                            を考える。\(n\)-ソリトン解を広田の直接法で \(\tau_2\) まで考えると、
+                            \begin{gather*}
+                                \tau_1=e^{\eta_1}+e^{\eta_2}+\cdots+e^{\eta_n}\\
+                                F(D_x,\,D_t)(2\tau_2\cdot{1}+\tau_1\cdot\tau_1)=0\\
+                                \Rightarrow\;-2F(\partial_x,\,\partial_t)\tau_2=2\sum_{1\leq{i}&lt;j\leq{n}}F(D_x,\,D_t)e^{\eta_i}\cdot e^{\eta_j}\\
+                                \Rightarrow\;-F(\partial_x,\,\partial_t)\tau_2=\sum_{1\leq{i}&lt;j\leq{n}}F(p_i-p_j,\,-p_i^3+p_j^3)e^{\eta_i}e^{\eta_j}
+                            \end{gather*}
+                            \(\displaystyle\tau_2=\sum_{1\leq{i}&lt;j\leq{n}}e^{\eta_i+\eta_j}e^{A_{ij}}\) とおくと、
                             \begin{align*}
-                                F(p_i-p_j,\,-p_i^3+p_j^3)e^{\eta_i+\eta_j+A_{ij}}&=F(D_x,\,D_t)e^{\eta_i+\eta_j+A_{ij}}\\
-                                F(p_i+p_j,\,-p_i^3-p_j^3)e^{\eta_i+\eta_j+A_{ij}}&=F(\partial_x,\,\partial_t)e^{\eta_i+\eta_j+A_{ij}}
+                                -F(\partial_x,\,\partial_t)\tau_2
+                                &=-\sum_{1\leq{i}&lt;j\leq{n}}F(\partial_x,\,\partial_t)e^{\eta_i+\eta_j}e^{A_{ij}}\\
+                                &=-\sum_{1\leq{i}&lt;j\leq{n}}F(p_i+p_j,\,-p_i^3-p_j^3)e^{\eta_i+\eta_j}e^{A_{ij}}
                             \end{align*}
-                            より、2-ソリトン解を求める際に出てきた式、
-                            \[-\partial_x(\partial_t+\partial_x^3)\tau_2=D_x(D_t+D_x^3)\,e^{\eta_1}\cdot{e^{\eta_2}}\]
-                            の \(\eta_1,\,\eta_2\) を \(\eta_i,\,\eta_j\) にすると上の式が導かれる。<br>
+                            より、
+                            \[\sum_{1\leq{i}&lt;j\leq{n}}F(p_i-p_j,\,-p_i^3+p_j^3)e^{\eta_i}e^{\eta_j}=-\sum_{1\leq{i}&lt;j\leq{n}}F(p_i+p_j,\,-p_i^3-p_j^3)e^{\eta_i+\eta_j}e^{A_{ij}}\]
+                            \[e^{A_{ij}}=-\frac{F(p_i-p_j,\,-p_i^3+p_j^3)}{F(p_i+p_j,\,-p_i^3-p_j^3)}=\frac{(p_i-p_j)^2}{(p_i+p_j)^2}\]
+                            <br>
                             <div style="line-height: 5pt;">&nbsp;</div>
                             次に、
                             \begin{align*}
