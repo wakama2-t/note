@@ -97,3 +97,24 @@ span.MJXc-display{
 div#underline_math{
     border-bottom: 1px normal black;
 }
+
+
+div.parent2{
+    display: flex;
+    justify-content: space-between;
+}
+div[id^=child]{
+    min-width: 50%;
+}
+
+
+div#child1{
+    border-bottom: dotted;
+}
+
+@media (max-width:1200pt){ 
+    div.parent2{
+        display: block;
+    }
+}
+

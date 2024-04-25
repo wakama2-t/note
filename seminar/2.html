@@ -613,10 +613,86 @@
                 ->単純な重ね合わせの原理に従わない<br>
                 ->非線形波動
                 <div style="line-height: 5pt;">&nbsp;</div>
-                <details id="white">
+                <details id="white"> <!-- 波の衝突前後の位相変化について補足 -->
                     <summary>波の衝突について補足</summary>
                     <div id="main_text">
-                        a
+                        2-ソリトン解の衝突前 (\(t\rightarrow-\infty\)) と衝突後 (\(t\rightarrow+\infty\)) を比較する。<br>
+                        また \(p_ix-\omega_it\simeq0\) 以外はほぼ0なのでこの近傍を考えると、\(0&lt;p_1&lt;p_2\) として、
+                        <div class="parent2">
+                            <div id="child1">
+                                \begin{align*}
+                                    p_2x-\omega_2t
+                                    &=(p_1x-\omega_1t)\cdot\frac{p_2}{p_1}+\omega_1t\cdot\frac{p_2}{p_1}-\omega_2t\\
+                                    &=\frac{p_2}{p_1}(p_1x-\omega_1t)+\frac{p_2}{p_1}\omega_1\left(1-\frac{\omega_2p_1}{\omega_1p_2}\right)t\\
+                                    &=\frac{p_2}{p_1}(\underset{\simeq0}{\underbrace{p_1x-\omega_1t}})+p_1^2p_2\Bigl(\underset{&lt;0}{\underbrace{1-\frac{p_2^2}{p_1^2}}}\Bigr)t\;\;\because{\omega_i=p_i^3}\\
+                                    &
+                                    \begin{cases}
+                                        \rightarrow-\infty\;\;(t\rightarrow+\infty)\\
+                                        \rightarrow+\infty\;\;(t\rightarrow-\infty)
+                                    \end{cases}
+                                \end{align*}
+                                \begin{alignat*}{2}
+                                    e^{\eta_2}&\rightarrow0\;&(t\rightarrow+\infty)\;\;&\Rightarrow\;\;\tau\rightarrow1+e^{\eta_1}&\;(t\rightarrow+\infty)\\
+                                    e^{\eta_2}&\rightarrow\infty\;&(t\rightarrow-\infty)\;\;&\Rightarrow\;\;\tau\rightarrow e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}&\;(t\rightarrow-\infty)
+                                \end{alignat*}
+                                これより、
+                                \begin{align*}
+                                    u_1(x,\,t)_+
+                                    &=2(\log{\tau(x,\,t)})_{xx}\\
+                                    &=\frac{k_1^2}{2}\mathrm{sech}^2\left[\frac{\eta_1}{2}\right]\;\;\mbox{(1-ソリトン解)}\\
+                                    u_1(x,\,t)_-
+                                    &=2(\log{\tau(x,\,t)})_{xx}\\
+                                    &=2\left(\log[e^{\eta_2}+e^{\eta_1+\eta_2+A_{12}}]\right)_{xx}\\
+                                    &=2\left(\log[e^{\eta_2}(1+e^{\eta_1+A_{12}})]\right)_{xx}\\
+                                    &=2\left(\log[1+e^{\eta_1+A_{12}}]\right)_{xx}\\
+                                    &=\frac{k_1^2}{2}\mathrm{sech}^2\left[\frac{\eta_1+A_{12}}{2}\right]\;\;(\mbox{ただし、}A_{12}=2\log\left[\frac{p_1-p_2}{p_1+p_2}\right])
+                                \end{align*}
+                            </div>
+                            <div id="child">
+                                \begin{align*}
+                                    p_1x-\omega_1t
+                                    &=(p_2x-\omega_2t)\cdot\frac{p_1}{p_2}+\omega_2t\cdot\frac{p_1}{p_2}-\omega_1t\\
+                                    &=\frac{p_1}{p_2}(p_2x-\omega_2t)+\frac{p_1}{p_2}\omega_2\left(1-\frac{\omega_1p_2}{\omega_2p_1}\right)t\\
+                                    &=\frac{p_1}{p_2}(\underset{\simeq0}{\underbrace{p_2x-\omega_2t}})+p_1p_2^2\Bigl(\underset{&gt;0}{\underbrace{1-\frac{p_1^2}{p_2^2}}}\Bigr)t\;\;\because{\omega_i=p_i^3}\\
+                                    &
+                                    \begin{cases}
+                                        \rightarrow+\infty\;\;(t\rightarrow+\infty)\\
+                                        \rightarrow-\infty\;\;(t\rightarrow-\infty)
+                                    \end{cases}
+                                \end{align*}
+                                \begin{alignat*}{2}
+                                    e^{\eta_1}&\rightarrow\infty\;&(t\rightarrow+\infty)\;\;&\Rightarrow\;\;\tau\rightarrow e^{\eta_1}+e^{\eta_1+\eta_2+A_{12}}&\;(t\rightarrow+\infty)\\
+                                    e^{\eta_1}&\rightarrow0\;&(t\rightarrow-\infty)\;\;&\Rightarrow\;\;\tau\rightarrow1+e^{\eta_2}&\;(t\rightarrow-\infty)
+                                    \end{alignat*}
+                                これより、
+                                \begin{align*}
+                                    u_2(x,\,t)_+
+                                    &=2(\log{\tau(x,\,t)})_{xx}\\
+                                    &=2\left(\log[e^{\eta_1}+e^{\eta_1+\eta_2+A_{12}}]\right)_{xx}\\
+                                    &=2\left(\log[e^{\eta_1}(1+e^{\eta_2+A_{12}})]\right)_{xx}\\
+                                    &=2\left(\log[1+e^{\eta_2+A_{12}}]\right)_{xx}\\
+                                    &=\frac{k_2^2}{2}\mathrm{sech}^2\left[\frac{\eta_2+A_{12}}{2}\right]\;\;(\mbox{ただし、}A_{12}=2\log\left[\frac{p_1-p_2}{p_1+p_2}\right])\\
+                                    u_2(x,\,t)_-
+                                    &=2(\log{\tau(x,\,t)})_{xx}\\
+                                    &=\frac{k_2^2}{2}\mathrm{sech}^2\left[\frac{\eta_2}{2}\right]\;\;\mbox{(1-ソリトン解)}
+                                \end{align*}
+                            </div>
+                        </div>
+                        <div style="line-height: 5pt;">&nbsp;</div>
+                        まとめると、
+                        \[
+                            \begin{array}{c|cc}
+                                0&lt;p_1&lt;p_2&u_1\mbox{(小さいソリトン)}&u_2\mbox{(大きいソリトン)}\\\hline
+                                t\rightarrow-\infty&\displaystyle\frac{k_1^2}{2}\mathrm{sech}^2\left[\frac{\eta_1+A_{12}}{2}\right]&\displaystyle\frac{k_2^2}{2}\mathrm{sech}^2\left[\frac{\eta_2}{2}\right]\\
+                                t\rightarrow+\infty&\displaystyle\frac{k_1^2}{2}\mathrm{sech}^2\left[\frac{\eta_1}{2}\right]&\displaystyle\frac{k_2^2}{2}\mathrm{sech}^2\left[\frac{\eta_2+A_{12}}{2}\right]\\
+                            \end{array}
+                        \]
+                        \[\therefore A_{12}=2\log\left[\frac{p_1-p_2}{p_1+p_2}\right]&gt;0\;\mbox{より、}
+                        \left\{\begin{aligned}
+                            &\mbox{大きいソリトンは衝突後、右にずれる}\\
+                            &\mbox{小さいソリトンは衝突後、左にずれる}
+                        \end{aligned}\right.\]
+
                     </div>
                     <div style="text-align: right"><button id="close7">[閉じる]</button></div>
                 </details>            
@@ -628,7 +704,7 @@
                 &Q_1&=3u^2+u_{xx}\\
                 P_2&=\frac{1}{2}u^2,
                 &Q_2&=2u^3+uu_{xx}-\frac{1}{2}u_x^2\\
-                P_1&=\frac{1}{3}u^4-\frac{1}{2}uu_x^2+\frac{1}{20}u_{xx}^2,\;\;\;
+                P_3&=\frac{1}{3}u^4-\frac{1}{2}uu_x^2+\frac{1}{20}u_{xx}^2,\;\;\;
                 &Q_3&=3u^2+u_{xx}\\
                 &\vdots&&\vdots
             \end{alignat*}
@@ -659,7 +735,9 @@
             
         </div>
 
-
+        <br>
+        <h3>1次元戸田格子</h3>
+        
         
     </div>  
     <?php include("./include/footer.php"); ?>
