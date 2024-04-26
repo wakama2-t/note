@@ -311,7 +311,7 @@
                         \[-2\partial_x(\partial_t+\partial_x^3)\tau_2=-6p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\]
                         \[\Leftrightarrow\;\partial_x(\partial_t+\partial_x^3)\tau_2=3p_1p_2(p_1-p_2)^2e^{\eta_1+\eta_1}\]
                         を満たす \(\tau_2\) を考える。右辺の形から、
-                        \[\tau_2=\alpha e^{\eta_1+\eta_1}\;(\alpha\,は\,p_1,\,p_2\,の多項式)\]
+                        \[\tau_2=\alpha e^{\eta_1+\eta_1}\;(\alpha\,は\,p_1,\,p_2\,の有理関数)\]
                         と推測し、
                         \begin{align*}
                             \partial_x(\partial_t+\partial_x^3)\bigl(\alpha e^{\eta_1+\eta_1}\bigr)
@@ -392,7 +392,7 @@
                         \begin{align*}
                             &F(D_x,\,D_t)\tau(x,\,t)\cdot\tau(x,\,t)\\
                             &=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\sum_{\{\mu'_k\}_{k=1}^{N}\in\,\{0,1\}^N}\left(\sum_{i=1}^N\mu_ip_i-\sum_{i=1}^N\mu'_{i}p_{i}\right)\left(\sum_{i=1}^N\mu_i(-p_i^3)-\sum_{i=1}^N\mu'_{i}(-p_{i}^3)+\left(\sum_{i=1}^N\mu_ip_i-\sum_{i=1}^N\mu'_{i}p_{i}\right)^3\right)\\
-                            &\hspace{20pt}\exp\left[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\right]\exp\left[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\right]\\
+                            &\hspace{20pt}\exp\left[\sum_{i=1}^{N}\mu_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu_i\mu_jA_{ij}\right]\exp\left[\sum_{i=1}^{N}\mu'_i\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}\mu'_i\mu'_jA_{ij}\right]\\
                             &=\sum_{\{\mu_k\}_{k=1}^{N}\in\,\{0,1\}^N}\sum_{\{\mu'_k\}_{k=1}^{N}\in\,\{0,1\}^N}\left(\sum_{i=1}^N(\mu_i-\mu'_i)p_i\right)\left(-\sum_{i=1}^N(\mu_i-\mu'_i)p_i^3+\left(\sum_{i=1}^N(\mu_i-\mu'_i)p_i\right)^3\right)\\
                             &\hspace{20pt}\exp\left[\sum_{i=1}^{N}(\mu_i+\mu'_i)\eta_i+\sum_{1\leq{i}&lt;j\leq{N}}(\mu_i\mu_j+\mu'_i\mu'_j)A_{ij}\right]\\
                         \end{align*} 
@@ -708,7 +708,7 @@
                 &Q_3&=3u^2+u_{xx}\\
                 &\vdots&&\vdots
             \end{alignat*}
-            <details id="white">
+            <details id="white"> <!-- KdV方程式が無限個の保存量を持つことの証明 -->
                 <summary>証明</summary>
                 <div id="main_text">
                     a
@@ -725,7 +725,7 @@
             \end{aligned}
             \right.
             \end{equation}
-            <details id="white">
+            <details id="white"> <!-- 計算確認 -->
                 <summary>確認</summary>
                 <div id="main_text">
                     a
