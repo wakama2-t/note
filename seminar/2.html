@@ -702,16 +702,60 @@
             \begin{alignat*}{3}
                 P_1&=u,
                 &Q_1&=3u^2+u_{xx}\\
-                P_2&=\frac{1}{2}u^2,
+                P_2&=\frac{1}{2}u^2,\;\;\;
                 &Q_2&=2u^3+uu_{xx}-\frac{1}{2}u_x^2\\
-                P_3&=\frac{1}{3}u^4-\frac{1}{2}uu_x^2+\frac{1}{20}u_{xx}^2,\;\;\;
-                &Q_3&=3u^2+u_{xx}\\
-                &\vdots&&\vdots
+                \vdots&&\vdots
             \end{alignat*}
-            <details id="white"> <!-- KdV方程式が無限個の保存量を持つことの証明 -->
+            <details open id="white"> <!-- KdV方程式が無限個の保存量を持つことの証明 -->
                 <summary>証明</summary>
                 <div id="main_text">
-                    a
+                    \(u(x,\,t)=w_x(x,\,t),\,u'(x,\,t)=w'_x(x,\,t)\) に対する<a href="">ベックルント変換</a>
+                    \begin{alignat}{2}
+                        w_x+w'_x&=-2k^2+\frac{1}{2}(w-w')^2\;\;\;(k:\mbox{任意定数})&\;\;\;\cdots(1)\\
+                        w_t+w'_t\,&=2(w_x^2+w_xw'_x+{w'_x}^2)-(w-w')(w_{xx}-w'_{xx})&\;\;\;\cdots(2)
+                    \end{alignat}
+                    を式変形すると、
+                    \[
+                        w_t-w'_t=-\bigl[2w_{xx}-2w_x(w-w')+4k^2(w-w'\bigr)]_x\hspace{25pt}\cdots(3)
+                    \]
+                    となる。
+                    <details id="gray">
+                        <summary>確認(未)</summary>
+                        <div id="main_text">
+
+                        </div>
+                        <div style="text-align: right"><button id="close9">[閉じる]</button></div>
+                    </details>
+                    <div style="line-height: 5pt;">&nbsp;</div>
+                    ここで、
+                    \[w-w'=2k+\sum_{n=1}^{\infty}f_nk^{-n}\]
+                    と \(\frac{1}{k}\) のべき級数展開を考える。((1)式の形から定数項は \(2k\) と決まる。)
+                    \[w_x+w'_x=-(w-w')_{x}+2w_x=-(w-w')_{x}+2u\]
+                    より(1)式は、
+                    <div id="long_mjx">
+                        \[-\left(2k+\sum_{n=1}^{\infty}f_nk^{-n}\right)_x+2u=-2k^2+\frac{1}{2}\left(4k^2+4k\sum_{n=1}^{\infty}f_nk^{-n}+\sum_{m=1}^{\infty}\sum_{m=1}^{\infty}f_nk^{-n}f_mk^{-m}\right)\]
+                        \[\Leftrightarrow\;-\sum_{n=1}^{\infty}(f_n)_xk^{-n}+2u=\frac{1}{2}\left(4\sum_{n=1}^{\infty}f_{n}k^{-n+1}+\sum_{m=1}^{\infty}\sum_{m=1}^{\infty}f_nf_mk^{-(n+m)}\right)\]
+                    </div>
+                    となる。\(\left(\frac{1}{k}\right)^0\) の係数を考えると、
+                    \[2u=\frac{1}{2}\cdot4\cdot f_1\;\Leftrightarrow\;f_1=u\]
+                    \(\left(\frac{1}{k}\right)^n\) の係数を考えると、
+                    \[-(f_n)_x=\frac{1}{2}\left(4\cdot f_{n+1}+\sum_{m=1}^{n-1}f_{m}f_{n-m}\right)\]
+                    \[\Leftrightarrow\;f_{n+1}=-\frac{1}{2}(f_n)_x-\frac{1}{4}\sum_{m=1}^{n-1}f_{m}f_{n-m}\]
+                    となる。そして(3)式に \(\displaystyle w-w'=2k+\sum_{n=1}^{\infty}f_nk^{-n}\) を代入すると、
+                    \begin{align*}
+                        (左辺)
+                        &=w_t-w'_t\\
+                        &=\sum_{n=1}^{\infty}(f_n)_tk^{-n}\\
+                        (右辺)
+                        &=-\bigl[2w_{xx}-2w_x(w-w')+4k^2(w-w'\bigr)]_x\\
+                        &=-\left[2u_x-2u\left(2k+\sum_{n=1}^{\infty}f_nk^{-n}\right)+4k^2\left(2k+\sum_{n=1}^{\infty}f_nk^{-n}\right)\right]_x\\
+                        &=-\left[2u_x-2u\left(2k+\sum_{n=1}^{\infty}f_nk^{-n}\right)+4\sum_{n=1}^{\infty}f_{n}k^{-n+2}+8k^3\right]_x\\
+                        &=\sum_{n=1}^\infty\Bigl(2uf_nk^{-n}-4f_nk^{-n+2}\Bigr)_x-2u_{xx}+4ku_x
+                    \end{align*}
+                    より、
+                    \[\frac{\partial}{\partial{t}}f_n+\frac{\partial}{\partial{x}}\Bigl(-2uf_n+4f_{n+2}\Bigr)=0\]
+                    \[f_1=u,\;f_{n+1}=-\frac{1}{2}(f_n)_x-\frac{1}{4}\sum_{m=1}^{n-1}f_{m}f_{n-m}\;\;(n\geqq2)\]
+                    と無限個の保存則が導かれる。
                 </div>
                 <div style="text-align: right"><button id="close8">[閉じる]</button></div>
             </details>
@@ -730,7 +774,7 @@
                 <div id="main_text">
                     a
                 </div>
-                <div style="text-align: right"><button id="close9">[閉じる]</button></div>
+                <div style="text-align: right"><button id="close10">[閉じる]</button></div>
             </details>
             
         </div>
