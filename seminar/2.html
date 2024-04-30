@@ -513,8 +513,8 @@
                         \begin{align*}
                             &G_n(p_1,\,p_2,\ldots,\,p_n)\Bigr|_{p_n=0}\\
                             &=\left.\sum_{\{\sigma_k\}_{k=1}^{n}\in\,\{\pm{1}\}^n}\hspace{-10pt}F\left(\sum_{i=1}^n\sigma_ip_i,\,-\sum_{i=1}^n\sigma_ip_i^3\right)\prod_{1\leq{i}&lt;j\leq{n}}\hspace{-5pt}(\sigma_ip_i-\sigma_jp_j)^2\right|_{\,p_n=0}\\
-                            &=\sum_{\{\sigma_k\}_{k=1}^{n-1}\in\,\{\pm{1}\}^{n-1}}\hspace{-10pt}F\left(\sum_{i=1}^{n-1}\sigma_ip_i,\,-\sum_{i=1}^{n-1}\sigma_ip_i^3\right)\prod_{1\leq{i}&lt;j\leq{n-1}}\hspace{-5pt}(\sigma_ip_i-\sigma_jp_j)^2\cdot2\prod_{i=1}^{n-1}(\sigma_ip_i)^2\\
-                            &=2\prod_{i=1}^{n-1}p_i^2G_{n-1}(p_1,\,p_2,\ldots,\,p_{n-1})=0\\
+                            &=\sum_{\{\sigma_k\}_{k=1}^{n-1}\in\,\{\pm{1}\}^{n-1}}\hspace{-10pt}F\left(\sum_{i=1}^{n-1}\sigma_ip_i,\,-\sum_{i=1}^{n-1}\sigma_ip_i^3\right)\prod_{1\leq{i}&lt;j\leq{n-1}}\hspace{-5pt}(\sigma_ip_i-\sigma_jp_j)^2\cdot\prod_{i=1}^{n-1}(\sigma_ip_i)^2\\
+                            &=\prod_{i=1}^{n-1}p_i^2G_{n-1}(p_1,\,p_2,\ldots,\,p_{n-1})=0\\
                         \end{align*}
                         </div>
                         <div id="long_mjx">
@@ -528,13 +528,16 @@
                         ここで、
                         \begin{align*}
                             &(\sigma_{n-1}p_{n-1}-\sigma_{n}p_n)^2\\
-                            &=p_{n-1}^2+p_n^2-2\sigma_{n-1}\sigma_{n}p_{n-1}p_{n}\\
-                            &=p_{n-1}^2+p_n^2-2\sigma_{n-1}\sigma_{n}p_{n-1}p_{n}\\
                             &=
                             \begin{cases}
-                                4p_n^2&\sigma_np_n=-\sigma_{n-1}p_{n+1}\\
-                                0&\sigma_np_n=\sigma_{n-1}p_{n+1}
-                            \end{cases}
+                                (2p_n)^2&\sigma_np_n=-\sigma_{n-1}p_{n-1}\\
+                                0&\sigma_np_n=\sigma_{n-1}p_{n-1}
+                            \end{cases}\\
+                            &=
+                            \begin{cases}
+                                4p_n^2&\sigma_np_n=-\sigma_{n-1}p_{n-1}\\
+                                0&\sigma_np_n=\sigma_{n-1}p_{n-1}
+                            \end{cases}\\
                         \end{align*}
                         となるので、\(\sigma_np_n=-\sigma_{n-1}p_{n+1}\) の条件の下で、
                         \begin{align*}
@@ -557,7 +560,7 @@
                             &G_n(p_1,\,p_2,\ldots,\,p_n)\Bigr|_{p_n=0}&=0\\
                             &G_n(p_1,\,p_2,\ldots,\,p_n)\Bigr|_{p_n=\pm{p_{n-1}}}&=0
                         \end{alignat*}
-                        であり、
+                        であり、\(G_n\) は \(p_i,\,p_j\) の任意の置換(互換)に対しても不変なので、
                         \begin{alignat*}{4}  
                             &G_n(p_1,\,p_2,\ldots,\,p_n)\Bigr|_{p_i=0}&=0\;\;&(1\leqq{i}\leqq{n})\\
                             &G_n(p_1,\,p_2,\ldots,\,p_n)\Bigr|_{p_i=\pm{p_j}}&=0\;\;&(1\leqq{i,\,j}\leqq{n},\,i\neq{j})
@@ -709,19 +712,50 @@
             <details id="white"> <!-- KdV方程式が無限個の保存量を持つことの証明 -->
                 <summary>証明</summary>
                 <div id="main_text">
-                    \(u(x,\,t)=w_x(x,\,t),\,u'(x,\,t)=w'_x(x,\,t)\) に対する<a href="">ベックルント変換</a>
+                    \(u(x,\,t)=-w_x(x,\,t),\,u'(x,\,t)=-w'_x(x,\,t)\) に対する<a href="Backlund_transform.html">ベックルント変換</a>
                     \begin{alignat}{2}
                         w_x+w'_x&=-2k^2+\frac{1}{2}(w-w')^2\;\;\;(k:\mbox{任意定数})&\;\;\;\cdots(1)\\
                         w_t+w'_t\,&=2(w_x^2+w_xw'_x+{w'_x}^2)-(w-w')(w_{xx}-w'_{xx})&\;\;\;\cdots(2)
                     \end{alignat}
                     を式変形すると、
                     \[
-                        w_t-w'_t=-\bigl[2w_{xx}-2w_x(w-w')+4k^2(w-w'\bigr)]_x\hspace{25pt}\cdots(3)
+                        w_t-w'_t=-\bigl[2w_{xx}-2w_x(w-w')+4k^2(w-w'\bigr)]_x\hspace{32pt}\cdots(3)
                     \]
                     となる。
-                    <details id="gray">
-                        <summary>確認(未)</summary>
+                    <details id="gray"> <!-- 計算確認 -->
+                        <summary>確認</summary>
                         <div id="main_text">
+                        \(w_t-6ww_x+w_{xxx}=0,\;w'_t-6w'w'_x+w'_{xxx}=0\) より、
+                        \begin{alignat}{2}
+                            &[w_t-w'_t]_x&=&\;\;[3{w_x}^2-3{w'_x}^2-w_{xxx}+w'_{xxx}]_x\\                         
+                            &\;w_t-w'_t&=&\;\;3{w_x}^2-3{w'_x}^2-w_{xxx}+w'_{xxx}+c\;\;(c:任意定数)
+                        \end{alignat}
+                        前半部分は、
+                        \begin{align*}
+                            3{w_x}^2-3{w'_x}^2
+                            &=3(w_x+w'_x)(w_x-w'_x)\\
+                            &=3\Bigl(-2k^2+\frac{1}{2}(w-w')^2\Bigr)\Bigl(w_x-w'_x\Bigr)\\
+                            &=-6k^2(w_x-w'_x)+\frac{3}{2}(w-w')^2(w_x-w'_x)\\
+                            &=\left[ -6k^2(w-w')+\frac{1}{2}(w-w')^3 \right]_x\\
+                            &=\left[ -6k^2(w-w')+(w-w')(w_x+w'_x+2k^2) \right]_x\\
+                            &=\left[ -4k^2(w-w')+(w-w')(w_x+w'_x) \right]_x
+                        \end{align*}
+                        となる。後半部分は、
+                        \[[w_x+w'_x]_x=\left[-2k^2+\frac{1}{2}(w-w')^2\right]_x=(w-w')(w_{x}-w'_{x})\]
+                        より、
+                        \begin{align*}
+                            -w_{xxx}+w'_{xxx}
+                            &=[-w_{xx}+w'_{xx}]_x\\
+                            &=[-2w_{xx}+(w-w')(w_{x}-w'_{x})]_x
+                        \end{align*}
+                        これより、
+                        \begin{align*}
+                            w_t-w'_t
+                            &=3{w_x}^2-3{w'_x}^2-w_{xxx}+w'_{xxx}+c\\
+                            &=\bigl[ -4k^2(w-w')+(w-w')(w_x+w'_x)-2w_{xx}+(w-w')(w_{x}-w'_{x}) \bigr]_x\\
+                            &=-\bigl[ 2w_{xx}-2w_x(w-w')+4k^2(w-w') \bigr]_x
+                        \end{align*}
+
 
                         </div>
                         <div style="text-align: right"><button id="close9">[閉じる]</button></div>
@@ -760,32 +794,62 @@
                 <div style="text-align: right"><button id="close8">[閉じる]</button></div>
             </details>
             <p>・Lax形式</p>
-            \[L_t=[M,\,L]\;\Leftrightarrow\;w_t-6ww_x+w_{xxx}=0\]
+            \[\hat{L}_t=[\hat{M},\,\hat{L}]\;\Leftrightarrow\;u_t-6uu_x+u_{xxx}=0\]
             \begin{equation}
             \left\{
             \begin{aligned}
-                L&:=-\frac{\partial^2}{\partial{x}^2}+w(x,\,t)\\
-                M&:=\frac{\partial^3}{\partial{x^3}}+6w(x,\,t)\frac{\partial}{\partial{x}}+3w_x(x,\,t)            
+                \hat{L}&:=-\frac{\partial^2}{\partial{x}^2}+u(x,\,t)\\
+                \hat{M}&:=-4\frac{\partial^3}{\partial{x^3}}+6u(x,\,t)\frac{\partial}{\partial{x}}+3u_x(x,\,t)            
             \end{aligned}
             \right.
             \end{equation}
             <details id="white"> <!-- 計算確認 -->
-                <summary>確認</summary>
+                <summary>確認＆補足</summary>
                 <div id="main_text">
-                    a
+                    \begin{alignat}{2}
+                        \mbox{固有値方程式:}&\;\hat{L}\psi(x,\,t)&=&\;\lambda\psi(x,\,t)&\;\;\cdots(\ast_1)\\
+                        \mbox{時間発展方程式:}&\;\,\psi_t(x,\,t)&=&\;\hat{M}\psi(x,\,t) &\;\;\cdots(\ast_2) 
+                    \end{alignat}
+                    と考える。\((\ast_1)\) の両辺を \(t\) で偏微分すると、
+                    \begin{align*}
+                        (左辺)
+                        &=\hat{L}_t\psi+\hat{L}\psi_t\\
+                        &=\hat{L}_t\psi+\hat{L}\hat{M}\psi\\
+                        (右辺)
+                        &=\lambda_t\psi+\lambda\psi_t\\
+                        &=\lambda_t\psi+\lambda\hat{M}\psi\\
+                        &=\lambda_t\psi+\hat{M}(\lambda\psi)\\
+                        &=\lambda_t\psi+\hat{M}\hat{L}\psi
+                    \end{align*}
+                    となる。固有値 \(\lambda\) が時間依存しないとすると、
+                    \[\bigl(\hat{L}_t-[\hat{M},\,\hat{L}]\bigr)\psi=0\]
+                    演算子に対する微分に注意して、
+                    \[
+                        \partial_x(\hat{u}f)=u_xf+uf_x\;\mbox{となるから、}\partial_x\hat{u}=u_x+u\partial_x
+                    \]
+                    \begin{align*}
+                        &\hat{M}\hat{L}\\
+                        &=(-4\partial_x^3+6u\partial_x+3u_x)(-\partial_x^2+u)\\
+                        &=4\partial_x^5-4(u\partial_x^3+3u_x\partial_x^2+3u_{xx}\partial_x+u_{xxx})\\
+                        &\hspace{14pt}-6u\partial_x^3+6u(u\partial_x+u_x)-3u_x\partial_x^2+3uu_x\\
+                        &=4\partial_x^5-10u\partial_x^3-15u_x\partial_x^2+6(u^2-2u_{xx})\partial_x+9uu_x-4u_{xxx}\\
+                        &\hat{L}\hat{M}\\
+                        &=(-\partial_x^2+u)(-4\partial_x^3+6u\partial_x+3u_x)\\
+                        &=4\partial_x^5-6(u\partial_x^3+2u_x\partial_x^2+u_{xx}\partial_x)-3(u_x\partial_x^2+2u_{xx}\partial_{x}+u_{xxx})\\
+                        &\hspace{14pt}-4u\partial_x^3+6u^2\partial_x+3uu_x\\
+                        &=4\partial_x^5-10u\partial_x^3-15u_x\partial_x^2+6(u^2-2u_{xx})\partial_x+3uu_x-3u_{xxx}
+                    \end{align*}
+                    より、
+                    \[[\hat{M},\,\hat{L}]=6uu_x-u_{xxx}\]
+                    となる。\(L_t=(-\partial_x^2+u)_t=u_t\) だから、
+                    \[L_t-[\hat{M},\,\hat{L}]=u_t-6uu_x+u_{xxx}\]
                 </div>
                 <div style="text-align: right"><button id="close10">[閉じる]</button></div>
-            </details>
-            
+            </details>            
         </div>
-
-        <br>
-        <h3>1次元戸田格子</h3>
-        
-        
-    </div>  
+    </div>
+    <div style="text-align: center"><a href="2_page2.html">[次ページ]</a></div>
     <?php include("./include/footer.php"); ?>
 	</body>
 	<script src="details_close.js"></script>
-
 </html>
