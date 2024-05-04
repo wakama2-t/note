@@ -11,9 +11,175 @@
 	<body>
     <?php $page=2; include("./include/header.php"); ?>
     <div id="contents">
-        <h3>戸田格子方程式</h3>
+        <h3>戸田格子</h3>
+				\[m\frac{d^2}{dt^2}y_{n}=\phi'(r_{n+1})-\phi'(r_n)\]
+                \[\phi(r)=\frac{a}{b}e^{-br}+ar-\frac{a}{b}\]
+				<div style="text-align: center;"><img src="./image/im7.png" alt="戸田格子" width="80%"></div>
         <div id="main_text">
-            a
+            <p>・非線形ポテンシャル(戸田ポテンシャルともいう)からなる1次格子</p>
+            <p>・\(n\) 番目のばねの力 \(f_n(t)=-\phi'(r_n)\) を用いると、</p>
+            \[\frac{d^2}{dt^2}\log(1+f_n)=f_{n+1}+f_{n-1}-2f_n\]
+            <details id="white"> <!-- 無次元化の確認 -->
+                <summary>確認</summary>
+                <div id="main_text">
+                    \begin{alignat}{2}
+                        &m\frac{d^2}{dt^2}y_{n}&=\;\;&\phi'(r_{n+1})&\;-\;\;&\phi'(r_n)&\;\;\;\cdots(1)\\
+                        &m\frac{d^2}{dt^2}y_{n-1}&=\;\;&\phi'(r_{n})&\;-\;\;&\phi'(r_{n-1})&\;\;\;\cdots(2)\\
+                    \end{alignat}
+                    (1)式から(2)式を引いて、
+                    \begin{align*}
+                        m\frac{d^2}{dt^2}r_{n-1}
+                        &=\phi'(r_{n+1})+\phi'(r_{n-1})-2\phi'(r_{n})\\
+                        &=-(f_{n+1}+f_{n-1}-2f_n)
+                    \end{align*}
+                    ここで、
+                    \[
+                        r_n=-\frac{1}{b}\log\left[1+\frac{f_n}{a}\right]
+                    \]
+                    <details id="gray"> <!-- 確認 -->
+                        <summary>確認</summary>
+                        <div id="main_text">
+                            \(\displaystyle\phi(r)=\frac{a}{b}e^{-br}+ar-\frac{a}{b}\) なので、
+                            \[
+                                f_n=-\phi'(r_n)=ae^{-br_n}-a=a(e^{-br_n}-1)
+                            \]
+                            より、
+                            \begin{gather*}                    
+                                \frac{f_n}{a}=e^{-br_n}-1\\
+                                1+\frac{f_n}{a}=e^{-br_n}\\
+                                \log\left[1+\frac{f_n}{a}\right]=-br_n
+                            \end{gather*}
+                            \[
+                                r_n=-\frac{1}{b}\log\left[1+\frac{f_n}{a}\right]
+                            \]
+                        </div>
+                    <div style="text-align: right"><button id="close1">[閉じる]</button></div>
+                    </details>
+                    となるため、
+                    \[
+                        m\frac{d^2}{dt^2}\left(-\frac{1}{b}\log\left[1+\frac{f_{n-1}}{a}\right]\right)=-(f_{n+1}+f_{n-1}-2f_n)
+                    \]
+                    変形して、
+                    \[
+                        \frac{d^2}{dt^2}\left(\log\left[1+\frac{f_{n-1}}{a}\right]\right)=\frac{ab}{m}\left(\frac{f_{n+1}}{a}+\frac{f_{n-1}}{a}-2\frac{f_n}{a}\right)
+                    \]
+                    そして、
+                    \[
+                        \frac{f_n}{a}\rightarrow{f_n},\;\sqrt{\frac{ab}{m}}t\rightarrow{t}
+                    \]
+                    と変数変換すれば、
+                    \[
+                        \frac{d^2}{dt^2}\log(1+f_n)=f_{n+1}+f_{n-1}-2f_n
+                    \]
+                    となる。
+                    <br><div style="line-height: 5pt;">&nbsp;</div>
+                    ちなみに、
+                    \begin{align*}
+                        &a:\,[MLT^{-2}]\\
+                        &b:\,[L^{-1}]
+                    \end{align*}
+                    なので、書き改めた \(f_n,\,t\) はともに無次元量となる。
+                </div>
+                <div style="text-align: right"><button id="close0">[閉じる]</button></div>
+            </details>
+            <p>・連続体近似でKdV方程式に帰着</p>
+            <details open id="white">
+                <summary>証明</summary>
+                <div id="main_text">
+                    \[\frac{d^2}{dt^2}\log(1+f_n)=f_{n+1}+f_{n-1}-2f_n\;\;\;\cdots(\ast)\]
+                    からKdV方程式を連続体近似で導く。
+                    <br><div style="line-height: 5pt;">&nbsp;</div>
+                    \((ソリトンの幅)\gg(格子間隔)\) の場合、離散変数 \(n\) を連続変数 \(x\) に変えてもよさそうである。<br>
+                    そして格子間隔を \(1\) とすれば \(f_n(t)=f(x,\,t)\) とすることができる。<br>
+                    \(\log(1+f_n)\) を \(1\) まわりでテイラー展開すると、
+                    \[\log(1+f_n)=\log(1+f)=f-\frac{f^2}{2}+\frac{f^3}{3}-\cdots\]
+                    \(f_{n\pm1}=f(x\pm1,\,t)\) を \(x\) まわりでテイラー展開すると、
+                    \[f_{n+1}=f+\frac{\partial{f}}{\partial{x}}+\frac{1}{2!}\frac{\partial^2f}{\partial{x}^2}+\frac{1}{3!}\frac{\partial^3f}{\partial{x}^3}+\frac{1}{4!}\frac{\partial^4f}{\partial{x}^4}+\cdots\]
+                    \[f_{n-1}=f-\frac{\partial{f}}{\partial{x}}+\frac{1}{2!}\frac{\partial^2f}{\partial{x}^2}-\frac{1}{3!}\frac{\partial^3f}{\partial{x}^3}+\frac{1}{4!}\frac{\partial^4f}{\partial{x}^4}-\cdots\]
+                    となるため、これらを\((\ast)\)に代入すると、
+                    \begin{align*}
+                        \frac{\partial^2}{\partial t^2}\left(f-\frac{f^2}{2}+\frac{f^3}{3}-\cdots\right)
+                        &=\frac{2}{2!}\frac{\partial^2f}{\partial{x}^2}+\frac{2}{4!}\frac{\partial^4f}{\partial{x}^4}+\frac{2}{6!}\frac{\partial^6f}{\partial{x}^6}+\cdots\\
+                        &=\frac{\partial^2f}{\partial{x}^2}+\frac{1}{12}\frac{\partial^4f}{\partial{x}^4}+\frac{1}{360}\frac{\partial^6f}{\partial{x}^6}+\cdots
+                    \end{align*}
+                    となる。そして\(f\) の摂動展開及び空間座標 \(\xi,\) 時間座標 \(\tau\) を、
+                    \[
+                        f=\varepsilon{f_{[1]}}+\varepsilon^2{f_{[2]}}+\varepsilon^3{f_{[3]}}+\cdots
+                    \]
+                    \[
+                        \xi=\varepsilon^{\frac{1}{2}}(x-t),\;\tau=\varepsilon^{\frac{3}{2}}t
+                    \]
+                    <details id="gray">
+                        <summary>補足(Gardner-Morikawa変換)</summary>
+                        <div id="main_text">
+                            よく分からん
+                        </div>
+                        <div style="text-align: right"><button id="close3">[閉じる]</button></div>
+                    </details>
+                    とすると、
+                    \begin{align*}
+                        \frac{\partial}{\partial{t}}&=-\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}+\varepsilon^{\frac{3}{2}}\frac{\partial}{\partial\tau}\\
+                        \frac{\partial}{\partial{x}}&=\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}
+                    \end{align*}
+                    <details id="gray"> <!-- 確認 -->
+                        <summary>確認</summary>
+                        <div id="main_text">
+                            \(\xi=\varepsilon^{\frac{1}{2}}(x-t),\;\tau=\varepsilon^{\frac{3}{2}}t\) より、
+                            \begin{align*}
+                                \frac{\partial}{\partial{t}}
+                                &=\frac{\partial}{\partial\xi}\frac{\partial{\xi}}{\partial{t}}+\frac{\partial}{\partial\tau}\frac{\partial{\tau}}{\partial{t}}\\
+                                &=\frac{\partial}{\partial\xi}\left(-\varepsilon^{\frac{1}{2}}\right)+\frac{\partial}{\partial\tau}\left(\varepsilon^{\frac{3}{2}}\right)\\
+                                &=-\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}+\varepsilon^{\frac{3}{2}}\frac{\partial}{\partial\tau}\\
+                                \frac{\partial}{\partial{x}}
+                                &=\frac{\partial}{\partial\xi}\frac{\partial{\xi}}{\partial{x}}\\
+                                &=\frac{\partial}{\partial\xi}\left(\varepsilon^{\frac{1}{2}}\right)\\
+                                &=\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}
+                            \end{align*}
+                        </div>
+                        <div style="text-align: right"><button id="close4">[閉じる]</button></div>
+                    </details>
+                    となる。これより、
+                    \[
+                        \frac{\partial^2}{\partial t^2}\left(f-\frac{f^2}{2}+\frac{f^3}{3}-\cdots\right)=\frac{\partial^2f}{\partial{x}^2}+\frac{1}{12}\frac{\partial^4f}{\partial{x}^4}+\frac{1}{360}\frac{\partial^6f}{\partial{x}^6}+\cdots
+                    \]
+                    の \(\varepsilon^3\) の項だけ考えると、( \(\varepsilon^2\) では意味のある式は得られない)
+                    <div id="long_mjx">
+                    \begin{align*}
+                        &(左辺)\\
+                        &=-\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}\left(\varepsilon^{\frac{3}{2}}\frac{\partial}{\partial\tau}\varepsilon f_{[1]}\right)
+                        +\varepsilon^{\frac{3}{2}}\frac{\partial}{\partial\tau}\left(-\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}\varepsilon f_{[1]}\right)
+                        -\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}\left\{-\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}\left(-\frac{(\varepsilon f_{[1]})^2}{2}\right)\right\}\\
+                        &=\varepsilon^3\left(-2\frac{\partial^2f_{[1]}}{\partial\tau\partial\xi}-\frac{1}{2}\frac{\partial^2}{\partial\xi^2}(f_{[1]})^2\right)\\
+                        &(右辺)\\
+                        &=\frac{1}{12}\left(\varepsilon^{\frac{1}{2}}\frac{\partial}{\partial\xi}\right)^4\varepsilon f_{[1]}\\
+                        &=\varepsilon^3\cdot\frac{1}{12}\frac{\partial^4f_{[1]}}{\partial\xi^4}
+                    \end{align*}
+                    </div>
+                    より、
+                    \[
+                        -2\frac{\partial^2f_{[1]}}{\partial\tau\partial\xi}-\frac{1}{2}\frac{\partial^2}{\partial\xi^2}(f_{[1]})^2=\frac{1}{12}\frac{\partial^4f_{[1]}}{\partial\xi^4}
+                    \]
+                    両辺 \(\xi\) で積分すると、
+                    \[
+                        -2\frac{\partial f_{[1]}}{\partial\tau}-f_{[1]}\frac{\partial}{\partial\xi}f_{[1]}=\frac{1}{12}\frac{\partial^3f_{[1]}}{\partial\xi^3}
+                    \]
+                    整理して、
+                    \[
+                        \frac{\partial f_{[1]}}{\partial\tau}+\frac{1}{2}f_{[1]}\frac{\partial}{\partial\xi}f_{[1]}+\frac{1}{24}\frac{\partial^3f_{[1]}}{\partial\xi^3}=0
+                    \]
+                    \(t=\tau,\;x=2\sqrt[3]{3}\xi,\;u(x,\,t)=\frac{6}{\sqrt[3]{3}}f(\xi,\,\tau)\) とすれば、
+                    \[
+                        \frac{\partial u(x,\,t)}{\partial t}+6u(x,\,t)\frac{\partial u(x,\,t)}{\partial{x}}+\frac{\partial^3 u(x,\,t)}{\partial{x}^3}=0
+                    \]
+                </div>
+                <div style="text-align: right"><button id="close2">[閉じる]</button></div>
+            </details>
+            <p>1-ソリトン解</p>
+            <p>2-ソリトン解</p>
+            <p>2-ソリトン解のシミュレーション</p>
+
+
+            
         </div>
     
 
