@@ -174,13 +174,13 @@
                     </details>
                     <div style="line-height: 10pt;">&nbsp;</div>
                     そして \(\tau(x,\,t)\) の摂動展開は、
-                    \[\tau=1+\epsilon\tau_1+\epsilon^2\tau_2+\epsilon^3\tau+\cdots\]
-                    \(\tau=1\) は(3)を満たすから、\(\epsilon\)のべきで整理して、
+                    \[\tau=1+\varepsilon\tau_1+\varepsilon^2\tau_2+\varepsilon^3\tau+\cdots\]
+                    \(\tau=1\) は(3)を満たすから、\(\varepsilon\)のべきで整理して、
                     \begin{alignat*}{3}
-                        \epsilon\;&:\,D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)=0&\hspace{20pt}(\ast_1)\\
-                        \epsilon^2&:\,D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)=0&\hspace{20pt}(\ast_2)\\
-                        \epsilon^3&:\,D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)=0&\hspace{20pt}(\ast_3)\\
-                        \epsilon^4&:\,D_x(D_t+D_x^3)(\tau_4\cdot1+\tau_3\cdot\tau_1+\tau_2\cdot\tau_2+\tau_1\cdot\tau_3+1\cdot\tau_4)=0&\hspace{20pt}(\ast_4)\\
+                        \varepsilon\;&:\,D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)=0&\hspace{20pt}(\ast_1)\\
+                        \varepsilon^2&:\,D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)=0&\hspace{20pt}(\ast_2)\\
+                        \varepsilon^3&:\,D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)=0&\hspace{20pt}(\ast_3)\\
+                        \varepsilon^4&:\,D_x(D_t+D_x^3)(\tau_4\cdot1+\tau_3\cdot\tau_1+\tau_2\cdot\tau_2+\tau_1\cdot\tau_3+1\cdot\tau_4)=0&\hspace{20pt}(\ast_4)\\
                         \vdots
                     \end{alignat*}
                     を満たす \(\tau_1,\,\tau_2,\ldots\) からなる \(\tau\) は(3)を満たす。
@@ -233,8 +233,8 @@
                     </div>
                     <div style="line-height: 10pt;">&nbsp;</div>
                     よって、
-                    \[\tau=1+\epsilon e^{k_1x-k_1^3t+\theta_1}\]
-                    及び、\(\theta_1\log{\epsilon}\) を \(\theta_1\) と置きなおして、
+                    \[\tau=1+\varepsilon e^{k_1x-k_1^3t+\theta_1}\]
+                    及び、\(\theta_1\log{\varepsilon}\) を \(\theta_1\) と置きなおして、
                     \[\tau=1+e^{k_1x-k_1^3t+\theta_1}\]
                     は(3)式を満たす。(2)式から \(u(x,\,t)\) を求めると、
                     \begin{align*}
@@ -260,7 +260,7 @@
 				p_1\neq{p_2}\\
 				\theta_1,\,\theta_2:任意の実定数\\
 				\eta_i:=p_ix-p_i^3t-\theta_i\\
-				\displaystyle \alpha=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
+				\displaystyle e^{A_{12}}=\frac{(p_1-p_2)^2}{(p_1+p_2)^2}\\
 			\end{cases}\]
             <details id="white"> <!-- 2-ソリトン解の導出 (広田の直説法)-->
                 <summary>導出 (広田の直接法)</summary>
@@ -268,13 +268,13 @@
                     \[\mbox{広田の双線型形式: }D_x(D_t+D_x^3)\tau(x,\,t)\cdot\tau(x,\,t)=0\;\;\cdots(1)\]
                     を用いる。(証明は1-ソリトン解に)<br>
                     1-ソリトン解と同様に、\(\tau(x,\,t)\) の摂動展開は、
-                    \[\tau=1+\epsilon\tau_1+\epsilon^2\tau_2+\epsilon^3\tau+\cdots\]
-                    \(\tau=1\) は(1)を満たすから、\(\epsilon\)のべきで整理して、
+                    \[\tau=1+\varepsilon\tau_1+\varepsilon^2\tau_2+\varepsilon^3\tau+\cdots\]
+                    \(\tau=1\) は(1)を満たすから、\(\varepsilon\)のべきで整理して、
                     \begin{alignat*}{3}
-                        \epsilon\;&:\,D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)=0&\hspace{20pt}(\ast_1)\\
-                        \epsilon^2&:\,D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)=0&\hspace{20pt}(\ast_2)\\
-                        \epsilon^3&:\,D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)=0&\hspace{20pt}(\ast_3)\\
-                        \epsilon^4&:\,D_x(D_t+D_x^3)(\tau_4\cdot1+\tau_3\cdot\tau_1+\tau_2\cdot\tau_2+\tau_1\cdot\tau_3+1\cdot\tau_4)=0&\hspace{20pt}(\ast_4)\\
+                        \varepsilon\;&:\,D_x(D_t+D_x^3)(\tau_1\cdot1+1\cdot\tau_1)=0&\hspace{20pt}(\ast_1)\\
+                        \varepsilon^2&:\,D_x(D_t+D_x^3)(\tau_2\cdot1+\tau_1\cdot\tau_1+1\cdot\tau_2)=0&\hspace{20pt}(\ast_2)\\
+                        \varepsilon^3&:\,D_x(D_t+D_x^3)(\tau_3\cdot1+\tau_2\cdot\tau_1+\tau_1\cdot\tau_2+1\cdot\tau_3)=0&\hspace{20pt}(\ast_3)\\
+                        \varepsilon^4&:\,D_x(D_t+D_x^3)(\tau_4\cdot1+\tau_3\cdot\tau_1+\tau_2\cdot\tau_2+\tau_1\cdot\tau_3+1\cdot\tau_4)=0&\hspace{20pt}(\ast_4)\\
                         \vdots
                     \end{alignat*}
                     を満たす \(\tau_1,\,\tau_2,\ldots\) からなる \(\tau\) は(1)を満たす。
