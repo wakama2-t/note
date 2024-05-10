@@ -201,7 +201,7 @@
                         \[
                             \frac{\partial^2}{\partial t^2}\left(f-\frac{f^2}{2}+\frac{f^3}{3}-\cdots\right)=\frac{\partial^2f}{\partial{x}^2}+\frac{1}{12}\frac{\partial^4f}{\partial{x}^4}+\frac{1}{360}\frac{\partial^6f}{\partial{x}^6}+\cdots
                         \]
-                        の \(\varepsilon^3\) の項だけ考えると、( \(\varepsilon^2\) では意味のある式は得られない)
+                        の3次の項を考えると、( \(\varepsilon^2\) では意味のある式は得られない)
                         <div id="long_mjx">
                         \begin{align*}
                             &(左辺)\\
@@ -563,16 +563,216 @@
                     L_t=[M,\,L]
                 \]
                 を満たす。
-                <details id="white">
+                <details id="white"> <!-- 確認 -->
                     <summary>確認</summary>
-                    <div id="main_text">
-                        a
+                    <div  id="main_text">
+                        <div id="long_mjx">
+                            \begin{align*}
+                                ML
+                                &=
+                                \begin{pmatrix}
+                                    -a_1^2&-a_1b_2&-a_1a_2&&&&\huge{O}\\
+                                    a_1b_1&a_1^2-a_2^2&-a_2b_3&-a_2a_3&&&\\
+                                    a_1a_2&a_2b_2&a_2^2-a_3^2&\ddots&\ddots&&\\
+                                    &a_2a_3&\ddots&\ddots&\ddots&-a_{N-3}a_{N-2}&\\
+                                    &&\ddots&\ddots&a_{N-3}^2-a_{N-2}^2&-a_{N-2}b_{N-1}&-a_{N-2}a_{N-1}\\
+                                    &&&a_{N-3}a_{N-2}&a_{N-2}b_{N-2}&a_{N-2}^2-a_{N-1}^2&-a_{N-1}b_N\\
+                                    \huge{O}&&&&a_{N-2}a_{N-1}&a_{N-1}b_{N-1}&a_{N-1}^2
+                                \end{pmatrix}\\
+                                LM
+                                &=
+                                \begin{pmatrix}
+                                    a_1^2&-a_1b_1&-a_1a_2&&&&\huge{O}\\
+                                    a_1b_2&a_2^2-a_1^2&-a_2b_2&-a_2a_3&&&\\
+                                    a_1a_2&a_2b_3&a_3^2-a_2^2&\ddots&\ddots&&\\
+                                    &a_2a_3&\ddots&\ddots&\ddots&-a_{N-3}a_{N-2}&\\
+                                    &&\ddots&\ddots&a_{N-2}^2-a_{N-3}^2&-a_{N-2}b_{N-2}&-a_{N-2}a_{N-1}\\
+                                    &&&a_{N-3}a_{N-2}&a_{N-2}b_{N-1}&a_{N-1}^2-a_{N-2}^2&-a_{N-1}b_{N-1}\\
+                                    \huge{O}&&&&a_{N-2}a_{N-1}&a_{N-1}b_{N}&-a_{N-1}^2
+                                \end{pmatrix}
+                            \end{align*}
+                        </div>
+                        より、
+                        <div id="long_mjx">
+                            \begin{align*}
+                                [M,\,L]
+                                &=
+                                \begin{pmatrix}
+                                    -2a_1^2&a_1(b_1-b_2)&0&&&&\huge{O}\\
+                                    a_1(b_1-b_2)&2(a_1^2-a_2^2)&a_2(b_2-b_3)&\ddots&&\\
+                                    0&a_2(b_2-b_3)&2(a_2^2-a_3^2)&\ddots&\ddots&\\
+                                    &\ddots&\ddots&\ddots&\ddots&\ddots&\\
+                                    &&\ddots&\ddots&2(a_{N-3}^2-a_{N-2}^2)&a_{N-3}(b_{N-3}-b_{N-2})&0\\
+                                    &&&\ddots&a_{N-3}(b_{N-3}-b_{N-2})&2(a_{N-2}^2-a_{N-1}^2)&a_{N-2}(b_{N-2}-b_{N-1})\\
+                                    \huge{O}&&&&0&a_{N-2}(b_{N-2}-b_{N-1})&2a_{N-1}^2
+                                \end{pmatrix}
+                            \end{align*}
+                        </div>
+                        となる。格子の両端が固定されている場合、
+                        \[
+                            a_0=a_N=0
+                        \]
+                        と境界条件を定めると、対角成分は、
+                        \[
+                            2(a_{n-1}^2-a_{n}^2)=\frac{d}{dt}b_n
+                        \]
+                        その上下の成分は、
+                        \[
+                            a_{n}(b_n-b_{n+1})=\frac{d}{dt}a_n
+                        \]
+                        となり、
+                        \[
+                            L_t=[M,\,L]
+                        \]
+                        が確認できる。
+                        <br><div style="line-height: 5pt;">&nbsp;</div>
+                        ちなみに周期境界条件を課したいときは、
+                        \begin{align*}
+                            L(t)&:=
+                            \begin{pmatrix}
+                                b_1&a_1&0&&&&a_N\\
+                                a_1&b_2&a_2&\ddots&&&\\
+                                0  &a_2&b_3&\ddots&\ddots&&\\
+                                &\ddots&\ddots&\ddots&\ddots&\ddots&\\
+                                &&\ddots&\ddots&b_{N-2}&a_{N-2}&0\\
+                                &&&\ddots&a_{N-2}&b_{N-1}&a_{N-1}\\
+                                a_N&&&&0&a_{N-1}&b_N\\
+                            \end{pmatrix}\\
+                            M(t)&:=
+                            \begin{pmatrix}
+                                0&-a_1&0&&&&a_N\\
+                                a_1&0&-a_2&\ddots&&&\\
+                                0  &a_2&0&\ddots&\ddots&&\\
+                                &\ddots&\ddots&\ddots&\ddots&\ddots&\\
+                                &&\ddots&\ddots&0&-a_{N-2}&0\\
+                                &&&\ddots&a_{N-2}&0&-a_{N-1}\\
+                                -a_N&&&&0&a_{N-1}&0\\
+                            \end{pmatrix}
+                        \end{align*}
+                        とすれば、
+                        <div id="long_mjx">
+                            \begin{align*}
+                                ML
+                                &=
+                                \begin{pmatrix}
+                                    a_N^2-a_1^2&-a_1b_2&-a_1a_2&&&a_{N-1}a_N&a_Nb_N\\
+                                    a_1b_1&a_1^2-a_2^2&-a_2b_3&-a_2a_3&&&\\
+                                    a_1a_2&a_2b_2&a_2^2-a_3^2&\ddots&\ddots&&\\
+                                    &a_2a_3&\ddots&\ddots&\ddots&-a_{N-3}a_{N-2}&\\
+                                    &&\ddots&\ddots&a_{N-3}^2-a_{N-2}^2&-a_{N-2}b_{N-1}&-a_{N-2}a_{N-1}\\
+                                    &&&a_{N-3}a_{N-2}&a_{N-2}b_{N-2}&a_{N-2}^2-a_{N-1}^2&-a_{N-1}b_N\\
+                                    -a_Nb_1&-a_1a_N&&&a_{N-2}a_{N-1}&a_{N-1}b_{N-1}&a_{N-1}^2-a_{N}^2
+                                \end{pmatrix}\\
+                                LM
+                                &=
+                                \begin{pmatrix}
+                                    a_1^2-a_{N}^2&-a_1b_1&-a_1a_2&&&a_{N-1}a_N&a_Nb_1\\
+                                    a_1b_2&a_2^2-a_1^2&-a_2b_2&-a_2a_3&&&\\
+                                    a_1a_2&a_2b_3&a_3^2-a_2^2&\ddots&\ddots&&\\
+                                    &a_2a_3&\ddots&\ddots&\ddots&-a_{N-3}a_{N-2}&\\
+                                    &&\ddots&\ddots&a_{N-2}^2-a_{N-3}^2&-a_{N-2}b_{N-2}&-a_{N-2}a_{N-1}\\
+                                    &&&a_{N-3}a_{N-2}&a_{N-2}b_{N-1}&a_{N-1}^2-a_{N-2}^2&-a_{N-1}b_{N-1}\\
+                                    -a_Nb_N&-a_1a_N&&&a_{N-2}a_{N-1}&a_{N-1}b_{N}&a_N^2-a_{N-1}^2
+                                \end{pmatrix}
+                            \end{align*}
+                        </div>
+                        より、
+                        <div id="long_mjx">
+                            \begin{align*}
+                                [M,\,L]
+                                &=
+                                \begin{pmatrix}
+                                    2(a_N-a_1^2)&a_1(b_1-b_2)&0&&&&a_N(b_N-b_1)\\
+                                    a_1(b_1-b_2)&2(a_1^2-a_2^2)&a_2(b_2-b_3)&\ddots&&\\
+                                    0&a_2(b_2-b_3)&2(a_2^2-a_3^2)&\ddots&\ddots&\\
+                                    &\ddots&\ddots&\ddots&\ddots&\ddots&\\
+                                    &&\ddots&\ddots&2(a_{N-3}^2-a_{N-2}^2)&a_{N-3}(b_{N-3}-b_{N-2})&0\\
+                                    &&&\ddots&a_{N-3}(b_{N-3}-b_{N-2})&2(a_{N-2}^2-a_{N-1}^2)&a_{N-2}(b_{N-2}-b_{N-1})\\
+                                    a_N(b_N-b_1)&&&&0&a_{N-2}(b_{N-2}-b_{N-1})&2(a_{N-1}^2-a_{N}^2)
+                                \end{pmatrix}
+                            \end{align*}
+                        </div>
+                        となり、
+                        \[
+                            a_N=a_0,\;b_N=b_0
+                        \]
+                        の条件下で、
+                        \[
+                            L_t=[M,\,L]
+                        \]
+                        が確認できる。
                     </div>
                     <div style="text-align: right"><button id="close8">[閉じる]</button></div>
                 </details>
             </div>
             <p>・保存量</p>
+            <div id="main_text">
+                \(m\in\mathbb{N}_0\) に対して、
+                \[
+                    \mathrm{Tr}\,L^m
+                \]
+                は保存量となる。
+                <details id="white"> <!-- 保存量1 -->
+                    <summary>証明＆補足</summary>
+                    <div id="main_text">
+                        \(L(t)\) は実対称行列なので対角化可能である。なので、
+                        \[
+                            Q^{-1}LQ=\mathrm{diag}(\lambda_1,\ldots,\,\lambda_N)=:A(t)
+                        \]
+                        となる実正則行列 \(Q\) 及び固有値 \(\lambda_1,\ldots,\,\lambda_N\) が存在する。これより、
+                        \[
+                            \mathrm{Tr}\,L=\mathrm{Tr}(LQ^{-1}Q)=\mathrm{Tr}(Q^{-1}LQ)=\mathrm{Tr}\,A=\sum_{i=1}^{N}A_{ii}
+                        \]
+                        及び
+                        \[
+                            \mathrm{Tr}\,L_t=\mathrm{Tr}\,A_t
+                        \]
+                        となるため、
+                        \begin{align*}                
+                            \frac{d}{dt}\mathrm{Tr}\,L^m
+                            &=\frac{d}{dt}\sum_{i=1}^{N}A_{ii}^m(t)\\
+                            &=\sum_{i=1}^{N}mA_{ii}^{m-1}(t)\frac{d}{dt}A_{ii}(t)\\
+                            &=m\sum_{i=1}^{N}A_{ii}^{m-1}(t)\frac{d}{dt}A_{ii}(t)\\
+                            &=m\,\mathrm{Tr}\bigl(A^{m-1}A_t\bigr)\\
+                            &=m\,\mathrm{Tr}\bigl(A^{m-1}L_t\bigr)\\
+                            &=m\,\mathrm{Tr}\bigl(A^{m-1}[M,\,L]\bigr)\\
+                            &=0
+                        \end{align*}
+                        となり示せた。<br>
+                        <div style="line-height: 5pt;">&nbsp;</div>
+                        また固有値 \(\lambda_1,\ldots,\,\lambda_N\) を用いて、
+                        \[
+                            \mathrm{Tr}\,L^m=\sum_{i=1}^{N}\lambda_i^m
+                        \]
+                        も保存量であり、固有値を用いた任意の対称多項式は時間依存しないことがわかる。<br>
+                        例えば、
+                        \[
+                            F(\lambda):=\det(\lambda{E}+L)
+                        \]
+                        とすると、\(\lambda=-\lambda_i\;\;(1\leqq{i}\leqq{N})\) のとき、
+                        \[
+                            \det(L-\lambda_i{E})=0\;\;( \because 固有値方程式)
+                        \]
+                        となるため、
+                        \[
+                            F(\lambda)=\prod_{i=1}^{N}(\lambda+\lambda_i)
+                        \]
+                        となり、対称多項式となる。つまり \(\lambda\) の値に関わらず
+                        \[
+                            \frac{d}{dt}F(\lambda)=0
+                        \]
+                        を満たす。すなわち
+                        \[
+                            F(\lambda)=\sum_{k=0}^{N}c_k\lambda^{k},\;\;\frac{d}{dt}c_k=0
+                        \]
+                        となり、\(c_k\;\;(1\leqq{k}\leqq{N})\) も保存量となる。
 
+                    </div>
+                    <div style="text-align: right"><button id="close9">[閉じる]</button></div>
+                </details>
+                
+                
+            </div>
 
             
         </div>
