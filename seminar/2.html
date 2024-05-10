@@ -719,7 +719,12 @@
                 <details id="white"> <!-- KdV方程式が無限個の保存量を持つことの証明 -->
                     <summary>証明</summary>
                     <div id="main_text">
-                        \(u(x,\,t)=-w_x(x,\,t),\,u'(x,\,t)=-w'_x(x,\,t)\) に対する<a href="Backlund_transform.html">ベックルント変換</a>
+                        \(u\rightarrow-u\) としたKdV方程式
+                        \[
+                            u_t-6uu_x+u_{xxx}=0
+                        \]
+                        で考える。<br>
+                        \(u(x,\,t)=w_x(x,\,t),\,u'(x,\,t)=w'_x(x,\,t)\) に対する<a href="Backlund_transform.html">ベックルント変換</a>
                         \begin{alignat}{2}
                             w_x+w'_x&=-2k^2+\frac{1}{2}(w-w')^2\;\;\;(k:\mbox{任意定数})&\;\;\;\cdots(1)\\
                             w_t+w'_t\,&=2(w_x^2+w_xw'_x+{w'_x}^2)-(w-w')(w_{xx}-w'_{xx})&\;\;\;\cdots(2)
@@ -732,7 +737,7 @@
                         <details id="gray"> <!-- 計算確認 -->
                             <summary>確認</summary>
                             <div id="main_text">
-                            \(w_t-6ww_x+w_{xxx}=0,\;w'_t-6w'w'_x+w'_{xxx}=0\) より、
+                            \((w_x)_t-6w_x(w_x)_x+(w_x)_{xxx}=0,\;(w'_x)_t-6w'_x(w'_x)_x+(w'_x)_{xxx}=0\) より、
                             \begin{alignat}{2}
                                 &[w_t-w'_t]_x&=&\;\;[3{w_x}^2-3{w'_x}^2-w_{xxx}+w'_{xxx}]_x\\                         
                                 &\;w_t-w'_t&=&\;\;3{w_x}^2-3{w'_x}^2-w_{xxx}+w'_{xxx}+c\;\;(c:任意定数)

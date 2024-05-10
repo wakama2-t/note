@@ -29,7 +29,7 @@
                         \end{alignat}
                         (1)式から(2)式を引いて、
                         \begin{align*}
-                            m\frac{d^2}{dt^2}r_{n-1}
+                            m\frac{d^2}{dt^2}r_n
                             &=\phi'(r_{n+1})+\phi'(r_{n-1})-2\phi'(r_{n})\\
                             &=-(f_{n+1}+f_{n-1}-2f_n)
                         \end{align*}
@@ -58,11 +58,11 @@
                         </details>
                         となるため、
                         \[
-                            m\frac{d^2}{dt^2}\left(-\frac{1}{b}\log\left[1+\frac{f_{n-1}}{a}\right]\right)=-(f_{n+1}+f_{n-1}-2f_n)
+                            m\frac{d^2}{dt^2}\left(-\frac{1}{b}\log\left[1+\frac{f_n}{a}\right]\right)=-(f_{n+1}+f_{n-1}-2f_n)
                         \]
                         変形して、
                         \[
-                            \frac{d^2}{dt^2}\left(\log\left[1+\frac{f_{n-1}}{a}\right]\right)=\frac{ab}{m}\left(\frac{f_{n+1}}{a}+\frac{f_{n-1}}{a}-2\frac{f_n}{a}\right)
+                            \frac{d^2}{dt^2}\left(\log\left[1+\frac{f_n}{a}\right]\right)=\frac{ab}{m}\left(\frac{f_{n+1}}{a}+\frac{f_{n-1}}{a}-2\frac{f_n}{a}\right)
                         \]
                         そして、
                         \[
@@ -299,7 +299,7 @@
                         \]
                         となる。これは無次元化する前の戸田格子の運動方程式
                         \[
-                            \frac{d^2}{dt^2}\left(\log\left[1+\frac{f_{n-1}}{a}\right]\right)=\frac{b}{m}\left(f_{n+1}+f_{n-1}-2f_n\right)
+                            \frac{d^2}{dt^2}\left(\log\left[1+\frac{f_n}{a}\right]\right)=\frac{b}{m}\left(f_{n+1}+f_{n-1}-2f_n\right)
                         \]
                         と同じ形になる。
                     </div>
@@ -478,7 +478,7 @@
             </div>
             <p>・Lax形式</p>
             <div id="main_text">
-                戸田格子の運動方程式(無次元)は、\(P_n:=y_n,\;F_n:=e^{-(y_{n+1}-y_n)}\) とすると、
+                戸田格子の運動方程式(無次元)は、\(P_n:=\dot{y}_n,\;F_n:=e^{-(y_{n+1}-y_n)}\) とすると、
                 \[\left\{
                     \begin{aligned}    
                         \frac{d}{dt}P_n&=F_{n-1}-F_n\\
