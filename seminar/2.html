@@ -855,8 +855,16 @@
                         \end{align*}
                         より、
                         \[[\hat{M},\,\hat{L}]=6uu_x-u_{xxx}\]
-                        となる。\(L_t=(-\partial_x^2+u)_t=u_t\) だから、
-                        \[L_t-[\hat{M},\,\hat{L}]=u_t-6uu_x+u_{xxx}\]
+                        となる。また、
+                        \begin{align*}
+                            \hat{L}_tf
+                            &=(\hat{L}f)_t-\hat{L}f_t\\
+                            &=\partial_t\bigl[(-\partial_x^2+u)f\bigr]-(-\partial_x^2+u)f_t\\
+                            &=-\partial_x^2\partial_tf+u_tf+uf_t+\partial_x^2\partial_tf-uf_t\\
+                            &=u_tf
+                        \end{align*}
+                        より、\(\hat{L}_t=u_t\) となるので、
+                        \[\hat{L}_t-[\hat{M},\,\hat{L}]=u_t-6uu_x+u_{xxx}\]
                     </div>
                     <div style="text-align: right"><button id="close10">[閉じる]</button></div>
                 </details>        
@@ -866,5 +874,5 @@
     <div style="text-align: center"><a href="2_page2.html">[次ページ]</a></div>
     <?php include("./include/footer.php"); ?>
 	</body>
-	<script src="details_close.js"></script>
+	<script src="../js/details_close.js"></script>
 </html>
