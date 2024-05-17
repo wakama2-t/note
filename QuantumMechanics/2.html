@@ -29,9 +29,9 @@
 				\begin{aligned}
 					\varphi_n(x)&=
 					\begin{cases}
-						A_n\cos{k_nx}&(n=1,\,3,\,5,\ldots)\\
-						B_n\sin{k_nx}&(n=2,\,4,\,6,\ldots)
-					\end{cases}\\
+						\displaystyle\sqrt{\frac{2}{a}}\cos{k_nx}&(n=1,\,3,\,5,\ldots)\\[5pt]
+						\displaystyle\sqrt{\frac{2}{a}}\sin{k_nx}&(n=2,\,4,\,6,\ldots)
+					\end{cases}\\[3pt]
 					\varepsilon_n&=\frac{\hbar^2\pi^2}{2ma^2}n^2\;\;(n\in\mathbb{N})
 				\end{aligned}
 			\]
@@ -149,8 +149,8 @@
 						\begin{aligned}
 							\varphi_n(x)&=
 							\begin{cases}
-								A_n\cos{k_nx}&(n=1,\,3,\,5,\ldots)\\
-								B_n\sin{k_nx}&(n=2,\,4,\,6,\ldots)
+								\displaystyle\sqrt{\frac{2}{a}}\cos{k_nx}&(n=1,\,3,\,5,\ldots)\\[5pt]
+								\displaystyle\sqrt{\frac{2}{a}}\sin{k_nx}&(n=2,\,4,\,6,\ldots)
 							\end{cases}\\
 							k_n&=\frac{\pi}{a}n\;\;(n\in\mathbb{N})\\
 							\varepsilon_n&=\frac{\hbar^2}{2m}k_n^2=\frac{\hbar^2\pi^2}{2ma^2}n^2
@@ -195,10 +195,89 @@
 			\[
 				k(\varepsilon)=\sqrt{\frac{2m}{\hbar^2}(\varepsilon+V_0)},\;\;\kappa(\varepsilon)=\sqrt{-\frac{2m}{\hbar^2}\varepsilon}
 			\]
-			<details open id="white">
+			<details id="white">
 				<summary>導出過程</summary>
 				<div id="main_text">
-					
+					\(\displaystyle|x|&lt;0\) のとき、
+					\[
+						\left\{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial{x}^2}-V_0\right\}\varphi(x)=\varepsilon\varphi(x)
+					\]
+					\(\displaystyle k(\varepsilon):=\sqrt{\frac{2m}{\hbar^2}(\varepsilon+V_0)}\) として整理すると、
+					\[
+						\left\{\frac{d^2}{dx^2}+k^2\right\}\varphi(x)=0,\;\;
+					\]
+					\(\displaystyle|x|&gt;0\) のとき、
+					\[
+						\left\{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial{x}^2}\right\}\varphi(x)=\varepsilon\varphi(x)
+					\]
+					\(\displaystyle \kappa(\varepsilon):=\sqrt{-\frac{2m}{\hbar^2}\varepsilon}\) として整理すると、
+					\[
+						\left\{\frac{d^2}{dx^2}-\kappa^2\right\}\varphi(x)=0
+					\]
+					よって、
+					\[
+						\varphi(x)=\left\{
+						\begin{alignedat}{2}
+							&A_1e^{\kappa{x}}&+&\,B_1e^{-\kappa{x}}&\;\;\;\Bigl(\;x&&lt;\frac{a}{2}&\,\Bigr)\\[3pt]
+							&A_2e^{ikx}&+&\,B_2e^{-ikx}&\;\;\;\Bigl(|x|&&lt;\frac{a}{2}&\,\Bigr)\\[3pt]
+							&A_3e^{\kappa{x}}&+&\,B_3e^{-\kappa{x}}&\;\;\;\Bigl(\;x&&gt;\frac{a}{2}&\,\Bigr)\\
+						\end{alignedat}\right.
+					\]
+					となる。ここで \(\displaystyle\int_{-\infty}^{\infty}|\varphi(x)|^2\,dx&lt;\infty\) より \(\displaystyle\lim_{|x|\rightarrow\infty}\varphi(x)=0\) を満たす必要があるため、
+					\[
+						\varphi(x)=\left\{
+						\begin{alignedat}{2}
+							&Ce^{\kappa{x}}&&&\;\;\;\Bigl(\;x&&lt;\frac{a}{2}&\,\Bigr)\\[3pt]
+							&Ae^{ikx}&+&\,Be^{-ikx}&\;\;\;\Bigl(|x|&&lt;\frac{a}{2}&\,\Bigr)\\[3pt]
+							&De^{-\kappa{x}}&&&\;\;\;\Bigl(\;x&&gt;\frac{a}{2}&\,\Bigr)\\
+						\end{alignedat}\right.
+					\]
+					<a href="parity.html" target="_blank" rel="noopener noreferrer">波動関数の偶奇性</a>を用いると、\(\varphi\) は偶関数と奇関数で場合分けすることができる。<br>
+					また接続条件は、
+					\[
+						\left\{
+						\begin{alignedat}{2}					
+							\varphi\left(\frac{a}{2}+0\right)&=\;&\varphi\left(\frac{a}{2}-0\right)&\\
+							\varphi'\!\!\left(\frac{a}{2}+0\right)&=\;&\varphi'\!\!\left(\frac{a}{2}-0\right)&
+						\end{alignedat}\right.
+					\]
+					となる。
+					<br><div style="line-height: 5pt;">&nbsp;</div>
+					偶関数の場合 \(A=B,\,C=D\) となるので接続条件を考えると、
+					\[
+						\left\{
+						\begin{alignedat}{2}					
+							De^{-\kappa{a}/2}&\;=\;&2A\cos{\frac{ka}{2}}&\\
+							-\kappa De^{-\kappa{a}/2}&\;=\;&-2kA\sin{\frac{ka}{2}}&
+						\end{alignedat}\right.
+					\]
+					より、
+					\[
+							k\tan{\frac{ka}{2}}=\kappa\;\Leftrightarrow\;\frac{ka}{2}\tan{\frac{ka}{2}}=\frac{\kappa{a}}{2}
+					\]
+					<br><div style="line-height: 5pt;">&nbsp;</div>
+					奇関数の場合 \(A=-B,\,C=-D\) となるので接続条件を考えると、
+					\[
+						\left\{
+						\begin{alignedat}{2}					
+							De^{-\kappa{a}/2}&\;=\;&2iA\sin{\frac{ka}{2}}&\\
+							-\kappa De^{-\kappa{a}/2}&\;=\;&2ikA\cos{\frac{ka}{2}}&
+						\end{alignedat}\right.
+					\]
+					より、
+					\[
+							k\cot{\frac{ka}{2}}=-\kappa\;\Leftrightarrow\;\frac{ka}{2}\cot{\frac{ka}{2}}=-\frac{\kappa{a}}{2}
+					\]
+					よって \(\displaystyle X:=\frac{ka}{2},\;Y:=\frac{\kappa{a}}{2}\) とすると、
+					\begin{alignat*}{2}
+						X\tan{X}&=\;&Y&\;\;\;(偶関数)\\
+						-X\cot{X}&=\;&Y&\;\;\;(奇関数)
+					\end{alignat*}
+					であり、\(k,\;\kappa\) の関係式
+					\[
+						X^2+Y^2=\left(\frac{a}{2}\right)^2\left(\frac{2m}{\hbar^2}(\varepsilon+V_0)-\frac{2m}{\hbar^2}\varepsilon\right)=\frac{m}{2\hbar^2}V_0a^2
+					\]
+					と合わせて \(\varphi,\;\varepsilon\) を求める。
 				</div>
 				<div style="text-align: right"><button id="close1">[閉じる]</button></div>
 			</details>
@@ -217,20 +296,94 @@
 				&\;\;\alpha=\sqrt{\frac{m\omega}{\hbar}},\;\;\xi=\alpha x\\[10pt]
 				\varepsilon_n&=\left(n+\frac{1}{2}\right)\hbar\omega\;\;\;(n\in\mathbb{N})
 			\end{align*}
-			<details open id="white">
+			<details id="white">
 				<summary>導出過程</summary>
 				<div id="main_text">
-					
+					上の定常Schr&ouml;dinger方程式を変形すると、
+					\[
+						\left\{\frac{d^2}{dx^2}+\frac{2m}{\hbar}\left(\varepsilon-\frac{1}{2}m\omega^2x^2\right)\right\}\varphi(x)=0
+					\]
+					無次元化するため、\(\xi:=\alpha{x}\) とおくと、
+					\[
+						\left\{\frac{d^2}{d\xi^2}+\frac{2m\varepsilon}{\alpha^2\hbar^2}-\frac{m^2\omega^2}{\hbar^2\alpha^4}\xi^2\right\}\varphi(x)=0
+					\]
+					\(\displaystyle\alpha=\sqrt{\frac{m\omega}{\hbar}}\) とすれば、
+					\[
+						\left\{\frac{d^2}{d\xi^2}+\frac{2\varepsilon}{\hbar\omega}-\xi^2\right\}\varphi(\xi)=0
+					\]
+					最後に \(\displaystyle\lambda:=\frac{2\varepsilon}{\hbar\omega}\) とすれば、
+					\[
+						\left\{\frac{d^2}{d\xi^2}+(\lambda-\xi^2)\right\}\varphi(\xi)=0
+					\]
+					となる。
+					<br><div style="line-height: 5pt;">&nbsp;</div>
+					ここで、\(|\xi|\rightarrow\infty\) で \(\varphi(\xi)\) が \(0\) に収束して欲しいので、
+					\[
+						\varphi(\xi)=H(\xi)e^{-\frac{1}{2}\xi^2}
+					\]
+					とおき、無次元化した上の方程式に代入すると、
+					\[
+						H''-2\xi H'+(\lambda-1)H=0
+					\]
+					という微分方程式が得られる。この \(H(\xi)\) をエルミート多項式という。そして、
+					\[
+						H(\xi)=\sum_{n=0}^{\infty}a_n\xi^n
+					\]
+					と級数解を仮定すると、(<s>項別微分可能も勿論仮定</s>)
+					\begin{align*}
+						&\sum_{n=0}^\infty\Bigl(n(n-1)a_n\xi^{n-2}-2na_n\xi^n+(\lambda-1)a_n\xi^n\Bigr)\\
+						&=\sum_{n=0}^\infty\bigl((n+2)(n+1)a_{n+2}-2na_n+(\lambda-1)a_n\bigr)\xi^n=0
+					\end{align*}
+					となるので、
+					\[
+						(n+2)(n-1)a_{n+2}=(2n+1-\lambda)a_n
+					\]
+					となる。ただし、波動関数として許される解はこの漸化式が有限で切れる必要があるため、(略)
+					\[
+						\exists{N}\in{\mathbb{N}_0},\;2N+1-\lambda=0
+					\]
+					といった条件が加えられる。
+					<br><div style="line-height: 5pt;">&nbsp;</div>
+					これより、
+					\[
+						\lambda_n=2n+1
+					\]
+					とおけば、\(\displaystyle\lambda:=\frac{2\varepsilon}{\hbar\omega}\) としていたので、
+					\[
+						\varepsilon_n=\hbar\omega\left(n+\frac{1}{2}\right)
+					\]
+					\[
+						H(\xi)=H_n(\xi)=
+						\begin{cases}
+							\displaystyle \sum_{m=0,2,4,\ldots}^{n}a_m\xi^m &(n:偶数)\\
+							\displaystyle \sum_{m=1,3,5,\ldots}^{n}a_m\xi^m &(n:奇数)\\
+						\end{cases}
+					\]
+					となる。エルミート多項式の性質
+					\[
+						\int_{-\infty}^{\infty}H_n(\xi)H_m(\xi)e^{-\xi^2}d\xi=2^nn!\sqrt{\pi}\delta_{nm}
+					\]
+					を用いると、
+					\begin{align*}
+						&\int_{-\infty}^{\infty}|\varphi_n(x)|^2\,dx\\
+						&=\int_{-\infty}^{\infty}|H_n(\xi)e^{-\frac{1}{2}\xi^2}|^2\,\frac{d\xi}{\alpha}\\
+						&=\frac{2^nn!\sqrt{\pi}}{\alpha}
+					\end{align*}
+					となるため、規格化された固有関数は、
+					\[
+					\varphi_n(x)=\sqrt{\frac{\alpha}{2^nn!\sqrt{\pi}}}H_n(\xi)e^{-\frac{1}{2}\xi^2}
+					\]
+					となる。
 				</div>
 				<div style="text-align: right"><button id="close2">[閉じる]</button></div>
 			</details>
 
 			<div style="line-height: 10pt;">&nbsp;</div>
-		
+
 			<details open id="white">
-				<summary>Hermite多項式などの補足</summary>
+				<summary>消滅生成演算子</summary>
 				<div id="main_text">
-					
+
 				</div>
 				<div style="text-align: right"><button id="close3">[閉じる]</button></div>
 			</details>
