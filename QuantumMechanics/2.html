@@ -325,7 +325,7 @@
 					\[
 						H''-2\xi H'+(\lambda-1)H=0
 					\]
-					という微分方程式が得られる。この \(H(\xi)\) をエルミート多項式という。そして、
+					という微分方程式が得られる。そして、
 					\[
 						H(\xi)=\sum_{n=0}^{\infty}a_n\xi^n
 					\]
@@ -359,7 +359,7 @@
 							\displaystyle \sum_{m=1,3,5,\ldots}^{n}a_m\xi^m &(n:奇数)\\
 						\end{cases}
 					\]
-					となる。エルミート多項式の性質
+					となる。この \(H_n(\xi)\) をエルミート多項式という。<a href="Hermite_polynomial.html" target="_blank" rel="noopener noreferrer">エルミート多項式の性質</a>
 					\[
 						\int_{-\infty}^{\infty}H_n(\xi)H_m(\xi)e^{-\xi^2}d\xi=2^nn!\sqrt{\pi}\delta_{nm}
 					\]
@@ -380,10 +380,89 @@
 
 			<div style="line-height: 10pt;">&nbsp;</div>
 
-			<details open id="white">
+			<details id="white">
 				<summary>消滅生成演算子</summary>
 				<div id="main_text">
-
+					<a href="Hermite_polynomial.html" target="_blank" rel="noopener noreferrer">エルミート多項式の性質</a>
+					\begin{alignat*}{2}					
+						H_{n+1}(\xi)e^{-\frac{\xi^2}{2}}&=&\left(\xi-\frac{d}{d\xi}\right)H_n(\xi)e^{-\frac{\xi^2}{2}}\\
+						2nH_{n-1}(\xi)e^{-\frac{\xi^2}{2}}&=&\left(\xi+\frac{d}{d\xi}\right)H_n(\xi)e^{-\frac{\xi^2}{2}}
+					\end{alignat*}
+					及び
+					\[
+						\varphi_n(x)=\sqrt{\frac{\alpha}{2^nn!\sqrt{\pi}}}H_n(\xi)e^{-\frac{1}{2}\xi^2}
+					\]
+					から、
+					\begin{align*}
+						&\left(\xi-\frac{d}{d\xi}\right)\varphi_n(x)=\frac{1}{\sqrt{\hbar}}\left(\sqrt{m\omega}\,\hat{x}-\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\varphi_n(x)\\
+						&=\sqrt{\frac{\alpha}{2^nn!\sqrt{\pi}}}H_{n+1}(\xi)e^{-\frac{\xi^2}{2}}\\
+						&=\sqrt{2}\sqrt{n+1}\sqrt{\frac{\alpha}{2^{n+1}(n+1)!\sqrt{\pi}}}H_{n+1}(\xi)e^{-\frac{\xi^2}{2}}\\
+						&=\sqrt{2}\sqrt{n+1}\;\varphi_{n+1}(x)\\[15pt]
+						&\left(\xi+\frac{d}{d\xi}\right)\varphi_n(x)=\frac{1}{\sqrt{\hbar}}\left(\sqrt{m\omega}\,\hat{x}+\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\varphi_n(x)\\
+						&=\sqrt{\frac{\alpha}{2^nn!\sqrt{\pi}}}2nH_{n-1}(\xi)e^{-\frac{\xi^2}{2}}\\
+						&=\sqrt{2}\sqrt{n}\sqrt{\frac{\alpha}{2^{n-1}(n-1)!\sqrt{\pi}}}H_{n-1}(\xi)e^{-\frac{\xi^2}{2}}\\
+						&=\sqrt{2}\sqrt{n}\;\varphi_{n-1}(x)
+					\end{align*}
+					となるので、
+					\begin{align*}
+						\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}-\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\varphi_n(x)
+						&=\sqrt{n+1}\;\varphi_{n+1}(x)\\
+						\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}+\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\varphi_n(x)
+						&=\sqrt{n}\;\varphi_{n-1}(x)
+					\end{align*}
+					となる。また \(\displaystyle\hat{p}=\frac{\hbar}{i}\frac{d}{dx}\) を用いれば、
+					\begin{align*}
+						\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}-\frac{i}{\sqrt{m\omega}}\hat{p}\right)\varphi_n(x)
+						&=\sqrt{n+1}\;\varphi_{n+1}(x)\\
+						\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}+\frac{i}{\sqrt{m\omega}}\hat{p}\right)\varphi_n(x)
+						&=\sqrt{n}\;\varphi_{n-1}(x)
+					\end{align*}
+					これより、
+					\begin{align*}
+						\hat{a}\;&=\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}+\frac{i}{\sqrt{m\omega}}\hat{p}\right)\\
+						\hat{a}^{\dagger}&=\frac{1}{\sqrt{2\hbar}}\left(\sqrt{m\omega}\,\hat{x}-\frac{i}{\sqrt{m\omega}}\hat{p}\right)
+					\end{align*}
+					とすると、(\(\cdot^{\dagger}\)の定義は後のお話。)
+					\begin{align*}
+						\hat{a}^{\dagger}\varphi_n(x)&=\sqrt{n+1}\;\varphi_{n+1}(x)\\
+						\hat{a}\;\varphi_n(x)&=\sqrt{n}\;\varphi_{n-1}(x)
+					\end{align*}
+					となる。そしてこの \(\hat{a}\) を消滅(下降)演算子、\(\hat{a}^{\dagger}\) を生成(上昇)演算子という。
+					<br><div style="line-height: 10pt;">&nbsp;</div>
+					ちなみに、
+					\begin{align*}
+						\hat{a}^{\dagger}\hat{a}\;\varphi_n(x)
+						&=\hat{a}^{\dagger}\sqrt{n}\varphi_{n-1}(x)\\
+						&=\sqrt{n}\left\{\hat{a}^{\dagger}\varphi_{n-1}(x)\right\}\\
+						&=\sqrt{n}\left\{\sqrt{n}\,\varphi_{n}(x)\right\}\\
+						&=n\,\varphi_n(x)\\[5pt]
+						\hat{a}\hat{a}^{\dagger}\varphi_n(x)
+						&=\hat{a}\sqrt{n+1}\;\varphi_{n+1}(x)\\
+						&=\sqrt{n+1}\Bigl\{\hat{a}\,\varphi_{n+1}(x)\Bigr\}\\
+						&=\sqrt{n+1}\Bigl\{\sqrt{n+1}\,\varphi_{n}(x)\Bigr\}\\
+						&=(n+1)\varphi_n(x)
+					\end{align*}
+					から、
+					\[
+						[\hat{a},\,\hat{a}^\dagger]=\hat{I}
+					\]
+					がわかる。<br>
+					また、
+					\begin{align*}
+						\hat{a}^\dagger\hat{a}
+						&=\frac{1}{2\hbar}\left(\sqrt{m\omega}\,\hat{x}-\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\left(\sqrt{m\omega}\,\hat{x}+\frac{\hbar}{\sqrt{m\omega}}\frac{d}{dx}\right)\\
+						&=\frac{1}{2\hbar}\left[m\omega{x^2}+\hbar{x}\frac{d}{dx}-\hbar\left(1+x\frac{d}{dx}\right)-\frac{\hbar^2}{m\omega}\frac{d^2}{dx^2}\right]\\
+						&=\frac{m\omega}{2\hbar}x^2+-\frac{1}{2}-\frac{1}{2}\frac{\hbar}{m\omega}\frac{d^2}{dx^2}
+					\end{align*}
+					より、
+					\[
+						\hbar\omega\left(\hat{a}^\dagger\hat{a}+\frac{1}{2}\right)=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2=\hat{H}
+					\]
+					また \(\hat{a}^{\dagger}\hat{a}\;\varphi_n(x)=n\,\varphi_n(x)\) であったので、
+					\[
+						\hat{H}\varphi_n(x)=\left(n+\frac{1}{2}\right)\hbar\omega\varphi_n(x)
+					\]
+					と先ほど示した結果を得ることもできる。
 				</div>
 				<div style="text-align: right"><button id="close3">[閉じる]</button></div>
 			</details>
