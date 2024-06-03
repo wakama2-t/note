@@ -712,39 +712,62 @@
                     \mathrm{Tr}\,L^m
                 \]
                 は保存量となる。
-                <details id="white"> <!-- 保存量1 -->
+                <details open id="white"> <!-- 保存量1 -->
                     <summary>証明＆補足</summary>
                     <div id="main_text">
-                        \(L(t)\) は実対称行列なので対角化可能である。なので、
-                        \[
-                            Q^{-1}LQ=\mathrm{diag}(\lambda_1,\ldots,\,\lambda_N)=:A(t)
-                        \]
-                        となる実正則行列 \(Q\) 及び固有値 \(\lambda_1,\ldots,\,\lambda_N\) が存在する。これより、
-                        \[
-                            \mathrm{Tr}\,L=\mathrm{Tr}(LQ^{-1}Q)=\mathrm{Tr}(Q^{-1}LQ)=\mathrm{Tr}\,A=\sum_{i=1}^{N}A_{ii}
-                        \]
-                        及び
-                        \[
-                            \mathrm{Tr}\,L_t=\mathrm{Tr}\,A_t
-                        \]
-                        となるため、
-                        \begin{align*}                
+
+                        \begin{align*}
                             \frac{d}{dt}\mathrm{Tr}\,L^m
-                            &=\frac{d}{dt}\sum_{i=1}^{N}A_{ii}^m(t)\\
-                            &=\sum_{i=1}^{N}mA_{ii}^{m-1}(t)\frac{d}{dt}A_{ii}(t)\\
-                            &=m\sum_{i=1}^{N}A_{ii}^{m-1}(t)\frac{d}{dt}A_{ii}(t)\\
-                            &=m\,\mathrm{Tr}\bigl(A^{m-1}A_t\bigr)\\
-                            &=m\,\mathrm{Tr}\bigl(A^{m-1}L_t\bigr)\\
-                            &=m\,\mathrm{Tr}\bigl(A^{m-1}[M,\,L]\bigr)\\
-                            &=0
+                            &=\mathrm{Tr}\,\left(\frac{d}{dt}L^m\right)\\
+                            &=\mathrm{Tr}\,\left(mL^{m-1}L_t\right)\\
+                            &=m\mathrm{Tr}\,\left(L^{m-1}L_t\right)\\
+                            &=m\mathrm{Tr}\,\left(L^{m-1}[M,\,L]\right)\\
+                            &=m\mathrm{Tr}\,\left(L^{m-1}(ML-LM)\right)\\
+                            &=m\mathrm{Tr}\,\left(L^{m-1}(ML-ML)\right)\\
+                            &=0\\
                         \end{align*}
                         となり示せた。<br>
                         <div style="line-height: 5pt;">&nbsp;</div>
-                        また固有値 \(\lambda_1,\ldots,\,\lambda_N\) を用いて、
+                        また\(L(t)\) は実対称行列なので対角化可能である。なので、
+                        \[
+                            Q^{-1}LQ=\mathrm{diag}(\lambda_1,\ldots,\,\lambda_N)=:A(t)
+                        \]
+                        となる \(Q\in{\mathrm{GL}(\mathbb{R})}\) 及び固有値 \(\lambda_1,\ldots,\,\lambda_N\in\mathbb{R}\) が存在する。これより、
+                        \[
+                            \mathrm{Tr}\,L=\mathrm{Tr}(LQ^{-1}Q)=\mathrm{Tr}(Q^{-1}LQ)=\mathrm{Tr}\,A=\sum_{i=1}^{N}\lambda_{i}
+                        \]
+                        となるため、
+                        
+                        固有値 \(\lambda_1,\ldots,\,\lambda_N\) を用いて、
                         \[
                             \mathrm{Tr}\,L^m=\sum_{i=1}^{N}\lambda_i^m
                         \]
-                        も保存量であり、固有値を用いた任意の対称多項式は時間依存しないことがわかる。<br>
+                        も保存量となり、固有値 \(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式は時間依存しないことがわかる。<br>
+                        <details open id="gray">
+                            <summary>証明</summary>
+                            <div id="main_text">
+                                \(k\) 次基本対称多項式 \(e_k\) を
+                                \[
+                                    \prod_{i=1}^N(x+\lambda_i)=x^N+e_1x^{N-1}+e_2x^{N-2}+\cdots+e_N
+                                \]
+                                によって定義する。 また、 
+                                \[
+                                    S_k:=\sum_{i=1}^{N}\lambda_i^k
+                                \]
+                                とする。
+                                <br><div style="line-height: 10pt;">&nbsp;</div>
+                                ・\(e_k\) が \(S_i\;(1\leq{i}\leq{k})\) の多項式で表されること<br>
+                                ・\(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が \(e_k\;(1\leq{k}\leq{N})\) の多項式で表されること<br>
+                                <div style="line-height: 5pt;">&nbsp;</div>
+                                の2つを示すことで、\(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が、
+                                \[
+                                    保存量:\;S_m=\sum_{i=1}^{N}\lambda_i^m
+                                \]
+                                の多項式で表されることを示す。
+                            </div>
+                            <div style="text-align: right"><button id="close10">[閉じる]</button></div>
+                        </details>
+                        <div style="line-height: 5pt;">&nbsp;</div>
                         例えば、
                         \[
                             F(\lambda):=\det(\lambda{E}+L)
@@ -753,20 +776,36 @@
                         \[
                             \det(L-\lambda_i{E})=0\;\;( \because 固有値方程式)
                         \]
-                        となるため、
+                        となるため因数定理より、
                         \[
                             F(\lambda)=\prod_{i=1}^{N}(\lambda+\lambda_i)
                         \]
-                        となり、対称多項式となる。つまり \(\lambda\) の値に関わらず
+                        となると同時に、\(\lambda\) の係数は保存量となることがわかる。
+                        <details id="gray">
+                            <summary>証明</summary>
+                            <div id="main_text">
+                            \[
+                                F(\lambda)=\prod_{i=1}^{N}(\lambda+\lambda_i)
+                            \]
+                            は上の証明で \(k\) 次基本対称多項式 \(e_k\) を定義するときに用いた式であり、\(k\) 次の係数は \(e_{N-k}\)である。<br>
+                            また上の証明で \(e_k\) は
+                            \[
+                                保存量:\;S_m=\sum_{i=1}^{N}\lambda_i^m
+                            \]
+                            の多項式で表されることを示したので、これで示せた。
+                            </div>
+                            <div style="text-align: right"><button id="close11">[閉じる]</button></div>
+                        </details>
+                        <div style="line-height: 5pt;">&nbsp;</div>
+                        つまり、
                         \[
-                            \frac{d}{dt}F(\lambda)=0
+                            F(\lambda)=\sum_{i=0}^{N}c_i\lambda^{i}
                         \]
-                        を満たす。すなわち
+                        と展開したとき、係数 \(c_i\) は保存量、すなわち、
                         \[
-                            F(\lambda)=\sum_{k=0}^{N}c_k\lambda^{k},\;\;\frac{d}{dt}c_k=0
+                            \frac{d}{dt}c_i=0\;\;\;(1\leq{i}\leq{N})
                         \]
-                        となり、\(c_k\;\;(1\leqq{k}\leqq{N})\) も保存量となる。
-
+                        を満たす。
                     </div>
                     <div style="text-align: right"><button id="close9">[閉じる]</button></div>
                 </details>
