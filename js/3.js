@@ -18,7 +18,7 @@ for (let i = 0; i < N; i++) {
 const next_button = document.getElementById("next");
 const prev_button = document.getElementById("prev");
 let hakotama = Array(N);
-let j;
+let j, k;
 
 next_button.addEventListener('click', () => { 
     let k = 1;
@@ -34,11 +34,11 @@ next_button.addEventListener('click', () => {
 }, false)
 
 prev_button.addEventListener('click', () => { 
-    let k = 1;
+    let a = 1;
     for (let i = 0; i < N; i++){
-        k *= hako[i].value;
+        a *= hako[i].value;
     }
-    if (k == 1) {
+    if (a == 1) {
         return;
     } else {
         prev_step();
@@ -54,13 +54,25 @@ function next_step() {
             hakotama[i] = 0;
         }
     }
+    let s = 0;
+    if (hakotama[0] * hakotama[N - 1] == 1) {
+        s = 1;
+        while (hakotama[N - s - 1] == 1){
+            s++;
+        }
+    }
     for (let i = 0; i < N; i++){
-        if (hako[i].value == 1) {
-            j = (i + 1) % N;
+        if (i - s < 0) {
+            k = i - s + N;
+        } else {
+            k = i - s;
+        }
+        if (hako[k].value == 1) {
+            j = (k + 1) % N;
             while (hakotama[j] == 1) {
                 j = (j + 1) % N;
             }
-            hakotama[i] = 0;
+            hakotama[k] = 0;
             hakotama[j] = 1;
         }
     }
@@ -74,15 +86,23 @@ function prev_step() {
             hakotama[i] = 0;
         }
     }
-    for (let i = N-1; i >= 0; i--){
-        if (hako[i].value == 1) {
-            j = (i - 1);
+    let s = 0;
+    if (hakotama[0] * hakotama[N - 1] == 1) {
+        s = 1;
+        while (hakotama[s] == 1){
+            s++;
+        }
+    }
+    for (let i = N - 1; i >= 0; i--){
+        k = (i + s) % N;
+        if (hako[k].value == 1) {
+            j = (k - 1);
             if (j < 0) { j += N; }
             while (hakotama[j] == 1) {
                 j = (j - 1) % N;
                 if (j < 0) { j += N; }
             }
-            hakotama[i] = 0;
+            hakotama[k] = 0;
             hakotama[j] = 1;
         }
     }
