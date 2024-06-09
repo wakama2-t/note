@@ -3,6 +3,10 @@ h1,h2{
     padding : 0;
 }
 
+h3{
+    font-size: larger;
+}
+
 h1#title{
     margin-top: 2%;
 }
@@ -81,6 +85,13 @@ button[id^="close"]{
     background-color: rgba(255, 255, 255, 0);
     /* border: 1pt solid black;  */
     border: none;
+}
+
+button[id^="hakotama"]{
+    width: 2.5%;
+    aspect-ratio: 1;
+    border: 1pt;
+    border-style: solid;
 }
 
 div#long_mjx{
