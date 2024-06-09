@@ -712,10 +712,9 @@
                     \mathrm{Tr}\,L^m
                 \]
                 は保存量となる。
-                <details open id="white"> <!-- 保存量1 -->
+                <details id="white"> <!-- 保存量 -->
                     <summary>証明＆補足</summary>
                     <div id="main_text">
-
                         \begin{align*}
                             \frac{d}{dt}\mathrm{Tr}\,L^m
                             &=\mathrm{Tr}\,\left(\frac{d}{dt}L^m\right)\\
@@ -726,8 +725,55 @@
                             &=m\mathrm{Tr}\,\left(L^{m-1}(ML-ML)\right)\\
                             &=0\\
                         \end{align*}
-                        となり示せた。<br>
-                        <div style="line-height: 5pt;">&nbsp;</div>
+                        となり示せた。
+                        <details id="gray"> <!-- 行列の微分 -->
+                            <summary>対角和、行列の微分について確認</summary>
+                            <div id="main_text">
+                                \(A,\,B:\,n\times{n}\) 行列, \((A)_{ij}=a_{ij},\;(B)_{ij}=b_{ij}\) とする。
+                                <br><div style="line-height: 5pt;">&nbsp;</div>
+                                ・対角和と微分の交換
+                                    \[
+                                        \frac{d}{dt}\mathrm{Tr}A=\frac{d}{dt}\sum_{i=1}^{n}a_{ii}=\sum_{i=1}^{n}\frac{d}{dt}a_{ii}=\mathrm{Tr}A_t
+                                    \]
+                                    <div style="line-height: 10pt;">&nbsp;</div>
+                                ・積の微分
+                                <div id="main_text">
+                                    \[
+                                        (AB)_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}
+                                    \]
+                                    より、
+                                    \begin{align*}                                
+                                        \left(\frac{d}{dt}AB\right)_{ij}
+                                        &=\frac{d}{dt}\sum_{k=1}^{n}a_{ik}b_{kj}\\
+                                        &=\sum_{k=1}^{n}\left(\frac{da_{ik}}{dt}b_{kj}+a_{ik}\frac{db_{kj}}{dt}\right)\\
+                                        &=\sum_{k=1}^{n}\frac{da_{ik}}{dt}b_{kj}+\sum_{k=1}^{n}a_{ik}\frac{db_{kj}}{dt}\\
+                                        &=(A_tB)_{ij}+(AB_t)_{ij}
+                                    \end{align*}
+                                    \[
+                                        \frac{d}{dt}AB=\frac{dA}{dt}B+A\frac{dB}{dt}
+                                    \]
+                                </div><div style="line-height: 10pt;">&nbsp;</div>
+                                ・べき乗の微分
+                                <div id="main_text">
+                                    \[
+                                        \frac{d}{dt}A^m=mA^{m-1}A_t
+                                    \]
+                                    帰納法で示す。<br>
+                                    \(m=1\) のときは明らか。<br>
+                                    \(m=k\) のとき成り立つと仮定して \(m=k+1\) を考えると、
+                                    \begin{align*}
+                                        \frac{d}{dt}A^{k+1}
+                                        &=\frac{d}{dt}AA^k\\
+                                        &=A_tA^k+AkA^{k-1}A_t\\
+                                        &=A^{k}A_t+kA^kA_t\\
+                                        &=(k+1)A^kA_t
+                                    \end{align*}
+                                    となり示せた。
+                                </div>
+
+                            </div>
+                            <div style="text-align: right"><button id="close10">[閉じる]</button></div>
+                        </details><div style="line-height: 5pt;">&nbsp;</div>
                         また\(L(t)\) は実対称行列なので対角化可能である。なので、
                         \[
                             Q^{-1}LQ=\mathrm{diag}(\lambda_1,\ldots,\,\lambda_N)=:A(t)
@@ -743,7 +789,7 @@
                             \mathrm{Tr}\,L^m=\sum_{i=1}^{N}\lambda_i^m
                         \]
                         も保存量となり、固有値 \(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式は時間依存しないことがわかる。<br>
-                        <details open id="gray">
+                        <details id="gray">
                             <summary>証明</summary>
                             <div id="main_text">
                                 \(k\) 次基本対称多項式 \(e_k\) を
@@ -756,16 +802,99 @@
                                 \]
                                 とする。
                                 <br><div style="line-height: 10pt;">&nbsp;</div>
-                                ・\(e_k\) が \(S_i\;(1\leq{i}\leq{k})\) の多項式で表されること<br>
-                                ・\(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が \(e_k\;(1\leq{k}\leq{N})\) の多項式で表されること<br>
+                                1. \(e_k\) が \(S_i\;(1\leq{i}\leq{k})\) の多項式で表されること<br>
+                                2. \(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が \(e_k\;(1\leq{k}\leq{N})\) の多項式で表されること<br>
                                 <div style="line-height: 5pt;">&nbsp;</div>
-                                の2つを示すことで、\(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が、
+                                の2つを示すことで、\(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が、保存量である
                                 \[
-                                    保存量:\;S_m=\sum_{i=1}^{N}\lambda_i^m
+                                    \;S_m=\sum_{i=1}^{N}\lambda_i^m
                                 \]
                                 の多項式で表されることを示す。
+                                <br><div style="line-height: 10pt;">&nbsp;</div>
+                                1.
+                                \begin{align*}
+                                    \prod_{i=1}^{N}(x+\lambda_i)
+                                    &=\exp\left[\sum_{i=1}^{N}\log(x+\lambda_i)\right]\\
+                                    &=x^N\exp\left[\sum_{i=1}^{N}\log\left(1+\frac{\lambda_i}{x}\right)\right]
+                                \end{align*}
+                                ここで、\(\log(1+x)\) のマクローリン展開
+                                \[
+                                    \log(1+x)=x-\frac{1}{2}x^2+\frac{1}{3}x^3-\cdots
+                                \]
+                                を用いて、
+                                \begin{align*}                                
+                                    \prod_{i=1}^{N}(x+\lambda_i)
+                                    &=x^N\exp\left[\sum_{i=1}^{N}\sum_{k=1}^{\infty}\frac{(-1)^{k-1}}{k}\left(\frac{\lambda_i}{x}\right)^k\right]\\
+                                    &=x^N\exp\left[\sum_{k=1}^{\infty}\left(\frac{(-1)^{k-1}}{kx^k}\sum_{i=1}^{N}\lambda_i^k\right)\right]\\
+                                    &=x^N\exp\left[\sum_{k=1}^{\infty}\frac{(-1)^{k-1}}{kx^{k}}S_k\right]
+                                \end{align*}
+                                また \(\displaystyle e^{x}=\sum_{n=1}^{\infty}\frac{x^n}{n!}\) を用いて、
+                                \begin{align*}                                
+                                    \prod_{i=1}^{N}(x+\lambda_i)
+                                    &=x^N\sum_{n=1}^{\infty}\frac{1}{n!}\left(\sum_{k=1}^{\infty}\frac{(-1)^{k-1}}{kx^{k}}S_k\right)^n\\
+                                    &=\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}\frac{(-1)^{n(k-1)}S_k^n}{k^nn!}x^{N-kn}
+                                \end{align*}
+                                \[
+                                    x^N+e_1x^{N-1}+e_2x^{N-2}+\cdots+e_N=\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}\frac{(-1)^{n(k-1)}S_k^n}{k^nn!}x^{N-kn}
+                                \]
+                                よって、
+                                \[
+                                    e_m=\sum_{nk=m}\frac{(-1)^{m-n}}{k^nn!}S_k^n
+                                \]
+                                より示せた。
+                                <br><div style="line-height: 10pt;">&nbsp;</div>
+                                2.<br>
+                                帰納法を用いる。\(N=1\) のとき、
+                                \[
+                                    \prod_{i=1}^{N}(x+\lambda_i)=x+\lambda_1=x+e_1
+                                \]
+                                より明らかに成り立つ。<br>
+                                \(N=k\) まで成り立つと仮定して \(N=k+1\) の場合を考える。
+                                \begin{align*}
+                                    \prod_{i=1}^{k+1}(x+\lambda_i)&=x^{k+1}+e_1x^{k}+e_2x^{k-1}+\cdots+e_{k+1}\\
+                                    \prod_{i=1}^k(x+\lambda_i)&=x^k+e'_1x^{k-1}+e'_2x^{k-2}+\cdots+e'_k
+                                \end{align*}
+                                と \(N=k,\,N=k+1\) における基本対称多項式を区別すると、
+                                \[
+                                    \prod_{i=1}^{k+1}(x+\lambda_i)=\prod_{i=1}^k(x+\lambda_i)\cdot(x+\lambda_{k+1})
+                                \]
+                                より、
+                                \begin{align*}
+                                    &x^{k+1}+e_1x^{k}+e_2x^{k-1}+\cdots+e_{k+1}\\[3pt]
+                                    &=(x^k+e'_1x^{k-1}+e'_2x^{k-2}+\cdots+e'_k)(x+\lambda_{k+1})\\[3pt]
+                                    &=x^{k+1}+(e'_1+\lambda_{k+1})x^{k}+(e'_2+\lambda_{k+1}e'_1)x^{k-1}+\cdots+(e'_{k}+\lambda_{k+1}e'_{k-1})x+\lambda_{k+1}e'_k
+                                \end{align*}
+                                が成り立つ。\(e'_0=e_0=1\) とおけば、
+                                \[
+                                    e'_i=e_i-\lambda_{k+1}e'_{i-1}\;\;(1\leq{i}\leq{k})
+                                \]
+                                となる。これより、
+                                \begin{align*}                                
+                                    e'_i&=e_i-\lambda_{k+1}e'_{i-1}\\
+                                        &=e_i-\lambda_{k+1}(e_{i-1}-\lambda_{k+1}e'_{i-2})\\
+                                        &\;\;\vdots\\
+                                        &=e_i-\lambda_{k+1}(e_{i-1}-\lambda_{k+1}(e_{i-2}-\lambda_{k+1}(\cdots(e_{1}-\lambda_{k+1})\cdots))\\
+                                        &=\sum_{n=0}^{i}(-1)^{n}\lambda_{k+1}^ne_{i-n}
+                                \end{align*}
+                                となり、\(e'_i\;(1\leq{i}\leq{k})\) は \(\lambda_{k+1},\;e_j\;(1\leq{j}\leq{k})\) の整数係数の多項式となる。<br>
+                                ここで、任意の \(M\) 次の対称多項式 \(F=F(\lambda_1,\,\lambda_2,\ldots,\,\lambda_{k+1})\) を \(\lambda_{k+1}\) についての多項式としてみると、その係数は \(\lambda_1,\,\lambda,\ldots,\,\lambda_k\) の対称多項式となる。
+                                \(\lambda_{k+1}\) の \(n\) 次の係数を \(c_n(\lambda_1,\,\lambda_2,\ldots,\,\lambda_k)\) とすると、
+                                \[
+                                    F(\lambda_1,\,\lambda_2,\ldots,\,\lambda_{k+1})=\sum_{n=0}^{M}c_n(\lambda_1,\,\lambda_2,\ldots,\,\lambda_k)\lambda_{k+1}^n
+                                \]
+                                となるが、仮定より \(c_n(\lambda_1,\,\lambda_2,\ldots,\,\lambda_k)\) は \(e'_i\;(1\leq{i}\leq{k})\) の多項式で表せるので、先の結果と合わせて、
+                                \[
+                                    F(\lambda_1,\,\lambda_2,\ldots,\,\lambda_{k+1})=\sum_{n=0}^{M}C_n(e_1,\,e_2,\ldots,\,e_k)\lambda_{k+1}^n
+                                \]
+                                と \(e_j\;(1\leq{j}\leq{k})\) の整数係数の多項式 \(C_n\) を用いて表せる。<br>
+                                しかし左辺は対称多項式なので、例えば \(\lambda_{k+1}\) と \(\lambda_1\) を入れ替えても成り立つ必要があり、
+                                \[
+                                    F(\lambda_1,\,\lambda_2,\ldots,\,\lambda_{k+1})=C_0(e_1,\,e_2,\ldots,\,e_k)
+                                \]
+                                となる。よって \(N=k\) での仮定の下、 \(N=k+1\) で \(\lambda_1,\ldots,\,\lambda_N\) を用いた任意の対称多項式が \(e_k\;(1\leq{k}\leq{N})\) の多項式で表されることが示せた。<br>
+                                よって任意の \(N\) について成り立つことが示せた。
                             </div>
-                            <div style="text-align: right"><button id="close10">[閉じる]</button></div>
+                            <div style="text-align: right"><button id="close11">[閉じる]</button></div>
                         </details>
                         <div style="line-height: 5pt;">&nbsp;</div>
                         例えば、
@@ -788,9 +917,9 @@
                                 F(\lambda)=\prod_{i=1}^{N}(\lambda+\lambda_i)
                             \]
                             は上の証明で \(k\) 次基本対称多項式 \(e_k\) を定義するときに用いた式であり、\(k\) 次の係数は \(e_{N-k}\)である。<br>
-                            また上の証明で \(e_k\) は
+                            また上の証明で \(e_k\) は、保存量である
                             \[
-                                保存量:\;S_m=\sum_{i=1}^{N}\lambda_i^m
+                                S_m=\sum_{i=1}^{N}\lambda_i^m
                             \]
                             の多項式で表されることを示したので、これで示せた。
                             </div>
