@@ -31,6 +31,179 @@
 				}
 			</script>
 			<div style="text-align: center;"><button id="prev">prev</button> <button id="next">next</button></div>
+			<div id="main_text">
+				<p>・連続した玉の列を「ソリトン」、その列の長さを「ソリトンの振幅」という。</p>
+				<p>・KdV方程式のソリトンと似たような性質を持つ。</p>
+				<div id="main_text">
+					1. 振幅 \(k\) のソリトンは速度 \(k\) で進む<br>
+					2. 衝突すると位相は変化するがソリトンは変化しない<br>
+				</div>
+			</div>
+			<br>
+			<h3>箱玉系の運動方程式</h3>
+			<div id="main_text">
+				<p>・時刻 \(t\) における \(n\) 番目の箱にある玉の数 \(u_n^t\in\{0,\,1\}\) を用いると、</p>
+				<div id="main_text">
+					\[
+						u_{n}^{t+1}=
+						\left\{
+						\begin{aligned}
+							1&&&u_n^t=0\;\;\wedge\\[5pt]
+							0&&&\mathrm{otherwise}\\
+						\end{aligned}
+						\right.
+						\begin{aligned}
+							\sum_{k=-\infty}^{n-1}u_k^t&gt;\sum_{k=-\infty}^{n-1}u_{k}^{t+1}\\[5pt]
+							{}
+						\end{aligned}
+					\]
+					<details id="white">
+						<summary>解釈</summary>
+						<div id="main_text">
+							時刻 \(t\) で玉が入っている場合、規則より次の時刻において玉は必ず入らない。
+							<div style="text-align: center;"><img src="./image/im9.bmp" alt="箱玉系" width="100%"></div>
+							<div style="text-align: center;">
+								\(\displaystyle\sum_{k=-\infty}^{n-1}u_k^t,\;\sum_{k=-\infty}^{n-1}u_{k}^{t+1}:\) 時刻 \(t,\,t+1\) における橙色線より左側にある玉の総数
+							</div><div style="line-height: 5pt;">&nbsp;</div>
+							と考えられるので、
+							\[
+								\sum_{k=-\infty}^{n-1}u_k^t&gt;\sum_{k=-\infty}^{n-1}u_{k}^{t+1}
+							\]
+							が成り立つとき、橙色線を跨いだ玉が存在することを意味する。<br>
+							このとき規則より、\(n\) 番目の箱に玉が入らず橙色線を跨ぐことは不可能なので、\(u_n^{t+1}=1\) となる。
+						</div>
+						<div style="text-align: right;"><button id=close0>[閉じる]</button></div>
+					</details>
+				</div>
+				<p>・箱玉系の運動方程式</p>
+				<div id="main_text">
+					\[
+						u_n^{t+1}=\min\left[1-u_n^t,\;\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}\right]
+					\]
+					<details id="white">
+						<summary>解釈</summary>
+						<div id="main_text">
+							<div style="text-align: center;"><img src="./image/im9.bmp" alt="箱玉系" width="100%"></div>
+							橙色線を跨ぐ玉が存在するとき、
+							\[
+								\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}\geq{1}
+							\]
+							存在しないとき、
+							\[
+								\sum_{k=-\infty}^{n-1}u_k^t=\sum_{k=-\infty}^{n-1}u_k^{t+1}
+							\]
+							となるため、
+							\[
+								u_{n}^{t+1}=
+								\left\{
+								\begin{aligned}
+									1&&&u_n^t=0\;\;\wedge\\[5pt]
+									0&&&\mathrm{otherwise}\\
+								\end{aligned}
+								\right.
+								\begin{aligned}
+									\sum_{k=-\infty}^{n-1}u_k^t&gt;\sum_{k=-\infty}^{n-1}u_{k}^{t+1}\\[5pt]
+									{}
+								\end{aligned}
+							\]
+							より、\(u_n^{t+1}=1\) となるとき、
+							\[
+								1-u_n^t=1\;\;\mathrm{and}\;\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}\geq{1}
+							\]
+							であり、
+							\[
+								\min\left[1-u_n^t,\;\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}\right]=1
+							\]
+							\(u_n^{t+1}=0\) となるとき、
+							\[
+								1-u_n^t=0\;\;\mathrm{or}\;\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}=0
+							\]
+							となるため、
+							\[
+								\min\left[1-u_n^t,\;\sum_{k=-\infty}^{n-1}u_k^t-\sum_{k=-\infty}^{n-1}u_k^{t+1}\right]=0
+							\]
+							が確認できる。
+						</div>
+						<div style="text-align: right;"><button id=close1>[閉じる]</button></div>
+					</details>
+				</div>
+				<p>・等価な表現</p>
+				<div id="main_text">
+					\[
+						\left\{
+						\begin{aligned}
+							Q_n^{t+1}&=\min\smash{\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1},\;E_n^t\right]}\\[13pt]
+							E_n^{t+1}&=Q_{n+1}^t+E_n^t-Q_n^{t+1}
+						\end{aligned}
+						\right.
+					\]
+					\begin{align*}
+						Q_n^t&:\,時刻\,t\,における\,n\,番目のソリトンの振幅\\
+						E_n^t&:\,時刻\,t\,における\,n\,番目のソリトンと\,(n+1)\,番目のソリトンの間にある空き箱の数
+					\end{align*}
+					<details id="white">
+						<summary>解釈</summary>
+						<div id="main_text">
+							<div style="text-align: center;"><img src="./image/im10.png" alt="箱玉系" width="100%"></div>
+							\[
+								\sum_{j=1}^nQ_j^t,\;\sum_{j=1}^{n-1}Q_j^{t+1}:\;時刻\,t,\,t+1\,における橙色線より左側にある玉の総数
+							\]
+							であり、
+							\[
+								\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1}:\;橙色線を跨ぐ玉の総数
+							\]
+							となる。そして上図のように、それらの玉(上図では3個)が \(E_n^t\) より多いときは、
+							\[
+								Q_n^{t+1}=E_n^t
+							\]
+							となる他なく、
+							<div style="text-align: center;"><img src="./image/im11.png" alt="箱玉系" width="100%"></div>
+							のように \(E_n^t\) に橙色線を跨いだ玉の全てが入る余裕があるときは、
+							\[
+								Q_n^{t+1}=\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1}
+							\]
+							となる。<br>
+							これらの結果をまとめると、
+							\[
+								Q_n^{t+1}=\min\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1},\;E_n^t\right]
+							\]
+							となる。
+							<br><div style="line-height: 5pt;">&nbsp;</div>
+							また離散変数2つに対して1つの関係式では一意に定まらないため、
+							<div style="text-align: center;"><img src="./image/im12.png" alt="箱玉系" width="100%"></div>
+							青線に注目して、
+							\[
+								E_n^t+Q_{n+1}^t=E_n^{t+1}+Q_n^{t+1}
+							\]
+							を得る。この関係式は、
+							\[
+								(時刻\,t\,におけるソリトンの右端)+1\;=(時刻\,(t+1)\,におけるソリトンの左端)
+							\]
+							が成り立つことから、
+							<div style="line-height: 5pt;">&nbsp;</div>
+							<div style="text-align: center;">
+								時刻 \(t\) における、\(n\) 番目のソリトンの右端から \((n+1)\) 番目のソリトンの右端までの長さ
+							</div>
+							<div style="line-height: 5pt;">&nbsp;</div>
+							と
+							<div style="line-height: 5pt;">&nbsp;</div>
+							<div style="text-align: center;">
+								時刻 \((t+1)\) における、\(n\) 番目のソリトンの左端から \((n+1)\) 番目のソリトンの左端までの長さ
+							</div>
+							<div style="line-height: 5pt;">&nbsp;</div>
+							が等しくなるためである。
+						</div>
+						<div style="text-align: right;"><button id=close2>[閉じる]</button></div>
+					</details><div style="line-height: 5pt;">&nbsp;</div>
+					<details open id="white">
+						<summary>本当に等価か</summary>
+						<div id="main_text">
+							a
+						</div>
+						<div style="text-align: right;"><button id=close3>[閉じる]</button></div>
+					</details>
+				</div>
+			</div>
 		</div>
 
 
