@@ -282,7 +282,7 @@
 							p_1=4,\,p_2=2,\,p_3=1
 						\]
 					</div><div style="line-height: 10pt;">&nbsp;</div>
-					<details open id="white">
+					<details id="white">
 						<summary>\(p_n\) が保存量であることの証明</summary>
 						<div id="main_text">
 							<div style="margin-left: 10%;margin-right: 10%;margin-top: 5pt;margin-bottom: 5pt;">
@@ -343,8 +343,41 @@
 																  &=0^\infty1^{n_1-1}0^*01^{n_2-1}0^*0\cdots
 								\end{align*}
 								となり、 示せた。<br>
-
-							</div>
+								また、
+								\[
+									\left\{
+									\begin{aligned}
+										Q_n^{t+1}&=\min\smash{\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1},\;E_n^t\right]}\\[13pt]
+										E_n^{t+1}&=Q_{n+1}^t+E_n^t-Q_n^{t+1}
+									\end{aligned}
+									\right.
+								\]
+								で考えると、<br>
+								10対を消去する操作は、
+								\[
+									Q_n^t\rightarrow Q_n^t-1,\,E_n^t\rightarrow E_n^t-1
+								\]
+								となり、
+								10対を消去した後に時間発展したときの \(Q_n^{t+1},\,E_n^{t+1}\) は、
+								\begin{align*}
+									Q_n^{t+1}
+									&=\min\left[\sum_{j=1}^n\left(Q_j^t-1\right)-\sum_{j=1}^{n-1}Q_j^{t+1},\;E_n^t-1\right]\\
+									&=\min\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1}-n,\;E_n^t-1\right]\\[5pt]
+									E_n^{t+1}+Q_n^{t+1}
+									&=\left(Q_{n+1}^t-1\right)+\left(E_n^t-1\right)\\
+									&=Q_{n+1}^t+E_n^t-2\\
+								\end{align*}
+								時間発展した後に10対(01対)を消去したときの \(Q_n^{t+1},\,E_n^{t+1}\) は、
+								\begin{align*}
+									Q_n^{t+1}
+									&=\min\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}\left(Q_j^{t+1}-1\right),\;E_n^t\right]-1\\
+									&=\min\left[\sum_{j=1}^nQ_j^t-\sum_{j=1}^{n-1}Q_j^{t+1}-n,\;E_n^t-1\right]\\[5pt]
+									E_n^{t+1}+Q_n^{t+1}
+									&=\left(Q_{n+1}^t+E_n^t\right)-2\\
+									&=Q_{n+1}^t+E_n^t-2
+								\end{align*}
+								より、10対を消去する操作と時間発展させる操作は可換なことが示せた。
+							</div>	
 
 						</div>
 						<div style="text-align: right;"><button id=close5>[閉じる]</button></div>
@@ -353,7 +386,8 @@
 					<details open id="white">
 						<summary>補足</summary>
 						<div id="main_text">
-							a
+							等価な表現1において、空き箱に近い順にコピー玉を移動させると \(1,0\) を結ぶ線がコピー玉の軌道そのものとなり、
+							等価であることがわかる。
 						</div>
 						<div style="text-align: right;"><button id=close6>[閉じる]</button></div>
 					</details>
