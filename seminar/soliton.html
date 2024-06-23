@@ -368,6 +368,78 @@
                 \Omega_{[1,2]}+\Omega_{[2,3]}&=(\kappa_1^3-\kappa_2^3)-(\kappa_2^3-\kappa_3^3)&=\kappa_1^3-\kappa_3^3&=\Omega_{[1,3]}
             \end{alignat*}
             と共鳴条件を満たし、\(u_{[1,3]}\) の振幅は非常に大きくなる。
+            <br><div style="line-height: 5pt;">&nbsp;</div>
+            ・例 \(u(x,\,y,\,t)\)
+            <div style="text-align: center;margin-left: 5%;margin-right: 5%;max-width: 700pt;">
+                <video controls loop width="70%">
+                    <source src="image/4.webm" type="video/webm">
+                </video>
+                <div style="text-align: left;">
+                    ・Y-shape soliton という。
+                </div>
+            </div>
+        </div>
+        <br>
+        <h3>ロンスキアン解</h3>
+        <div id="main_text">
+            Burgers階層を次のように拡張すると、
+            \[
+                \left\{
+                    \begin{aligned}
+                        f_x\,&=wf\\
+                        f_{t_n}&=\partial_x^nf
+                    \end{aligned}
+                \right.
+                \;\rightarrow\;\,
+                \left\{
+                    \begin{aligned}
+                        f_{xx}\,&=w_1f_x+w_2f\\
+                        f_{t_n}\,&=\partial_x^nf
+                    \end{aligned}
+                \right.
+            \]
+            第1式は2階線型常微分方程式となり、基本解 \(f_1,\,f_2\) を用いて、
+            \[
+                f=c_1f_1+c_2f_2
+            \]
+            と表せる。また \(f=f_1,\,f_2\) を第1式に代入して並べると、
+            \[
+                \left\{
+                    \begin{aligned}
+                        \frac{\partial^2f_1}{\partial{x}^2}&=w_1\frac{\partial{f_1}}{\partial{x}}+w_2f_1\\
+                        \frac{\partial^2f_2}{\partial{x}^2}&=w_1\frac{\partial{f_2}}{\partial{x}}+w_2f_2
+                    \end{aligned}
+                \right.
+                \Leftrightarrow\,
+                \begin{pmatrix}
+                    f_1&(f_1)_x\\
+                    f_2&(f_2)_x
+                \end{pmatrix}
+                \begin{pmatrix}
+                    w_2\\
+                    w_1
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    (f_1)_{xx}\\
+                    (f_2)_{xx}
+                \end{pmatrix}
+            \]
+            となり、クラメルの公式より、
+            \[
+                w_1=\frac{\begin{vmatrix}f_1&(f_1)_{xx}\\f_2&(f_2)_{xx}\end{vmatrix}}{\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}}
+            \]
+            となる。また、
+            \begin{align*}                
+                \frac{d}{dx}\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}
+                &=\begin{vmatrix}(f_1)_x&(f_1)_x\\(f_2)_x&(f_2)_x\end{vmatrix}+\begin{vmatrix}f_1&(f_1)_{xx}\\f_2&(f_2)_{xx}\end{vmatrix}\\
+                &=\begin{vmatrix}f_1&(f_1)_{xx}\\f_2&(f_2)_{xx}\end{vmatrix}
+            \end{align*}
+            であるから、\(\displaystyle\tau(x,\,y,\,t):=\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}=\mathrm{Wr}(\boldsymbol{f},\,\boldsymbol{f}_x)\) とすると、
+            \[
+                w_1=\frac{\tau_x}{\tau}=(\log\tau)_x
+            \]
+            となる。
         </div>
     </div>
 
