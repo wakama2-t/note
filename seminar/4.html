@@ -28,7 +28,7 @@
 					<details open id="white">
 						<summary>証明</summary>
 						<div id="main_text">
-							双線型形式を用いた証明(\(N=2\))は<a href="soliton.html#">ソリトンの数理</a>にあり。(途中)
+							双線型形式を用いた証明は<a href="soliton.html#">ソリトンの数理</a>にあり。(途中)
 							<br><div style="line-height: 10pt;">&nbsp;</div>
 							独立変数 \(x\), パラメータ \(y,\,t\) を引数にもつ関数 \(f(x;\,y,\,t)\) についての2階線型常微分方程式
 							\[
@@ -68,10 +68,12 @@
 								\end{pmatrix}
 							\]
 							となり、クラメルの公式より、
+							<div id="math_box">
 							\[
 								a(x;\,y,\,t)=-\frac{\begin{vmatrix}f_1&(f_1)_{xx}\\f_2&(f_2)_{xx}\end{vmatrix}}{\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}},\;
 								b(x;\,y,\,t)=\frac{\begin{vmatrix}(f_1)_x&(f_1)_{xx}\\(f_2)_x&(f_2)_{xx}\end{vmatrix}}{\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}}
 							\]
+							</div>
 							となる。また、
 							\[
 								\hat{W}:=\partial_x^2+a(x;\,y,\,t)\partial_x+b(x;\,y,\,t)
@@ -83,13 +85,37 @@
 								&=\bigl(\hat{W}\bigr)_y\,f_i+\hat{W}(f_i)_{xx}\\
 								&=\left(\bigl(\hat{W}\bigr)_y+\hat{W}\partial_{x}^2\right)f_i
 							\end{align*}
-							となる。また \(\hat{W}f_i=0\;(i=1,\,2)\) なので、
-							\begin{align*}
-								\bigl(\hat{W}\bigr)_y+\hat{W}\partial_{x}^2
-								&=a_y\partial_x+b_y+\partial_x^4+a\partial_x^3+b\partial_x^2\\
-								&=\hat{B}_2(\partial_x^2+a\partial_x+b)=\hat{B}_2\hat{W}
-							\end{align*}
-							を満たす \(x\) についての2階微分演算 \(\hat{B}_2\) が存在し、
+							となる。ここで、\(\bigl(\hat{W}\bigr)_y+\hat{W}\partial_{x}^2\) は4階の微分演算子なので、
+							\[
+								(\hat{W})_y+\hat{W}\partial_x^2=\hat{B}_2\hat{W}+\hat{r}_1
+							\]
+							を満たす \(2\) 階の微分演算子 \(\hat{B}_2\), \(1\) 階の微分演算子 \(\hat{r}_1\) が存在する。
+							<details id="gray">
+								<summary>補足</summary>
+								<div id="main_text">
+									\begin{align*}    
+										\hat{B}_2\hat{W}
+										&=\partial_x^4+(a+\alpha_2)\partial_x^3+(2a_x+b+\alpha_2a+\beta_2)\partial_x^2\\
+										&\;\;\;\;+(a_{xx}+2b_x+\alpha_2a_x+\alpha_2b+\beta_2a)\partial_x\\
+										&\;\;\;\;+b_{xx}+\alpha_2b_x+\beta_2b
+									\end{align*}
+									であり、任意の \(4\) 階の微分演算子を表すには文字があと2つ必要となり、
+									\[
+										\hat{r}_1=\gamma\partial_x+\delta
+									\]
+									という1階の微分演算子を付け加えている。
+								</div>
+								<div style="text-align: right;"><button id=close1>[閉じる]</button></div>
+							</details><div style="line-height: 5pt;">&nbsp;</div>
+							また \(\hat{W}f_i=0\;(i=1,\,2)\) なので、
+							\[
+								0=(\hat{B}_2\hat{W}+\hat{r}_1)f_i=\hat{r}_1f_i
+							\]
+							となり、\(\hat{r}_1\) は \(\hat{0}\) となる。以降
+							\[
+								(\hat{W})_y+\hat{W}\partial_x^2=\hat{B}_2\hat{W}
+							\]
+							を考える。
 							\[
 								\hat{B}_2:=\partial_x^2+\alpha_2(x;\,y,\,t)+\beta_2(x;\,y,\,t)
 							\]
@@ -127,18 +153,18 @@
 								\end{aligned}
 								\right.
 							\]
-							という関係式が得られる。これより、
-							\begin{gather*}
+							という関係式が得られる。<br>
+							これより、
+							<div id="math_box">
+								\begin{gather*}
 								\hat{W}=\partial_x^2+a(x;\,y,\,t)\partial_x+b(x;\,y,\,t)\\[5pt]
-								\left\{
-									\begin{aligned}
-										&\hat{W}f=0\\
-										&f_{y}=f_{xx}\\
-										&f_{t}=f_{xxx}
-									\end{aligned}
-								\right.
+								\hat{W}f=0
 							\end{gather*}
-							となるとき、
+							の基本解 \(f_1,\,f_2\) について、
+							\[						
+								(f_i)_{y}=f_{xx}
+							\]
+							となるとき、	
 							\[
 								\left\{
 								\begin{aligned}
@@ -147,18 +173,117 @@
 								\end{aligned}
 								\right.
 							\]
-							という連立非線形連立微分方程式が得られ、その解は、
+							という連立非線形連立微分方程式が得られる。
+							</div>
+							<br><div style="line-height: 5pt;">&nbsp;</div>
+							次に、\(\hat{W}f_i=0\;(i=1,\,2)\) の両辺を \(t\) で偏微分すると、
+							\begin{align*}
+								0=\partial_{t}\left(\hat{W}f_i\right)
+								&=\left(\partial_t\hat{W}\right)f_i+\hat{W}(f_i)_t\\
+								&=\bigl(\hat{W}\bigr)_t\,f_i+\hat{W}(f_i)_{xxx}\\
+								&=\left(\bigl(\hat{W}\bigr)_t+\hat{W}\partial_{x}^3\right)f_i
+							\end{align*}
+							となり、
 							\[
-								a(x;\,y,\,t)=-\frac{\begin{vmatrix}f_1&(f_1)_{xx}\\f_2&(f_2)_{xx}\end{vmatrix}}{\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}},\;
-								b(x;\,y,\,t)=\frac{\begin{vmatrix}(f_1)_x&(f_1)_{xx}\\(f_2)_x&(f_2)_{xx}\end{vmatrix}}{\begin{vmatrix}f_1&(f_1)_x\\f_2&(f_2)_x\end{vmatrix}}
+								(\hat{W})_t+\hat{W}\partial_x^3=\hat{B}_3\hat{W}
 							\]
-							と行列式を用いて表されることがわかった。
+							を考える。
+							\[
+								\hat{B}_3:=\partial_x^3+\alpha_3(x;\,y,\,t)\partial_x^2+\beta_3(x;\,y,\,t)\partial_x+\gamma_3(x;\,y,\,t)
+							\]
+							とすれば、
+							\begin{align*}
+								&(\hat{W})_t+\hat{W}\partial_x^3\\
+								&=a_t\partial_x+b_t+\partial_x^5+a\partial_x^4+b\partial_x^3\\
+								&=\partial_x^5+a\partial_x^4+b\partial_x^3+a_t\partial_x+b_t\\[10pt]
+								&\hat{B}_3\hat{W}\\
+								&=(\partial_x^3+\alpha_3\partial_x^2+\beta_3\partial_x+\gamma_3)(\partial_x^2+a\partial_x+b)\\
+								&=\partial_x^5+(a_{xxx}+3a_{xx}\partial_x+3a_{x}\partial_x^2+a\partial_x^3)\partial_x\\
+								&\;\;\;\;\,+(b_{xxx}+3b_{xx}\partial_x+3b_x\partial_x^2+b\partial_x^3)\\[2pt]
+								&\;\;\;\;\,+\alpha_3\partial_x^4+\alpha_3(a_{xx}+2a_x\partial_x+a\partial_x^2)\partial_x\\
+								&\;\;\;\;\,+\alpha_3(b_{xx}+2b_x\partial_x+b\partial_x^2)\\[2pt]
+								&\;\;\;\;\,+\beta_3\partial_x^3+\beta_3(a_x+a\partial_x)\partial_x+\beta_3(b_x+b\partial_x)\\[2pt]
+								&\;\;\;\;\,+\gamma_3(\partial_x^2+a\partial_x+b)\\[4pt]
+								&=\partial_x^5+(a+\alpha_3)\partial_x^4+(3a_x+b+\alpha_3a+\beta_3)\partial_x^3\\
+								&\;\;\;\;\,+(3a_{xx}+3b_x+2\alpha_3a_x+\alpha_3b+\beta_3a+\gamma_3)\partial_x^2\\
+								&\;\;\;\;\,+(a_{xxx}+3b_{xx}+\alpha_3a_{xx}+2\alpha_3b_x+\beta_3a_x+\beta_3b+\gamma_3a)\partial_x\\
+								&\;\;\;\;\,+b_{xxx}+\alpha_3b_{xx}+\beta_3b_x+\gamma_3b
+							\end{align*}
+							より、
+							\[
+								\left\{
+								\begin{aligned}
+									a\;&=a+\alpha_3\\
+									b\;&=3a_x+b+\alpha_3a+\beta_3\\
+									0\;&=3a_{xx}+3b_x+2\alpha_3a_x+\alpha_3b+\beta_3a+\gamma_3\\
+									a_t&=a_{xxx}+3b_{xx}+\alpha_3a_{xx}+2\alpha_3b_x+\beta_3a_x+\beta_3b+\gamma_3a\\
+									b_t&=b_{xxx}+\alpha_3b_{xx}+\beta_3b_x+\gamma_3b
+								\end{aligned}
+								\right.
+							\]
+							第1式より \(\alpha_3=0\)、第2式より \(\beta_3=-3a_x\)、第3式より、
+							\[
+								\gamma=-3a_{xx}+3aa_x-3b_x
+							\]
+							がわかり、
+							\begin{align*}
+								a_t
+								&=a_{xxx}+3b_{xx}+\alpha_3a_{xx}+2\alpha_3b_x+\beta_3a_x+\beta_3b+\gamma_3a\\
+								&=a_{xxx}+3b_{xx}-3a_x^2-3ba_x-3aa_{xx}+3a^2a_x-3ab_x\\
+								&=a_{xxx}+3b_{xx}-3a(a_{xx}+b_x)-3a_x^2-3ba_x+3a^2a_x\\[5pt]
+								b_t
+								&=b_{xxx}+\alpha_3b_{xx}+\beta_3b_x+\gamma_3b\\
+								&=b_{xxx}-3a_xb_x-3a_{xx}b+3aa_xb-3bb_x
+							\end{align*}
+							より、
+							\[
+								\left\{
+								\begin{aligned}
+									a_t&=a_{xxx}+3b_{xx}-3a(a_{xx}+b_x)-3a_x^2-3ba_x+3a^2a_x\\
+									b_t&=b_{xxx}-3a_xb_x-3a_{xx}b+3aa_xb-3bb_x
+								\end{aligned}
+								\right.
+							\]
+							を得る。<br>
+							これより、
+							<div id="math_box">
+							\begin{gather*}
+								\hat{W}=\partial_x^2+a(x;\,y,\,t)\partial_x+b(x;\,y,\,t)\\[5pt]
+								\hat{W}f=0
+							\end{gather*}
+							の基本解 \(f_1,\,f_2\) について、
+							\[						
+								(f_i)_{t}=f_{xxx}
+							\]
+							となるとき、
+							\[
+								\left\{
+								\begin{aligned}
+									a_t&=a_{xxx}+3b_{xx}-3a(a_{xx}+b_x)-3a_x^2-3ba_x+3a^2a_x\\
+									b_t&=b_{xxx}-3a_xb_x-3a_{xx}b+3aa_xb-3bb_x
+								\end{aligned}
+								\right.
+							\]
+							という連立非線形連立微分方程式が得られる。
+							</div><br>
+							ここまでの話を一般化する。 独立変数を \(\boldsymbol{x}=(x_1,\,x_2,\ldots)\) とすれば、
+							\begin{gather*}
+								\hat{W}=\partial_x^N+a_1(\boldsymbol{x})\partial_x^{N-1}+a_2(\boldsymbol{x})\partial_x^{N-2}+\cdots+a_N(\boldsymbol{x})\\[5pt]
+								\hat{W}f=0
+							\end{gather*}
+							の基本解 \(f_1,\,f_2,\ldots,\,f_N\) について、
+							\[
+								(f_i)_{x_k}=\partial_x^kf
+							\]
 						</div>
 						<div style="text-align: right;"><button id=close0>[閉じる]</button></div>
 					</details>
 				</div>
 			</div>
-
+			<p>・双線型形式</p>
+			\[
+				(D_x^4+3D_y^2-4D_xD_t)\tau\cdot\tau=0
+			\]
 		</div>
 
 
