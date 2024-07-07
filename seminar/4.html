@@ -617,9 +617,9 @@
 						\end{align*}
 					</div>
 					<div style="text-align: right;"><button id=close5>[閉じる]</button></div>
-				</details>
+				</details><div style="line-height: 5pt;">&nbsp;</div>
 				またこの式は \(u_n\) についての非線型偏微分方程式系を与え、KP階層という。
-				<details open id="white">
+				<details id="white">
 					<summary>確認&補足</summary>
 					<div id="main_text">
 						\[
@@ -715,11 +715,156 @@
 							&\;\;\;\;+\Bigl(u_4-3u_1(u_1)_x+3u_1u_2+3u_1(u_1)_x+3u_1u_2\Bigr)\partial^{-1}\\
 							&\;\;\;\;+\Bigl(u_5+3u_1(u_1)_{xx}-6(u_1)_xu_2+3u_1u_3-3u_1(u_1)_{xx}-3u_1(u_2)_x+3(u_1)_xu_2+3u_2^2\Bigr)\partial^{^2}+\cdots\\
 							&=\partial^4+4u_1\partial^2+\Bigl(6(u_1)_x+4u_2\Bigr)\partial+3(u_1)_{xx}+3(u_2)_x+u_3+3u_1^2\\
-							&\;\;\;\;+\Bigl(6u_1u_2+u_4\Bigr)\partial^{-1}+\Bigl(-3(u_1)_xu_2-3u_1(u_2)_x+u_5+3u_1u_3+3u_2^2\Bigr)\partial^{-2}
+							&\;\;\;\;+\Bigl(6u_1u_2+u_4\Bigr)\partial^{-1}+\Bigl(-3(u_1)_xu_2-3u_1(u_2)_x+u_5+3u_1u_3+3u_2^2\Bigr)\partial^{-2}+\cdots
 						\end{align*}
 						</div>
+						より、
+						\begin{align*}
+							(L)_{x_3}&=(u_1)_{x_3}\partial^{-1}+(u_2)_{x_3}\partial^{-2}+\cdots\\
+							[B_3,\,L]&=\Bigl((u_1)_{xxx}+3(u_2)_{xx}+3(u_3)_x+6u_1(u_1)_x\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl((u_2)_{xxx}+3(u_3)_{xx}+3(u_4)_x+6u_1(u_2)_x+6(u_1)_xu_2\Bigr)\partial^{-2}+\cdots
+						\end{align*}
+						となるから、
+						\begin{align*}
+							(u_1)_{x_3}&=(u_1)_{xxx}+3(u_2)_{xx}+3(u_3)_x+6u_1(u_1)_x\\
+							(u_2)_{x_3}&=(u_2)_{xxx}+3(u_3)_{xx}+3(u_4)_x+6u_1(u_2)_x+6(u_1)_xu_2\\
+							\vdots\;\;\;&
+						\end{align*}
+						といった非線型偏微分方程式を得る。
+						<br><div style="line-height: 5pt;">&nbsp;</div>
+						また、
+						\[
+							\left\{
+							\begin{aligned}
+								(u_1)_{x_2}&=(u_1)_{xx}+2(u_2)_x&&(1)\\
+								(u_2)_{x_2}&=(u_2)_{xx}+2(u_3)_x+2u_1(u_1)_x&&(2)\\
+								(u_1)_{x_3}&=(u_1)_{xxx}+3(u_2)_{xx}+3(u_3)_x+6u_1(u_1)_x&&(3)
+							\end{aligned}
+							\right.
+						\]
+						を考える。\(\displaystyle(2)\times\frac{3}{2}\;-\;(3)\) より、
+						\[
+							\frac{3}{2}(u_2)_{x_2}-(u_1)_{x_3}=-\frac{3}{2}(u_2)_{xx}-3u_1(u_1)_x-(u_1)_{xxx}
+						\]
+						整理して、
+						\[
+							\frac{3}{2}\Bigl((u_2)_{x_2}+(u_2)_{xx}\Bigr)=(u_1)_{x_3}-3u_1(u_1)_x-(u_1)_{xxx}
+						\]
+						両辺 \(x\) で微分して、
+						\[
+							\frac{3}{2}\Bigl((u_2)_{xx_2}+(u_2)_{xxx}\Bigr)=\Bigl((u_1)_{x_3}-3u_1(u_1)_x-(u_1)_{xxx}\Bigr)_x
+						\]
+						ここで、\((1)\) を \(x_2\) で微分、 \((1)\) を \(x\) で2回微分すると、
+						\begin{align*}
+							&2(u_2)_{xx_2}=(u_1)_{x_2x_2}-(u_1)_{xxx_2}\\
+							&2(u_2)_{xxx}=(u_1)_{xxx_2}-(u_1)_{xxxx}
+						\end{align*}
+						\[
+							\Rightarrow\;(u_2)_{xx_2}+(u_2)_{xxx}=\frac{(u_1)_{x_2x_2}-(u_1)_{xxxx}}{2}
+						\]
+						となるため、
+						\[
+							\frac{3}{4}\Bigl((u_1)_{x_2x_2}-(u_1)_{xxxx}\Bigr)=\Bigl((u_1)_{x_3}-3u_1(u_1)_x-(u_1)_{xxx}\Bigr)_x
+						\]
+						となり、整理すれば、
+						\[
+							\Bigl(4(u_1)_{x_3}-12u_1(u_1)_x-(u_1)_{xxx}\Bigr)_x-3(u_1)_{x_2x_2}=0
+						\]
+						とKP方程式が導出される。(\(u_1=-(a_1)_x\) となることからも自然な結果)
 					</div>
 					<div style="text-align: right;"><button id=close6>[閉じる]</button></div>
+				</details><div style="line-height: 5pt;">&nbsp;</div>
+				そしてザハロフ-シャバット(Zakharov-Shabat)方程式系
+				\[
+					\bigl(B_k\bigr)_{x_l}-\bigl(B_l\bigr)_{x_k}=[B_l,\,B_k]\;\;\;\;(k,\,l=2,\,3,\ldots)
+				\]
+				が導出される。
+				<details id="white">
+					<summary>導出過程&補足</summary>
+					<div id="main_text">
+						\[
+							\bigl(L^k\bigr)_{x_l}=[B_l,\,L^k]
+						\]
+						<details id="gray">
+							<summary>証明</summary>
+							<div id="main_text">
+								帰納法を用いる。<br>
+								\(k=2\) のとき、
+								\begin{align*}
+									\frac{\partial}{\partial{x_l}}L^2
+									&=\frac{\partial{L}}{\partial{x_l}}L+L\frac{\partial{L}}{\partial{x_l}}\\
+									&=[B_l,\,L]L+L[B_l,\,L]\\
+									&=B_lL^2-LB_lL+LB_lL-L^2B_l\\
+									&=B_lL^2-L^2B_l=[B_l,\,L^2]
+								\end{align*}
+								と成り立つ。\(k=N\) のとき成り立つと仮定したとき、すなわち、
+								\[
+									\bigl(L^N\bigr)_{x_l}=[B_l,\,L^N]
+								\]
+								となるとき、
+								\begin{align*}
+									\frac{\partial}{\partial{x_l}}L^{N+1}
+									&=\frac{\partial}{\partial{x_l}}\bigl(L^{N}L\bigr)\\
+									&=\frac{\partial{L^N}}{\partial{x_l}}L+L^N\frac{\partial{L}}{\partial{x_l}}\\
+									&=[B_l,\,L^N]L+L^N[B_l,\,L]\\
+									&=B_lL^{N+1}-L^NB_lL+L^NB_lL-L^{N+1}B_l\\
+									&=B_lL^{N+1}-L^{N+1}B_l=[B_l,\,L^{N+1}]
+								\end{align*}
+								と \(k=N+1\) の場合も成り立つため、任意の \(k=2,\,3,\ldots\) に対して成り立つことが示せた。
+							</div>
+							<div style="text-align: right;"><button id=close8>[閉じる]</button></div>
+						</details>
+						が成り立つことから、
+						\begin{align*}
+							\bigl(B_k\bigr)_{x_l}-\bigl(B_l\bigr)_{x_k}
+							&=\Bigl(\bigl(L^k\bigr)_+\Bigr)_{x_l}-\Bigl(\bigl(L^l\bigr)_+\Bigr)_{x_k}\\
+							&=\Bigl(\bigl(L^k\bigr)_{x_l}-\bigl(L^l\bigr)_{x_k}\Bigr)_+\\
+							&=\Bigl([B_l,\,L^k]-[B_k,\,L^l]\Bigr)_+
+						\end{align*}
+						ここで、
+						\[
+							P=\bigl(P\bigr)_++\bigl(P\bigr)_-\;\Leftrightarrow\;\;\bigl(P\bigr)_+=P-\bigl(P\bigr)_-
+						\]
+						より、
+						\begin{align*}
+							B_l&=\bigl(L^l\bigr)_+=L-\bigl(L^l\bigr)_-\\
+							L^l&=\bigl(L^l\bigr)_++\bigl(L^l\bigr)_-=B_l+\bigl(L^l\bigr)_-
+						\end{align*}
+						となるため、
+						\begin{align*}
+							\bigl(B_k\bigr)_{x_l}-\bigl(B_l\bigr)_{x_k}
+							&=\Bigl([B_l,\,L^k]-[B_k,\,L^l]\Bigr)_+\\
+							&=\Bigl([L-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l+\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=\Bigl([L,\,L^k]+[-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=\Bigl([B_k+\bigl(L^k\bigr)_-,\,\bigl(L^l\bigr)_-]-[B_k,\,B_l]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=\Bigl([B_k,\,\bigl(L^l\bigr)_-]+[\bigl(L^k\bigr)_-,\,\bigl(L^l\bigr)_-]+[B_l,\,B_k]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=[B_l,\,B_k]
+						\end{align*}
+						となる。
+						<br>
+						また、
+						\[
+							\bigl(W\bigr)_{x_k}+W\partial^{k}=B_kW
+						\]
+						\[
+							\bigl(B_k\bigr)_{x_l}-\bigl(B_l\bigr)_{x_k}=[B_l,\,B_k]\;\Leftrightarrow\;\partial_{x_l}B_k+B_kB_l=\partial_{x_k}B_l+B_lB_k
+						\]
+						から、
+						\begin{align*}
+							\partial_{x_k}\partial_{x_l}W
+							&=\partial_{x_k}\bigl(B_lW-W\partial^l\bigr)\\
+							&=\partial_{x_k}B_lW+B_l\partial_{x_k}W-\partial_{x_k}W\partial^l\\
+							&=\partial_{x_k}B_lW+B_l\bigl(B_kW-W\partial^k\bigr)-\bigl(B_kW-W\partial^k\bigr)\partial^l\\
+							&=\bigl(\partial_{x_k}B_l+B_lB_k\bigr)W-B_lW\partial^k-B_kW\partial^l+W\partial^{k+l}\\
+							&=\bigl(\partial_{x_l}B_k+B_kB_l)W-B_lW\partial^k-B_kW\partial^l+W\partial^{k+l}
+						\end{align*}
+						と \(l,\,k\) が互いに交換可能なことがわかり、
+						\[
+							\partial_{x_k}\partial_{x_l}W=\partial_{x_l}\partial_{x_k}W
+						\]
+						となる。偏微分が可換となり佐藤方程式は可積分である。
+					</div>
+					<div style="text-align: right;"><button id=close7>[閉じる]</button></div>
 				</details>
 			</div>
 		</div>
@@ -729,3 +874,5 @@
 	</body>
 	<script src="../js/details_close.js"></script>
 </html>
+
+<!-- close:8 -->
