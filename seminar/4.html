@@ -488,10 +488,13 @@
 					\end{aligned}\right.
 				\]
 				と、\(\partial\) が正冪、不冪の要素に分解する演算を考えると、
-				\begin{align*}				
-					\left(W_{x_k}W^{-1}+W\partial^{k}W^{-1}\right)_+&=\left(W\partial^{k}W^{-1}\right)_+\\
-					\left(W_{x_k}W^{-1}+W\partial^{k}W^{-1}\right)_-&=W_{x_k}W^{-1}+\left(W\partial^{k}W^{-1}\right)_-
-				\end{align*}
+				\[
+					\begin{aligned}				
+						B_k\;&=\left(W\partial^{k}W^{-1}\right)_+\\
+						W_{x_k}&=-\left(W\partial^{k}W^{-1}\right)_-W
+					\end{aligned}
+					\;\;\;\;(k=2,\,3,\ldots)
+				\]
 				<details id="white">
 					<summary>導出過程</summary>
 					<div id="main_text">
@@ -549,14 +552,6 @@
 					</div>
 					<div style="text-align: right;"><button id=close2>[閉じる]</button></div>
 				</details>
-				より、
-				\[
-					\begin{aligned}				
-						B_k\;&=\left(W\partial^{k}W^{-1}\right)_+\\
-						W_{x_k}&=-\left(W\partial^{k}W^{-1}\right)_-W
-					\end{aligned}
-					\;\;\;\;(k=2,\,3,\ldots)
-				\]
 				となる。この第2式を佐藤方程式という。				
 			</div>
 			<br><div style="line-height: 5pt;">&nbsp;</div>
@@ -598,9 +593,133 @@
 				<details id="white">
 					<summary>確認</summary>
 					<div id="main_text">
-
+						\[
+							0=\bigl(WW^{-1}\bigr)_{x_k}=\bigl(W\bigr)_{x_k}W^{-1}+W\bigl(W^{-1}\bigr)_{x_k}
+						\]
+						より、
+						\[
+							-\bigl(W\bigr)_{x_k}W^{-1}=W\bigl(W^{-1}\bigr)_{x_k}\;\Leftrightarrow\;\bigl(W^{-1}\bigr)_{x_k}=-W^{-1}\bigl(W\bigr)_{x_k}W^{-1}
+						\]
+						となるため、また、
+						\[
+							\bigl(W\bigr)_{x_k}+W\partial^k=B_kW\;\Leftrightarrow\;\bigl(W\bigr)_{x_k}=B_kW-W\partial^k
+						\]
+						より、
+						\begin{align*}
+							\bigl(L\bigr)_{x_k}
+							&=\bigl(W\partial W^{-1}\bigr)_{x_k}\\
+							&=\bigl(W\bigr)_{x_k}\partial W^{-1}+W\partial\bigl(W^{-1}\bigr)_{x_k}\\
+							&=\bigl(W\bigr)_{x_k}\partial W^{-1}-W\partial W^{-1}\bigl(W\bigr)_{x_k}W^{-1}\\
+							&=\bigl(B_kW-W\partial^k\bigr)\partial W^{-1}-W\partial W^{-1}\bigl(B_kW-W\partial^k\bigr)W^{-1}\\
+							&=B_kW\partial W^{-1}-W\partial^{k+1}W^{-1}-W\partial W^{-1}B_k+W\partial^{k+1}W^{-1}\\
+							&=B_kW\partial W^{-1}-W\partial W^{-1}B_k\\
+							&=[B_k,\,W\partial W^{-1}]=[B_k,\,L]
+						\end{align*}
 					</div>
 					<div style="text-align: right;"><button id=close5>[閉じる]</button></div>
+				</details>
+				またこの式は \(u_n\) についての非線型偏微分方程式系を与え、KP階層という。
+				<details open id="white">
+					<summary>確認&補足</summary>
+					<div id="main_text">
+						\[
+							L=W\partial W^{-1}=\partial+u_1(\boldsymbol{x})\partial^{-1}+u_2(\boldsymbol{x})\partial^{-2}+\cdots
+						\]
+						\[
+							B_n=\bigl(L^n\bigr)_+,\;\;(L)_{x_k}=[B_k,\,L]
+						\]
+						から、例えば \(n=2\) のとき、
+						\begin{align*}
+							B_2&=\Bigl(\bigl(\partial+u_1\partial^{-1}+\cdots\bigr)^2\Bigr)_+\\
+							   &=\bigl(\partial^2+\partial{u_1}\partial^{-1}+u_1\partial\partial^{-1}\bigr)_+\\
+							   &=\partial^2+2u_1
+						\end{align*}
+						であり、
+						\begin{align*}
+							B_2L
+							&=\Bigl(\partial^2+2u_1\Bigr)\Bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}+u_3\partial^{-3}+u_4\partial^{-4}+u_5\partial^{-5}+\cdots\Bigr)\\
+							&=\partial^3+\Bigl((u_1)_{xx}+2(u_1)_{x}\partial+u_1\partial^{2}\Bigr)\partial^{-1}
+							+\Bigl((u_2)_{xx}+2(u_2)_{x}\partial+u_2\partial^{2}\Bigr)\partial^{-2}\\
+							&\;\;\;\;+\Bigl((u_3)_{xx}+2(u_3)_{x}\partial+u_3\partial^{2}\Bigr)\partial^{-3}
+							+\Bigl((u_4)_{xx}+2(u_4)_{x}\partial+u_4\partial^{2}\Bigr)\partial^{-4}\\
+							&\;\;\;\;+\Bigl((u_5)_{xx}+2(u_5)_{x}\partial+u_5\partial^{2}\Bigr)\partial^{-5}+\cdots\\
+							&\;\;\;\;+2u_1\partial+2u_1^2\partial^{-1}+2u_1u_2\partial^{-2}+2u_1u_3\partial^{-3}+\cdots\\
+							&=\partial^3+3u_1\partial+2(u_1)_x+u_2+\Bigl((u_1)_{xx}+2(u_2)_x+u_3+2u_1^2\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl((u_2)_{xx}+2(u_3)_x+u_4+2u_1u_2\Bigr)\partial^{-2}\\
+							&\;\;\;\;+\Bigl((u_3)_{xx}+2(u_4)_x+u_5+2u_1u_3\Bigr)\partial^{-3}+\cdots\\[10pt]
+							LB_2
+							&=\Bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}+u_3\partial^{-3}+u_4\partial^{-4}+u_5\partial^{-5}+\cdots\Bigr)\Bigl(\partial^2+2u_1\Bigr)\\
+							&=\partial^3+u_1\partial+u_2+u_3\partial^{-1}+u_4\partial^{-2}+u_5\partial^{-3}+\cdots\\
+							&\;\;\;\;+2\partial{u_1}+2u_1\partial^{-1}u_1+2u_2\partial^{-2}u_1+2u_3\partial^{-3}u_1+\cdots\\
+							&=\partial^3+u_1\partial+u_2+u_3\partial^{-1}+u_4\partial^{-2}+u_5\partial^{-3}+\cdots\\
+							&\;\;\;\;+2(u_1)_x+2u_1\partial+2u_1\Bigl(u_1\partial^{-1}-(u_1)_x\partial^{-2}+(u_1)_{xx}\partial^{-3}+\cdots\Bigr)\\
+							&\;\;\;\;+2u_2\Bigl(u_1\partial^{-2}-2(u_1)_x\partial^{-3}+\cdots\Bigr)+2u_3\Bigl(u_1\partial^{-3}+\cdots\Bigr)+\cdots\\
+							&=\partial^3+3u_1\partial+2(u_1)_x+u_2+\Bigl(u_3+2u_1^2\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl(-2u_1(u_1)+u_4+2u_1u_2\Bigr)\partial^{-2}\\
+							&\;\;\;\;+\Bigl(2u_1(u_1)_{xx}-4(u_1)_xu_2+u_5+2u_1u_3\Bigr)\partial^{-3}+\cdots
+						\end{align*}
+						より、
+						\begin{align*}
+							(L)_{x_2}&=(u_1)_{x_2}\partial^{-1}+(u_2)_{x_2}\partial^{-2}+(u_3)_{x_2}\partial^{-3}+\cdots\\
+							[B_2,\,L]&=\Bigl((u_1)_{xx}+2(u_2)_x\Bigr)\partial^{-1}+\Bigl((u_2)_{xx}+2(u_3)_x+2u_1(u_1)_x\Bigr)\partial^{-2}\\
+							&\;\;\;\;+\Bigl((u_3)_{xx}+2(u_4)_x-2u_1(u_1)_{xx}+4(u_1)u_2\Bigr)\partial^{-3}+\cdots			
+						\end{align*}
+						となるから、
+						\begin{align*}
+							(u_1)_{x_2}&=(u_1)_{xx}+2(u_2)_x\\
+							(u_2)_{x_2}&=(u_2)_{xx}+2(u_3)_x+2u_1(u_1)_x\\
+							(u_3)_{x_2}&=(u_3)_{xx}+2(u_4)_x-2u_1(u_1)_{xx}+4(u_1)u_2\\
+							\vdots\;\;\;&
+						\end{align*}
+						といった非線型偏微分方程式を得る。<br>
+						また \(n=3\) のとき、
+						\begin{align*}
+							B_3&=\Bigl(\bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}+\cdots\bigr)^3\Bigr)_+\\
+							&=\bigl(\partial^3+\partial^2u_1\partial^{-1}+\partial{u_1}\partial^{-1}\partial+u_1\partial^{-1}\partial^2\\
+							&\;\;\;\;\;\;\;\;\;\;\;\;+\partial^2u_2\partial^{-2}+\partial{u_2}\partial^{-2}\partial+u_2\partial^{-2}\partial^2\bigr)_+\\
+							&=\Bigl(\partial^3+\Bigl((u_1)_{xx}+2(u_1)_x\partial+u_1\partial^2\Bigr)\partial^{-1}+\bigl((u_1)_x+u_1\partial\bigr)+u_1\partial\\
+							&\;\;\;\;\;\;\;\;\;\;\;\;+\Bigl((u_2)_{xx}+2(u_2)_x\partial+u_2\partial^2\Bigr)\partial^{-2}+\bigl((u_2)_x+u_2\partial\bigr)\partial^{-1}+u_2\Bigr)_+\\
+							&=\partial^3+3u_1\partial+3(u_1)_x+3u_2
+						\end{align*}
+						であり、
+						<div id="long_mjx">
+						\begin{align*}
+							&B_3L\\
+							&=\Bigl(\partial^3+3u_1\partial+3(u_1)_x+3u_2\Bigr)\Bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}+u_3\partial^{-3}+u_4\partial^{-4}+u_5\partial^{-5}+\cdots\Bigr)\\
+							&=\partial^4+\Bigl((u_1)_{xxx}+3(u_1)_{xx}\partial+3(u_1)_x\partial^2+u_1\partial^3\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl((u_2)_{xxx}+3(u_2)_{xx}\partial+3(u_2)_x\partial^2+u_2\partial^3\Bigr)\partial^{-2}\\
+							&\;\;\;\;+\Bigl((u_3)_{xxx}+3(u_3)_{xx}\partial+3(u_3)_x\partial^2+u_3\partial^3\Bigr)\partial^{-3}\\
+							&\;\;\;\;+\Bigl((u_4)_{xxx}+3(u_4)_{xx}\partial+3(u_4)_x\partial^2+u_4\partial^3\Bigr)\partial^{-4}\\
+							&\;\;\;\;+\Bigl((u_5)_{xxx}+3(u_5)_{xx}\partial+3(u_5)_x\partial^2+u_5\partial^3\Bigr)\partial^{-5}+\cdots\\
+							&\;\;\;\;+3u_1\partial^2+3u_1\Bigl((u_1)_x+u_1\partial\Bigr)\partial^{-1}+
+							3u_1\Bigl((u_2)_x+u_2\partial\Bigr)\partial^{-2}+3u_1\Bigl((u_3)_x+u_3\partial\Bigr)\partial^{-3}+\cdots\\
+							&\;\;\;\;+\Bigl(3(u_1)_x+3u_2\Bigr)\Bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}\Bigr)+\cdots\\
+							&=\partial^4+4u_1\partial^2+\Bigl(6(u_1)_x+4u_2\Bigr)\partial+3(u_1)_{xx}+3(u_2)_x+u_3+3u_1^2\\
+							&\;\;\;\;+\Bigl((u_1)_{xxx}+3(u_2)_{xx}+3(u_3)_x+u_4+3u_1(u_1)_x+3u_1u_2+\bigl(3(u_1)_x+3u_2\bigr)u_1\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl((u_2)_{xxx}+3(u_3)_{xx}+3(u_4)_x+u_5+3u_1(u_2)_x+3u_1u_3+\bigl(3(u_1)_x+3u_2\bigr)u_2\Bigr)\partial^{-2}+\cdots\\
+							&=\partial^4+4u_1\partial^2+\Bigl(6(u_1)_x+4u_2\Bigr)\partial+3(u_1)_{xx}+3(u_2)_x+u_3+3u_1^2\\
+							&\;\;\;\;+\Bigl((u_1)_{xxx}+3(u_2)_{xx}+3(u_3)_x+6u_1(u_1)_x+6u_1u_2+u_4\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl((u_2)_{xxx}+3(u_3)_{xx}+3(u_4)_x+3u_1(u_2)_x+3(u_1)_xu_2+u_5+3u_1u_3+3u_2^2\Bigr)\partial^{-2}+\cdots\\[10pt]
+							&LB_3\\
+							&=\Bigl(\partial+u_1\partial^{-1}+u_2\partial^{-2}+u_3\partial^{-3}+u_4\partial^{-4}+u_5\partial^{-5}+\cdots\Bigr)\Bigl(\partial^3+3u_1\partial+3(u_1)_x+3u_2\Bigr)\\
+							&=\partial^4+u_1\partial^2+u_2\partial+u_3+u_4\partial^{-1}+u_5\partial^{-2}+\cdots\\
+							&\;\;\;\;+3\partial{u_1}\partial+3u_1\partial^{-1}u_1\partial+3u_2\partial^{-2}u_1\partial+3u_3\partial^{-3}u_1\partial+\cdots\\
+							&\;\;\;\;+\partial\Bigl(3(u_1)_x+3u_2\Bigr)+u_1\partial^{-1}\Bigl(3(u_1)_x+3u_2\Bigr)+u_2\partial^{-2}\Bigl(3(u_1)_x+3u_2\Bigr)+\cdots\\
+							&=\partial^4+u_1\partial^2+u_2\partial+u_3+u_4\partial^{-1}+u_5\partial^{-2}+\cdots\\
+							&\;\;\;\;+3\Bigl((u_1)_x+u_1\partial\Bigr)\partial+3u_1\Bigl(u_1\partial^{-1}-(u_1)_x\partial^{-2}+(u_1)_{xx}\partial^{-3}+\cdots\Bigr)\partial\\
+							&\;\;\;\;+3u_2\Bigl(u_1\partial^{-2}-2(u_1)_x\partial^{-3}+\cdots\Bigr)\partial+3u_3\Bigl(u_1\partial^{-3}+\cdots\Bigr)\partial+\cdots\\
+							&\;\;\;\;+\Bigl(3(u_1)_x+3u_2\Bigr)_x+\Bigl(3(u_1)_x+3u_2\Bigr)\partial\\
+							&\;\;\;\;+u_1\Bigl\{\Bigl(3(u_1)_x+3u_2\Bigr)\partial^{-1}-\Bigl(3(u_1)_x+3u_2\Bigr)_x\partial^{-2}+\cdots\Bigr\}\\
+							&\;\;\;\;+u_2\Bigl\{\Bigl(3(u_1)_x+3u_2\Bigr)\partial^{-2}+\cdots\Bigr\}+\cdots\\
+							&=\partial^4+4u_1\partial^2+\Bigl(6(u_1)_x+4u_2\Bigr)\partial+3(u_1)_{xx}+3(u_2)_x+u_3+3u_1^2\\
+							&\;\;\;\;+\Bigl(u_4-3u_1(u_1)_x+3u_1u_2+3u_1(u_1)_x+3u_1u_2\Bigr)\partial^{-1}\\
+							&\;\;\;\;+\Bigl(u_5+3u_1(u_1)_{xx}-6(u_1)_xu_2+3u_1u_3-3u_1(u_1)_{xx}-3u_1(u_2)_x+3(u_1)_xu_2+3u_2^2\Bigr)\partial^{^2}+\cdots\\
+							&=\partial^4+4u_1\partial^2+\Bigl(6(u_1)_x+4u_2\Bigr)\partial+3(u_1)_{xx}+3(u_2)_x+u_3+3u_1^2\\
+							&\;\;\;\;+\Bigl(6u_1u_2+u_4\Bigr)\partial^{-1}+\Bigl(-3(u_1)_xu_2-3u_1(u_2)_x+u_5+3u_1u_3+3u_2^2\Bigr)\partial^{-2}
+						\end{align*}
+						</div>
+					</div>
+					<div style="text-align: right;"><button id=close6>[閉じる]</button></div>
 				</details>
 			</div>
 		</div>
