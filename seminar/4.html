@@ -827,15 +827,15 @@
 						\]
 						より、
 						\begin{align*}
-							B_l&=\bigl(L^l\bigr)_+=L-\bigl(L^l\bigr)_-\\
+							B_l&=\bigl(L^l\bigr)_+=L^l-\bigl(L^l\bigr)_-\\
 							L^l&=\bigl(L^l\bigr)_++\bigl(L^l\bigr)_-=B_l+\bigl(L^l\bigr)_-
 						\end{align*}
 						となるため、
 						\begin{align*}
 							\bigl(B_k\bigr)_{x_l}-\bigl(B_l\bigr)_{x_k}
 							&=\Bigl([B_l,\,L^k]-[B_k,\,L^l]\Bigr)_+\\
-							&=\Bigl([L-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l+\bigl(L^l\bigr)_-]\Bigr)_+\\
-							&=\Bigl([L,\,L^k]+[-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=\Bigl([L^l-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l+\bigl(L^l\bigr)_-]\Bigr)_+\\
+							&=\Bigl([L^l,\,L^k]+[-\bigl(L^l\bigr)_-,\,L^k]-[B_k,\,B_l]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
 							&=\Bigl([B_k+\bigl(L^k\bigr)_-,\,\bigl(L^l\bigr)_-]-[B_k,\,B_l]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
 							&=\Bigl([B_k,\,\bigl(L^l\bigr)_-]+[\bigl(L^k\bigr)_-,\,\bigl(L^l\bigr)_-]+[B_l,\,B_k]-[B_k,\,\bigl(L^l\bigr)_-]\Bigr)_+\\
 							&=[B_l,\,B_k]
@@ -948,15 +948,14 @@
 						\[
 							\bigl(W\bigr)_{x_k}=B_kW-W\partial^k
 						\]
-						より、
-						\[
-							\partial_{x_k}\bigl(W\varphi_0\bigr)=\,B_kW\varphi_0
-						\]
+						より第2式は、
 						\begin{align*}
 							(左辺)
 							&=\bigl(W\bigr)_{x_k}\varphi_0+W\partial_{x_k}\varphi_0\\
 							&=\bigl(B_kW-W\partial^k\bigr)\varphi_0+W\partial_{x_k}\varphi_0\\
-							&=B_kW\varphi_0-W\partial^k\varphi_0+W\partial_{x_k}\varphi_0
+							&=B_kW\varphi_0-W\partial^k\varphi_0+W\partial_{x_k}\varphi_0\\[5pt]
+							(右辺)
+							&=\partial_{x_k}\bigl(W\varphi_0\bigr)=\,B_kW\varphi_0
 						\end{align*}
 						となるため、
 						\[
@@ -1145,6 +1144,132 @@
 					\oint_{z=\infty}\tau(\boldsymbol{x}-[\lambda^{-1}])\tau(\boldsymbol{x}'+[\lambda^{-1}])\;d\lambda=0
 				\]
 				を満たす。
+				<details open id="white">
+					<summary>証明</summary>
+					<div id="main_text">
+						まず擬微分作用素 \(A,\,B\) に対して、
+						\begin{align*}
+							&\bigl(\partial^n\bigr)^*=(-1)^n\partial^n\\
+							&\bigl(A+B\bigr)^*=A^*+B^*\\
+							&\bigl(AB\bigr)^*=B^*A^*
+						\end{align*}
+						となる演算 \(\cdot^*\) を考える。佐藤方程式を満たす \(W\) が満たしていた
+						\[
+							\left\{\begin{aligned}
+								L\;\varphi&=\lambda\varphi\\
+								\partial_{x_k}\varphi&=B_k\varphi
+							\end{aligned}\right.
+						\]
+						の2式の両辺に \(\cdot^*\) を作用させると、
+						\[
+							\left\{\begin{aligned}
+								L^*\varphi^*&=\lambda\varphi^*\\
+								\partial_{x_k}\varphi^*&=-B_k^*\varphi^*
+							\end{aligned}\right.
+						\]
+						となり、
+						\begin{align*}
+							\varphi(\boldsymbol{x},\,\lambda)&=W\exp\left[\sum_{n=0}^\infty\lambda^nx_n\right]=We^{\theta(\boldsymbol{x},\,\lambda)}\\
+							\varphi^*(\boldsymbol{x},\,\lambda)&=\bigl(W^*\bigr)^{-1}\exp\left[-\sum_{n=0}^\infty\lambda^nx_n\right]=\bigl(W^*\bigr)^{-1}e^{-\theta(\boldsymbol{x},\,\lambda)}
+						\end{align*}
+						はそれぞれの2式を満たす。
+						<details id="gray">
+							<summary>確認</summary>
+							<div id="main_text">
+								\[
+									L^*=\bigl(W\partial W^{-1}\bigr)^*=-\bigl(W^{-1}\bigr)^*\partial W^*
+								\]
+								となるので、
+								\[
+									-\bigl(W^{-1}\bigr)^*\partial W^*\varphi^*=\lambda\varphi^*\;\Leftrightarrow\;\partial{W}^*\varphi^*=-\lambda W^*\varphi'
+								\]
+								となる。また、
+								\[
+									W^*\varphi^*=\varphi'_0\;\Leftrightarrow\;\varphi^*=\bigl(W^*\bigr)^{-1}\varphi'_0
+								\]
+								とおけば \(\partial\varphi'_0=-\lambda\varphi'_0\) であり、
+							</div>
+							<div style="text-align: right;"><button id=close14>[閉じる]</button></div>
+						</details><div style="line-height: 5pt;">&nbsp;</div>
+						また、擬微分作用素 \(A,\,B\) に対して以下の式が成り立つ。
+						\[
+							\oint\bigl(\partial_x^jAe^{x\lambda}\bigr)\bigl(Be^{-x\lambda}\bigr)\frac{d\lambda}{2\pi{i}}
+							=(-1)^{j+1}\bigl(BA^*\bigr)_{-j-1}\;\;\;(j\in\mathbb{N}_0)
+						\]
+						ただし \(\bigl(BA^*\bigr)_{-j-1}\) は \(BA^*\) の \(\partial^{-j-1}\) の係数を意味する。
+						<details id="gray">
+							<summary>証明</summary>
+							<div id="main_text">
+								\[
+									A=\sum_{n}a_n\partial_x^n,\;\;B=\sum_{n}b_n\partial_x^n
+								\] 
+								とすると、
+								\begin{align*}
+									\partial_x^jA
+									&=\sum_n\sum_{k\geq0}\begin{pmatrix}j\\k\end{pmatrix}a_n^{(k)}\partial_x^{n+j-k}\\
+									\partial_x^jAe^{\lambda{x}}
+									&=\sum_n\sum_{k\geq0}\begin{pmatrix}j\\k\end{pmatrix}a_n^{(k)}\lambda^{n+j-k}e^{\lambda{x}}\\
+									Be^{-\lambda{x}}
+									&=\sum_{n}b_n\partial_x^ne^{-\lambda{x}}\\
+									&=\sum_{n}b_n(-\lambda)^ne^{-\lambda{x}}
+								\end{align*}
+								より、
+								\begin{align*}
+									(左辺)
+									&=\oint\sum_{n,\,n'}\sum_{k\geq0}\begin{pmatrix}j\\k\end{pmatrix}a_n^{(k)}\lambda^{n+j-k}b_{n'}(-\lambda)^{n'}\frac{d\lambda}{2\pi{i}}\\
+									&=\oint\sum_{n,\,n'}\sum_{k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}\lambda^{n+n'+j-k}\frac{d\lambda}{2\pi{i}}\\
+									&=\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}
+								\end{align*}
+								また、
+								\begin{align*}
+									A^*
+									&=\left(\sum_{n}a_n\partial_x^n\right)^*
+									=\sum_{n}(-\partial_x)^na_n\\
+									BA^*
+									&=\sum_{n,\,n'}b_{n'}\partial_x^{n'}(-\partial_x)^na_n\\
+									&=\sum_{n,\,n'}(-1)^nb_{n'}\partial_{x}^{n+n'}a_n\\
+									&=\sum_{n,\,n'}(-1)^nb_{n'}\sum_{k\geq0}\begin{pmatrix}n+n'\\k\end{pmatrix}a_n^{(k)}\partial_x^{n+n'-k}\\
+									&=\sum_{n,\,n'}\sum_{k\geq0}\begin{pmatrix}n+n'\\k\end{pmatrix}(-1)^na_n^{(k)}b_{n'}\partial_x^{n+n'-k}\\
+									&=\sum_{n,\,n'}\sum_{k\geq0}\begin{pmatrix}k-(n+n')-1\\k\end{pmatrix}(-1)^{n-k}a_n^{(k)}b_{n'}\partial_x^{n+n'-k}\\
+									&=\sum_{j\geq0}\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{-n'-j-1}a_n^{(k)}b_{n'}\partial_x^{-j-1}\\
+									&=\sum_{j\geq0}\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}(-1)^{j+1}\partial_x^{-j-1}
+								\end{align*}
+								より、
+								\begin{align*}								
+									(右辺)
+									&=(-1)^{j+1}\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}(-1)^{j+1}\\
+									&=\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}
+								\end{align*}
+							</div>
+							<div style="text-align: right;"><button id=close15>[閉じる]</button></div>
+						</details><div style="line-height: 5pt;">&nbsp;</div>
+						これより、
+						\[
+							A=W,\;B=\bigl(W^*\bigr)^{-1}=\bigl(W^{-1}\bigr)^*
+						\]
+						とすれば、
+						\begin{align*}
+							\oint\partial_x^j\bigl(We^{x\lambda}\bigr)\bigl(W^*\bigr)^{-1}e^{-\lambda{x}}\frac{d\lambda}{2\pi{i}}
+							&=(-1)^{j+1}\Bigl(\bigl(W^{-1}\bigr)^*W^*\Big)_{-j-1}\\
+							&=(-1)^{j+1}\hat{I}_{-j-1}=0
+						\end{align*}
+						となり、\(\lambda\rightarrow{\lambda^i},\;x\rightarrow{x_i}\) とすれば、
+						\[
+							\oint\partial_{x_i}^j\varphi(\boldsymbol{x},\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda=0
+						\]
+						が成り立ち、
+						\[
+							\oint\varphi(\boldsymbol{x}',\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda=0
+						\]
+						も成り立つ。なぜなら \(\varphi(\boldsymbol{x}',\,\lambda)\) を \(\boldsymbol{x}\) の周りでテイラー展開すると、
+						\begin{align*}
+							\oint\varphi(\boldsymbol{x}',\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda
+							&=\oint\left(\sum_{n}\frac{1}{n!}\left(\sum_{i=1}^\infty (x_i'-x_i)\frac{\partial}{\partial{x_i}}\right)^n\varphi(\boldsymbol{x},\,\lambda)\right)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda\\
+							&=\sum_n\frac{1}{n!}\sum_{i=1}^\infty(x'_i-x_i)^n\oint\partial_{x_i}^n\varphi(\boldsymbol{x},\,\lambda)\varphi'(\boldsymbol{x},\,\lambda)\;d\lambda=0
+						\end{align*}
+					</div>
+					<div style="text-align: right;"><button id=close13>[閉じる]</button></div>
+				</details>
 			</div>
 		</div>
 
@@ -1154,4 +1279,4 @@
 	<script src="../js/details_close.js"></script>
 </html>
 
-<!-- close:12 -->
+<!-- close:15 -->
