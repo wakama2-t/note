@@ -874,7 +874,7 @@
 				\[
 					\bigl(W\bigr)_{x_k}=-\left(W\partial^{k}W^{-1}\right)_-W
 				\]
-				の解 \(\displaystyle W=1+\sum_{n=1}^{\infty}a_n\partial^{-n}\) から
+				の解 \(\displaystyle W=1+\sum_{n=1}^{\infty}a_n(\boldsymbol{x})\partial^{-n}\) から
 				\[
 					L=W\partial W^{-1}=\partial+u_1(\boldsymbol{x})\partial^{-1}+u_2(\boldsymbol{x})\partial^{-2}+\cdots
 				\]
@@ -899,10 +899,10 @@
 				\]
 				および \(a_k=0\;(N&lt;k)\) となる。これは \(N\) に依存しているが、より一般には佐藤方程式の解は
 				\[
-					W(\lambda^{-1})=\frac{\tau(x-[\lambda^{-1}])}{\tau(\boldsymbol{x})}
+					W(\boldsymbol{x},\,\lambda)=\frac{\tau(\boldsymbol{x}-[\lambda^{-1}])}{\tau(\boldsymbol{x})}
 				\]
 				\[
-					(x-[\lambda^{-1}]):=\left(x_1-\frac{1}{\lambda},\,x_2-\frac{1}{2\lambda^2},\,x_3-\frac{1}{3\lambda^2},\ldots\right)
+					(\boldsymbol{x}-[\lambda^{-1}]):=\left(x_1-\frac{1}{\lambda},\,x_2-\frac{1}{2\lambda^2},\,x_3-\frac{1}{3\lambda^2},\ldots\right)
 				\]
 				と表される。
 				<details id="white">
@@ -1167,10 +1167,10 @@
 								\partial_{x_k}\varphi^*&=-B_k^*\varphi^*
 							\end{aligned}\right.
 						\]
-						となり、
+						となり、(\(\varphi^*\) は \(\varphi\) に \(\cdot^*\) を作用させたものではない)
 						\begin{align*}
-							\varphi(\boldsymbol{x},\,\lambda)&=W\exp\left[\sum_{n=0}^\infty\lambda^nx_n\right]=We^{\theta(\boldsymbol{x},\,\lambda)}\\
-							\varphi^*(\boldsymbol{x},\,\lambda)&=\bigl(W^*\bigr)^{-1}\exp\left[-\sum_{n=0}^\infty\lambda^nx_n\right]=\bigl(W^*\bigr)^{-1}e^{-\theta(\boldsymbol{x},\,\lambda)}
+							\varphi(\boldsymbol{x},\,\lambda)&=W\exp\left[\sum_{n=1}^\infty\lambda^nx_n\right]=We^{\theta(\boldsymbol{x},\,\lambda)}\\
+							\varphi^*(\boldsymbol{x},\,\lambda)&=\bigl(W^*\bigr)^{-1}\exp\left[-\sum_{n=1}^\infty\lambda^nx_n\right]=\bigl(W^*\bigr)^{-1}e^{-\theta(\boldsymbol{x},\,\lambda)}
 						\end{align*}
 						はそれぞれの2式を満たす。
 						<details id="gray">
@@ -1187,10 +1187,47 @@
 								\[
 									W^*\varphi^*=\varphi'_0\;\Leftrightarrow\;\varphi^*=\bigl(W^*\bigr)^{-1}\varphi'_0
 								\]
-								とおけば \(\partial\varphi'_0=-\lambda\varphi'_0\) であり、
+								とおけば \(\partial\varphi'_0=-\lambda\varphi'_0\) となる。また
+								\[
+									\partial_{x_k}\varphi_0=\partial^k\varphi_0
+								\]
+								の両辺に \(\cdot^*\) を作用させると
+								\[
+									\partial_{x_k}\varphi^*_0=(-1)^{k+1}\partial^k\varphi^*_0=(-1)^{k+1}(-\lambda)^k\varphi^*_0=-\lambda^k\varphi^*_0
+								\]
+								となるため、
+								\[
+									\varphi^*(\boldsymbol{x},\,\lambda)=\bigl(W^*\bigr)^{-1}\exp\left[-\sum_{n=0}^\infty\lambda^nx_n\right]=\bigl(W^*\bigr)^{-1}e^{-\theta(\boldsymbol{x},\,\lambda)}
+								\]
 							</div>
 							<div style="text-align: right;"><button id=close14>[閉じる]</button></div>
 						</details><div style="line-height: 5pt;">&nbsp;</div>
+						そして
+						\begin{align*}
+							\varphi(\boldsymbol{x},\,\lambda)&=\frac{\tau(\boldsymbol{x}-[\lambda^{-1}])}{\tau(\boldsymbol{x})}e^{\theta(\boldsymbol{x},\,\lambda)}\\
+							\varphi^*(\boldsymbol{x},\,\lambda)&=\frac{\tau(\boldsymbol{x}+[\lambda^{-1}])}{\tau(\boldsymbol{x})}e^{-\theta(\boldsymbol{x},\,\lambda)}
+						\end{align*}
+						となる。
+						<details open id="gray">
+							<summary>導出(の流れ)</summary>
+							<div id="main_text">
+								詳細は&#12302;可積分系の世界&#12303;p.89,226辺り (高崎金久先生) を参照。
+								<br>
+								<!-- \[
+									W(\boldsymbol{x}+[\lambda^{-1}],\,\lambda)\bigl(W^*\bigr)^{-1}(\boldsymbol{x},\,\lambda)=1
+								\]
+								となることから、(証明略)
+								\[
+									W(\boldsymbol{x},\,\lambda)=\frac{\tau(\boldsymbol{x}-[\lambda^{-1}])}{\tau(\boldsymbol{x})}
+								\]
+								と併せて、
+								\[								
+									W^*(\boldsymbol{x},\,\lambda)=\frac{1}{W(\boldsymbol{x}+[\lambda^{-1}],\,\lambda)}=\frac{\tau(\boldsymbol{x}+[\lambda^{-1}])}{\tau(\boldsymbol{x})}
+								\] -->
+								
+							</div>
+							<div style="text-align: right;"><button id=close15>[閉じる]</button></div>
+						</details>
 						また、擬微分作用素 \(A,\,B\) に対して以下の式が成り立つ。
 						\[
 							\oint\bigl(\partial_x^jAe^{x\lambda}\bigr)\bigl(Be^{-x\lambda}\bigr)\frac{d\lambda}{2\pi{i}}
@@ -1241,7 +1278,7 @@
 									&=\sum_{j=k-n-n'-1\\\;\;\;\;\;k\geq0}\begin{pmatrix}j\\k\end{pmatrix}(-1)^{n'}a_n^{(k)}b_{n'}
 								\end{align*}
 							</div>
-							<div style="text-align: right;"><button id=close15>[閉じる]</button></div>
+							<div style="text-align: right;"><button id=close16>[閉じる]</button></div>
 						</details><div style="line-height: 5pt;">&nbsp;</div>
 						これより、
 						\[
@@ -1253,7 +1290,7 @@
 							&=(-1)^{j+1}\Bigl(\bigl(W^{-1}\bigr)^*W^*\Big)_{-j-1}\\
 							&=(-1)^{j+1}\hat{I}_{-j-1}=0
 						\end{align*}
-						となり、\(\lambda\rightarrow{\lambda^i},\;x\rightarrow{x_i}\) とすれば、
+						となり、\(\partial_x^j\rightarrow\partial^j_{x_i},\;x\lambda\rightarrow\sum_{i=1}^\infty\lambda^ix_i\) とすれば、
 						\[
 							\oint\partial_{x_i}^j\varphi(\boldsymbol{x},\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda=0
 						\]
@@ -1264,9 +1301,18 @@
 						も成り立つ。なぜなら \(\varphi(\boldsymbol{x}',\,\lambda)\) を \(\boldsymbol{x}\) の周りでテイラー展開すると、
 						\begin{align*}
 							\oint\varphi(\boldsymbol{x}',\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda
-							&=\oint\left(\sum_{n}\frac{1}{n!}\left(\sum_{i=1}^\infty (x_i'-x_i)\frac{\partial}{\partial{x_i}}\right)^n\varphi(\boldsymbol{x},\,\lambda)\right)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda\\
-							&=\sum_n\frac{1}{n!}\sum_{i=1}^\infty(x'_i-x_i)^n\oint\partial_{x_i}^n\varphi(\boldsymbol{x},\,\lambda)\varphi'(\boldsymbol{x},\,\lambda)\;d\lambda=0
+							&=\oint\left(\sum_{n=1}^{\infty}\frac{1}{n!}\left(\sum_{i=1}^\infty (x_i'-x_i)\frac{\partial}{\partial{x_i}}\right)^n\varphi(\boldsymbol{x},\,\lambda)\right)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda\\
+							&=\sum_{n=1}^\infty\frac{1}{n!}\sum_{i=1}^\infty(x'_i-x_i)^n\oint\partial_{x_i}^n\varphi(\boldsymbol{x},\,\lambda)\varphi'(\boldsymbol{x},\,\lambda)\;d\lambda=0
 						\end{align*}
+						となるからである。よってこれより、
+						\[
+							\oint\frac{\tau(\boldsymbol{x}'-[\lambda^{-1}])}{\tau(\boldsymbol{x}')}e^{\theta(\boldsymbol{x},\,\lambda)}\cdot\frac{\tau(\boldsymbol{x}+[\lambda^{-1}])}{\tau(\boldsymbol{x})}e^{-\theta(\boldsymbol{x},\,\lambda)}\;d\lambda=0
+						\]
+						および
+						\[
+							\oint\tau(\boldsymbol{x'}-[\lambda^{-1}])\tau(\boldsymbol{x}+[\lambda^{-1}])\;d\lambda=0
+						\]
+						が成り立つ。
 					</div>
 					<div style="text-align: right;"><button id=close13>[閉じる]</button></div>
 				</details>
@@ -1279,4 +1325,4 @@
 	<script src="../js/details_close.js"></script>
 </html>
 
-<!-- close:15 -->
+<!-- close:16 -->
