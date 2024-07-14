@@ -1134,7 +1134,7 @@
 						\end{align*}
 						となり、
 						\[
-							W(\partial^{-1})=\frac{\tau(\boldsymbol{x}-[\lambda^{-1}])}{\tau(\boldsymbol{x})}
+							W(\boldsymbol{x},\,\lambda)=\frac{\tau(\boldsymbol{x}-[\lambda^{-1}])}{\tau(\boldsymbol{x})}
 						\]
 					</div>
 					<div style="text-align: right;"><button id=close9>[閉じる]</button></div>
@@ -1144,7 +1144,7 @@
 					\oint_{z=\infty}\tau(\boldsymbol{x}-[\lambda^{-1}])\tau(\boldsymbol{x}'+[\lambda^{-1}])\;d\lambda=0
 				\]
 				を満たす。
-				<details open id="white">
+				<details id="white">
 					<summary>証明</summary>
 					<div id="main_text">
 						まず擬微分作用素 \(A,\,B\) に対して、
@@ -1185,9 +1185,9 @@
 								\]
 								となる。また、
 								\[
-									W^*\varphi^*=\varphi'_0\;\Leftrightarrow\;\varphi^*=\bigl(W^*\bigr)^{-1}\varphi'_0
+									W^*\varphi^*=\varphi^*_0\;\Leftrightarrow\;\varphi^*=\bigl(W^*\bigr)^{-1}\varphi^*_0
 								\]
-								とおけば \(\partial\varphi'_0=-\lambda\varphi'_0\) となる。また
+								とおけば \(\partial\varphi^*_0=-\lambda\varphi^*_0\) となる。また
 								\[
 									\partial_{x_k}\varphi_0=\partial^k\varphi_0
 								\]
@@ -1208,13 +1208,17 @@
 							\varphi^*(\boldsymbol{x},\,\lambda)&=\frac{\tau(\boldsymbol{x}+[\lambda^{-1}])}{\tau(\boldsymbol{x})}e^{-\theta(\boldsymbol{x},\,\lambda)}
 						\end{align*}
 						となる。
-						<details open id="gray">
+						<details id="gray">
 							<summary>導出(の流れ)</summary>
 							<div id="main_text">
 								詳細は&#12302;可積分系の世界&#12303;p.89,226辺り (高崎金久先生) を参照。
 								<br>
-								<!-- \[
-									W(\boldsymbol{x}+[\lambda^{-1}],\,\lambda)\bigl(W^*\bigr)^{-1}(\boldsymbol{x},\,\lambda)=1
+								\[
+									\bigl(W^*\bigr)^{-1}e^{-\theta(\boldsymbol{X},\,\lambda)}=W^*(\boldsymbol{x},\,\lambda)e^{-\theta(\boldsymbol{x},\,\lambda)}
+								\]
+								となる \(W^*(\boldsymbol{x},\,\lambda)\) に対して、
+								\[
+									W(\boldsymbol{x}+[\lambda^{-1}],\,\lambda)W^*(\boldsymbol{x},\,\lambda)=1
 								\]
 								となることから、(証明略)
 								\[
@@ -1223,11 +1227,11 @@
 								と併せて、
 								\[								
 									W^*(\boldsymbol{x},\,\lambda)=\frac{1}{W(\boldsymbol{x}+[\lambda^{-1}],\,\lambda)}=\frac{\tau(\boldsymbol{x}+[\lambda^{-1}])}{\tau(\boldsymbol{x})}
-								\] -->
+								\]
 								
 							</div>
 							<div style="text-align: right;"><button id=close15>[閉じる]</button></div>
-						</details>
+						</details><div style="line-height: 5pt;">&nbsp;</div>
 						また、擬微分作用素 \(A,\,B\) に対して以下の式が成り立つ。
 						\[
 							\oint\bigl(\partial_x^jAe^{x\lambda}\bigr)\bigl(Be^{-x\lambda}\bigr)\frac{d\lambda}{2\pi{i}}
@@ -1290,7 +1294,7 @@
 							&=(-1)^{j+1}\Bigl(\bigl(W^{-1}\bigr)^*W^*\Big)_{-j-1}\\
 							&=(-1)^{j+1}\hat{I}_{-j-1}=0
 						\end{align*}
-						となり、\(\partial_x^j\rightarrow\partial^j_{x_i},\;x\lambda\rightarrow\sum_{i=1}^\infty\lambda^ix_i\) とすれば、
+						となり、\(\partial_x^j\rightarrow\partial^j_{x_i},\;x\lambda\rightarrow\sum_{n=1}^\infty\lambda^nx_n\) とすれば、
 						\[
 							\oint\partial_{x_i}^j\varphi(\boldsymbol{x},\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda=0
 						\]
@@ -1302,7 +1306,7 @@
 						\begin{align*}
 							\oint\varphi(\boldsymbol{x}',\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda
 							&=\oint\left(\sum_{n=1}^{\infty}\frac{1}{n!}\left(\sum_{i=1}^\infty (x_i'-x_i)\frac{\partial}{\partial{x_i}}\right)^n\varphi(\boldsymbol{x},\,\lambda)\right)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda\\
-							&=\sum_{n=1}^\infty\frac{1}{n!}\sum_{i=1}^\infty(x'_i-x_i)^n\oint\partial_{x_i}^n\varphi(\boldsymbol{x},\,\lambda)\varphi'(\boldsymbol{x},\,\lambda)\;d\lambda=0
+							&=\sum_{n=1}^\infty\frac{1}{n!}\sum_{i=1}^\infty(x'_i-x_i)^n\oint\partial_{x_i}^n\varphi(\boldsymbol{x},\,\lambda)\varphi^*(\boldsymbol{x},\,\lambda)\;d\lambda=0
 						\end{align*}
 						となるからである。よってこれより、
 						\[
@@ -1315,7 +1319,8 @@
 						が成り立つ。
 					</div>
 					<div style="text-align: right;"><button id=close13>[閉じる]</button></div>
-				</details>
+				</details><div style="line-height: 5pt;">&nbsp;</div>
+				a
 			</div>
 		</div>
 
