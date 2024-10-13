@@ -1469,11 +1469,11 @@
 						となる。またここで、\(J=\{\nu\},\,|J|=1\) のとき、
 						\begin{align*}
 							&\prod_{i\in{J}}\frac{c_i}{d_i}\prod_{i,\,j\in{J}\\\;\,i&lt;j}\frac{p_j-p_i}{q_j-q_i}\smash{\prod_{i\in{J},\;j\not\in{J}}}\frac{q_j-p_i}{q_j-q_i}\exp\left[\sum_{i\in{J}}(\theta_i-\theta_i')\right]\\
-							&=\frac{c_\nu}{d_\nu}\prod_{1\leq{j}\leq{N}\\\;\;j\neq{\nu}}\frac{q_j-p_\nu}{q_j-q_\nu}\;e^{\theta_\nu-\theta'_\nu}=e^{\theta_i-\theta'_i+\theta_i^{(0)}}
+							&=\frac{c_\nu}{d_\nu}\prod_{1\leq{j}\leq{N}\\\;\;j\neq{\nu}}\frac{q_j-p_\nu}{q_j-q_\nu}\;e^{\theta_\nu-\theta'_\nu}=e^{\theta_\nu-\theta'_\nu+\theta_\nu^{(0)}}
 						\end{align*}
 						となり、\(\theta_i^{(0)}\) を上のようにおく。すると、
 						\begin{align*}						
-							&\prod_{i\in{J}}\left(\frac{c_i}{d_i}\smash{\prod_{1\leq{j}\leq{N}\\\;\;j\neq{i}}}\frac{q_j-p_i}{q_j-q_i}\;e^{\theta_i-\theta'_i}\right)\;\rightarrow\;\exp\left[\sum_{i\in{J}}(\theta_i-\theta'_i+\theta_i^{(0)})\right]\\[10pt]
+							&\prod_{i\in{J}}\left(\frac{c_i}{d_i}\smash{\prod_{1\leq{j}\leq{N}\\\;\;j\neq{i}}}\frac{q_j-p_i}{q_j-q_i}\;e^{\theta_i-\theta'_i}\right)\;=\;\exp\left[\sum_{i\in{J}}(\theta_i-\theta'_i+\theta_i^{(0)})\right]\\[10pt]
 							&=\prod_{i\in{J}}\frac{c_i}{d_i}\prod_{i,\,j\in{J}\\\;\,i\neq{j}}\frac{q_j-p_i}{q_j-q_i}\prod_{i\in{J},\,j\not\in{J}}\frac{q_j-p_i}{q_j-q_i}\exp\left[\sum_{i\in{J}}(\theta_i-\theta_i')\right]\\
 							&=\prod_{i\in{J}}\frac{c_i}{d_i}\prod_{i,\,j\in{J}\\\;\,i&lt;{j}}\frac{(q_j-p_i)(p_j-q_i)}{(q_j-q_i)^2}\prod_{i\in{J},\,j\not\in{J}}\frac{q_j-p_i}{q_j-q_i}\exp\left[\sum_{i\in{J}}(\theta_i-\theta_i')\right]\\
 							&=\prod_{i\in{J}}\frac{c_i}{d_i}\prod_{i,\,j\in{J}\\\;\,i&lt;j}\frac{p_j-p_i}{q_j-q_i}\smash{\prod_{i\in{J},\;j\not\in{J}}}\frac{q_j-p_i}{q_j-q_i}\exp\left[\sum_{i\in{J}}(\theta_i-\theta_i')\right]\\
@@ -1693,8 +1693,8 @@
 							より \(y_k\) の係数から、
 							\begin{align*}
 								0&=\Bigl(P_0(-2\boldsymbol{y})P_1(\tilde{D})\times D_{x_k}+(-2)P_{k+1}(\tilde{D})\times1\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
-								&=\Bigl(1\,D_1\,D_{x_k}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
-								&=\Bigl(D_1D_{x_k}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})
+								&=\Bigl(1\,D_{x_1}\,D_{x_k}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
+								&=\Bigl(D_{x_1}D_{x_k}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})
 							\end{align*}
 							となる。例えば \(k=3\) のとき、
 							\begin{align*}							
@@ -1704,8 +1704,8 @@
 							\end{align*}
 							となるため、
 							\begin{align*}
-								0&=\Bigl(D_1D_{x_3}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
-								&=\Bigl(D_1D_{x_3}-\frac{1}{2}D_{x_4}-\frac{2}{3}D_{x_1}D_{x_3}-\frac{1}{4}D_{x_2}^2-\frac{1}{12}D_{x_1}^4\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
+								0&=\Bigl(D_{x_1}D_{x_3}-2P_{k+1}(\tilde{D})\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
+								&=\Bigl(D_{x_1}D_{x_3}-\frac{1}{2}D_{x_4}-\frac{2}{3}D_{x_1}D_{x_3}-\frac{1}{4}D_{x_2}^2-\frac{1}{12}D_{x_1}^4\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
 								&=\Bigl(\frac{1}{3}D_{x_1}D_{x_3}-\frac{1}{4}D_{x_2}^2-\frac{1}{12}D_{x_1}^4\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
 								&=-\frac{1}{12}\Bigl(D_{x_1}^4+3D_{x_2}^2-4D_{x_1}D_{x_3}\Bigr)\,\tau(\boldsymbol{x})\cdot\tau(\boldsymbol{x})\\
 							\end{align*}
